@@ -98,7 +98,7 @@ startButton.addEventListener("click", () => {
 });
 
 function setup() {
-  let snakeCanvas = createCanvas(windowWidth/2, windowHeight/2);
+  let snakeCanvas = createCanvas(windowWidth/2, windowHeight);
   snakeCanvas.parent("canvas-container");
   frameRate(3);
   stroke(255);
@@ -106,7 +106,7 @@ function setup() {
   updateFruitCoordinates();
 
   scoreElem = createDiv('Score = 0');
-  scoreElem.parent("score-container");
+  scoreElem.parent("nav-bar");
   scoreElem.id = 'score';
 
   for (let i = 0; i < numSegments; i++) {

@@ -4,120 +4,70 @@ html, body {
   }
 
   .container {
-    padding: 20px;
+    padding: 10px;
+    /* display: grid; */
+    gap: 10px;
     display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 50px 1fr 200px;
+    /* width: 100%;
+    height: 100%; */
+    grid-template:
+    [header-left]"head  head" 30px [header-right]
+    [main-left] "playscreen  kinnectscreen" 1fr 1fr [main-right]
+    / 120px 1fr;
+    grid-gap: 10px;
   }
 
-  #score-container {
+  #nav-bar {
     background-color: aquamarine;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    grid-column: 1/2;
-    grid-row: 1/2;
+    /* grid-area: head; */
   }
 
-  #start-button {
-    color: white;
-    background-color: black;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: white;
+  #round-button {
+    background-color: #ffffff;
+    border: none;
+    color: black;
+    padding: 10x 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
     width: 100px;
-    height: 25px;
+    height: 40px;
   }
 
   canvas {
+    background-color:rgb(43, 226, 141);
     display: block;
-    grid-column: 1/2;
-    grid-row: 2/3;
+    /* grid-column: 1/2;
+    grid-row: 2/3; */
+    grid-area: playscreen;
   }
+
+
+  /* #canvas-container{
+    background-color:blueviolet;
+    width: 50%;
+    display: flex;
+  } */
 
   #kinect-window {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
-    grid-column: 2/3;
-    grid-row: 2/3;
+    background-color: rgb(16, 199, 255);
+    grid-area: kinnectscreen;
+    /* grid-column: 1; */
+    /* grid-row: 2/3; */
   }
 
-  .hands {
-    height: 100px;
-    background-color: #b8937a;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
-    padding: 25px 50px 25px 50px;
-  }
 
-  .circle {
-    height: 50px;
-    width: 50px;
-    color: white;
-    background-color: #fcc006;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
-  .left-arrow {
-    width: 0;
-    height: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-right: 15px solid #ca0147;
-    margin: 2rem;
-    margin-right: 35px;
-  }
 
-  .up-arrow {
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 15px solid #ca0147;
-    margin: 2rem;
-    margin-bottom: 35px;
-  }
 
-  .right-arrow {
-    width: 0;
-    height: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 15px solid #ca0147;
-    margin: 2rem;
-    margin-left: 35px;
-  }
 
-  .down-arrow {
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 15px solid #ca0147;
-    margin: 2rem;
-    margin-top: 35px;
-  }
 
-  .active-left {
-    border-right: 15px solid #c1f80a;
-  }
-
-  .active-up {
-    border-bottom: 15px solid #c1f80a;
-  }
-
-  .active-right {
-    border-left: 15px solid #c1f80a;
-  }
-
-  .active-down {
-    border-top: 15px solid #c1f80a;
-  }
