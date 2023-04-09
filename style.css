@@ -12,7 +12,7 @@ html, body {
   }
 
   #nav-bar {
-    background-color: aquamarine;
+    background-color: #4379ac;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,14 +24,14 @@ html, body {
     background-color: #ffffff;
     border: none;
     color: black;
-    padding: 10x 20px;
+    padding: 10x 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin: 4px 2px;
+    margin: 3px 2px;
     cursor: pointer;
-    border-radius: 16px;
-    width: 100px;
+    border-radius: 50%;
+    width: 80px;
     height: 40px;
   }
 
@@ -47,7 +47,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(16, 199, 255);
+    background-color: #babcbc;
     grid-column: 2/3;
     grid-row: 2/3;
   }
