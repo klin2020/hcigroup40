@@ -1,29 +1,13 @@
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 //
+// const berkeley = new Image(100, 100);
+// berkeley.src = "images/berk.png";
+
 var host = "localhost:4444";
 $(document).ready(function() {
  frames.start();
  twod.start();
 });
-
-// function College(myCollege, myScore) {
-//   this.college = myCollege;
-//   this.score = myScore;
-// }
-
-// // this should be made dynamic
-// var college1 = new College("Morse", 1000);
-// var college2 = new College("Stiles", -90);
-// var college3 = new College("Silliman", 100);
-// var Colleges = [college1, college2, college3];
-
-// function displayLeaderboard(college) {
-//   let theExport = "";
-//   Colleges.sort((acollege, bcollege) => acollege.score - bcollege.score);
-//   Colleges.forEach((college) => theExport += '<tr><td>' + college.name + '</td><td>' + college.score + '</td></tr>');
-//   document.getElementById("thingy").innerHTML = theExport;
-// }
-
 
 
 var frames = {
@@ -164,7 +148,6 @@ function draw() {
  checkGameStatus();
  checkForFruit();
 }
-
 
 
 /*
@@ -319,3 +302,31 @@ function sendWristCommand(command) {
  }
  console.log(direction);
 }
+// const getContext = () => document.getElementById('my-canvas').getContext('2d');
+
+// // It's better to use async image loading.
+// const loadImage = url => {
+//   return new Promise((resolve, reject) => {
+//     const img = new Image();
+//     img.onload = () => resolve(img);
+//     img.onerror = () => reject(new Error(`load ${url} fail`));
+//     img.src = url;
+//   });
+// };
+
+// const depict = options => {
+//   const ctx = getContext();
+//   const myOptions = Object.assign({}, options);
+//   return loadImage(myOptions.uri).then(img => {
+//     ctx.drawImage(img, myOptions.x, myOptions.y, myOptions.sw, myOptions.sh);
+//   });
+// };
+
+// const imgs = [
+//   { uri: 'url("./images"), x: 15, y:  15, sw: 50, sh: 50 },
+//   { uri: 'http://placehold.it/50x50/ff0/000?text=Y', x: 15, y:  80, sw: 50, sh: 50 },
+//   { uri: 'http://placehold.it/50x50/0f0/000?text=G', x: 15, y: 145, sw: 50, sh: 50 }
+// ];
+
+// imgs.forEach(depict);
+

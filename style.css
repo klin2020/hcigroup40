@@ -12,6 +12,14 @@ html, body {
   grid-template-rows: 50px 1fr 200px;
 }
 
+#s-container {
+  padding: 10px;
+  gap: 10px;
+  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 50px 1fr 200px;
+}
+
 
 #nav-bar {
   background-color: #4379ac;
@@ -21,7 +29,6 @@ html, body {
   grid-row: 1;
   grid-column: 1;
 }
-
 
 #round-button {
   background-color: #ffffff;
@@ -56,4 +63,27 @@ canvas {
   background-color: #babcbc;
   grid-column: 2/3;
   grid-row: 2/3;
+}
+
+img {
+  float: left;
+  padding: 5px;
+  /* display: block; */
+  /* margin: 0 auto; */
+}
+
+/* #colleges {
+  text-align: justify;
+  width: 120px;
+} */
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #aaa;
+  padding: 5px;
+  text-align: left;
 }

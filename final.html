@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <!-- i HAVE NOT CHANGED ANYTHING RELEVANT TO THE FINAL PAGE, THIS IS JUST TO LINK THE
+    SELECTION SCREEN TO THE FINAL SCREEN
+    THIS SCREEN WILL DISPLAY THE RESULTS -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kinect Beat The Colleges</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+    
+  </head>
+  <body>
+    <div class="container">
+      <div id="nav-bar">
+        <button id="round-button">Exit</button>
+      </div>
+      <div class="empty-block"></div>
+      <div id="canvas-container">
+        <table>
+            <thead>
+              <th>College</th><th>Score</th>
+            </thead>
+            <tbody id="leaderboard"></tbody>
+        </table>
+      </div>
+      <div id="kinect-window">
+        <img class="twod" height="200px"/>
+      </div>
+    </div>
+    <script src="sketch.js"></script>
+    <script>  var players = [
+        { name: "Branford", score: 0 },
+        { name: "Berkeley", score: 0 },
+        { name: "Davenport", score: 0 },
+        { name: "Franklin", score: 0 },
+        { name: "Grace Hopper", score: 0 },
+        { name: "Jonathan Edwards", score: 0 },
+        { name: "Morse", score: 0 },
+        { name: "Pauli Murray", score: 0 },
+        { name: "Pierson", score: 0 },
+        { name: "Saybrook", score: 0 },
+        { name: "Silliman", score: 0 },
+        { name: "Ezra Stiles", score: 0 },
+        { name: "Timothy Dwight", score: 0 },
+        { name: "Trumbull", score: 0 },
+      ];
+    
+      // Function to add a score to a player's total score
+      function addToLeaderboard(score, player) {
+        // Find the player in the array
+        var index = players.findIndex(function (p) {
+          return p.name === player;
+        });
+        if (index !== -1) {
+          // Add the score to the player's total score
+          players[index].score += score;
+    
+          // Update the leaderboard in the database
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              // Display the updated leaderboard
+              displayLeaderboard();
+            }
+          };
+          // Note: this is not functional yet, to be implemented
+          xhr.open(
+            "GET",
+            "updateLeaderboard.php?player=" + player + "&score=" + score,
+            true
+          );
+          xhr.send();
+        }
+      }
+    
+      // Function to display the top 3 players in the leaderboard
+      function displayLeaderboard() {
+        // Sort the players by score
+        players.sort(function (a, b) {
+          return b.score - a.score;
+        })};
+    
+        // Display the top 3 players in the leaderboard table
+        var html</script>
+  </body>
+</html>
