@@ -5,6 +5,7 @@ var game_scene = {
 };
 
 var width;
+var height;
 var start_time;
 var timeText;
 var scoreText;
@@ -14,15 +15,14 @@ var timeLimit = 10;
 
 function preload () {
   this.load.setBaseURL('http://labs.phaser.io');
-
+  width = this.sys.game.canvas.width;
+  height = this.sys.game.canvas.height;
   // this.load.image('sky', 'assets/skies/space3.png');
   // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
   // this.load.image('red', 'assets/particles/red.png');
 }
 
 function create_game () {
-  width = this.sys.game.canvas.width;
-  height = this.sys.game.canvas.height;
 
   timeText = this.add.text(150, 20, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
   scoreText = this.add.text(700, 20, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
