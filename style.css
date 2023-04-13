@@ -1,15 +1,24 @@
 html, body {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
 
-  .container {
-    padding: 10px;
-    gap: 10px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 50px 1fr 200px;
-  }
+
+.container {
+  padding: 10px;
+  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 50px 1fr 200px;
+}
+
+#s-container {
+  padding: 10px;
+  gap: 10px;
+  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 50px 1fr 200px;
+}
 
   #nav-bar {
     background-color: #4379ac;
@@ -36,13 +45,32 @@ html, body {
     width: 80px;
     height: 40px;
   }
+#round-button {
+  background-color: #ffffff;
+  border: none;
+  color: black;
+  padding: 10x 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 3px 2px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 80px;
+  height: 40px;
+}
 
-  canvas {
+
+canvas {
+  background-color:rgb(43, 226, 141);
     background-color:rgb(43, 226, 141);
-    display: block;
-    grid-column: 1/2;
-    grid-row: 2/3;
-  }
+  display: block;
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+
+
 
 
   #kinect-window {
@@ -54,6 +82,17 @@ html, body {
     grid-row: 2/3;
   }
 
+img {
+  float: left;
+  padding: 5px;
+  /* display: block; */
+  /* margin: 0 auto; */
+}
+
+/* #colleges {
+  text-align: justify;
+  width: 120px;
+} */
   #start-button {
     background-color: #ffffff;
     border: none;
@@ -69,13 +108,13 @@ html, body {
     height: 80px;
   }
 
+table {
+  border-collapse: collapse;
+}
 
-
-
-
-
-
-
-
-
-
+th,
+td {
+  border: 1px solid #aaa;
+  padding: 5px;
+  text-align: left;
+}
