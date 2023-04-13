@@ -60,17 +60,17 @@ function displayLeaderboard()
             note.innerHTML += '<li>Error loading database.</li>';
         };
           
-        // Create an objectStore for this database   
-        var objectStore = db.createObjectStore("toDoList", { keyPath: "taskTitle" });
+        // // Create an objectStore for this database   
+        // var objectStore = db.createObjectStore("toDoList", { keyPath: "taskTitle" });
           
-        // define what data items the objectStore will contain
+        // // define what data items the objectStore will contain
               
-        objectStore.createIndex("hours", "hours", { unique: false });
-        objectStore.createIndex("minutes", "minutes", { unique: false });
-        objectStore.createIndex("day", "day", { unique: false });
-        objectStore.createIndex("month", "month", { unique: false });
-        objectStore.createIndex("year", "year", { unique: false });
-        objectStore.createIndex("notified", "notified", { unique: false });
+        // objectStore.createIndex("hours", "hours", { unique: false });
+        // objectStore.createIndex("minutes", "minutes", { unique: false });
+        // objectStore.createIndex("day", "day", { unique: false });
+        // objectStore.createIndex("month", "month", { unique: false });
+        // objectStore.createIndex("year", "year", { unique: false });
+        // objectStore.createIndex("notified", "notified", { unique: false });
         };
 
     request.onerror = function() {
