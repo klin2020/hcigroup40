@@ -18,6 +18,8 @@ html, body {
     align-items: center;
     grid-row: 1;
     grid-column: 1;
+    padding: 10px;
+    
   }
 
   #round-button {
@@ -51,6 +53,25 @@ html, body {
     grid-column: 2/3;
     grid-row: 2/3;
   }
+
+  #start-button {
+    background-color: #ffffff;
+    border: none;
+    color: black;
+    padding: 10x 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 3px 2px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 160px;
+    height: 80px;
+  }
+
+
+
+
 
 
 
