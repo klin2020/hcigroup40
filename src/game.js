@@ -49,18 +49,15 @@ function update_game () {
 
   // randomly generate circle
   if (make_shapes) {
-    var x = Phaser.Math.Between(50, width-50);
-    var y = Phaser.Math.Between(50, height-50);
-    shape = this.add.circle(x, y, 50, '0x00bfff');
-    shape.setInteractive();
+    respawnShape(this);
+    console.log(shape);
+    Phaser.Geom.Intersects.CircleToCircle(shape, shape);
+    // var x = Phaser.Math.Between(50, width-50);
+    // var y = Phaser.Math.Between(50, height-150);
+    // shape = this.add.circle(x, y, 50, '0x00bfff');
+    // shape.setInteractive();
 
     // placeholder for update logic
-    shape.on('pointerdown', function (shape)
-    {
-      this.destroy();
-      make_shapes = true;
-      score += 100;
-    });
     make_shapes = false;
   }
 
@@ -69,6 +66,11 @@ function update_game () {
     // console.log(hand_x);
     // console.log(hand_y);
     updatePointer(width - hand_x, hand_y);
+    if (shape.radius && Phaser.Geom.Intersects.CircleToCircle(pointer, shape)) {
+      console.log('TOUCHDOWN');
+      score += 100;
+      respawnShape(this);
+    }
   }
 
   if (timeLeft <= 0) {
@@ -79,4 +81,20 @@ function update_game () {
 function updatePointer(x, y) {
   pointer.x = x;
   pointer.y = y;
+}
+
+function respawnShape(game) {
+  if (shape) {
+    shape.destroy();
+  };
+  var x = Phaser.Math.Between(50, width-50);
+  var y = Phaser.Math.Between(50, height-150);
+  shape = game.add.circle(x, y, 50, '0x00bfff');
+  shape.setInteractive();
+  shape.on('pointerdown', function (shape)
+    {
+      this.destroy();
+      make_shapes = true;
+      score += 100;
+    });
 }

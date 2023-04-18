@@ -42,10 +42,10 @@ var frames = {
   },
 
   show: function(frame) {
-    console.log(frame);
+    // console.log(frame);
     let hand = frames.get_hand(frame);
     if (hand) {
-      console.log(hand.position);
+      // console.log(hand.position);
       res = kinect2canvas(hand.position.x, hand.position.y);
       hand_x = res[0];
       hand_y = res[1];
