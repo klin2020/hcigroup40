@@ -11,12 +11,15 @@ var timeText;
 var scoreText;
 var score;
 var timedEvent;
-var timeLimit = 10;
+var timeLimit = 1000;
+var pointer;
 
 function preload () {
   this.load.setBaseURL('http://labs.phaser.io');
   width = this.sys.game.canvas.width;
   height = this.sys.game.canvas.height;
+
+  pointer = this.add.circle(0, 0, 10, '0xff0000')
   // this.load.image('sky', 'assets/skies/space3.png');
   // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
   // this.load.image('red', 'assets/particles/red.png');
@@ -46,7 +49,6 @@ function update_game () {
 
   // randomly generate circle
   if (make_shapes) {
-    console.log(width);
     var x = Phaser.Math.Between(50, width-50);
     var y = Phaser.Math.Between(50, height-50);
     shape = this.add.circle(x, y, 50, '0x00bfff');
@@ -62,7 +64,19 @@ function update_game () {
     make_shapes = false;
   }
 
+  if (hand_x) {
+    // console.log('updating hand');
+    // console.log(hand_x);
+    // console.log(hand_y);
+    updatePointer(width - hand_x, hand_y);
+  }
+
   if (timeLeft <= 0) {
     this.scene.start('gameover_scene');
   }
+}
+
+function updatePointer(x, y) {
+  pointer.x = x;
+  pointer.y = y;
 }

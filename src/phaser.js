@@ -1,7 +1,7 @@
 var config = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 600,
+  width: screen_width/kinectScaleFactor,
+  height: screen_height/kinectScaleFactor,
   parent: 'canvas-container',
   physics: {
       default: 'arcade',

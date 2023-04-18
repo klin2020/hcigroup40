@@ -1,10 +1,15 @@
-// Adapted from https://p5js.org/examples/interaction-snake-game.html
+// copied from instructions.js to test out kinect sensor component
 //
 var host = "localhost:4444";
+
+// tv 4
+// var host = "cpsc484-04.yale.internal:8888"
+
 $(document).ready(function() {
   frames.start();
   twod.start();
 });
+
 
 var frames = {
   socket: null,
@@ -13,11 +18,16 @@ var frames = {
     var url = "ws://" + host + "/frames";
     frames.socket = new WebSocket(url);
     frames.socket.onmessage = function (event) {
-      var command = frames.get_left_wrist_command(JSON.parse(event.data));
-      if (command !== null) {
-        sendWristCommand(command);
-      }
+      // var command = frames.get_left_wrist_command(JSON.parse(event.data));
+      // if (command !== null) {
+      //   sendWristCommand(command);
+      // }
+      frames.show(JSON.parse(event.data));
     }
+  },
+
+  show: function(frame) {
+    console.log(frame);
   },
 
   get_left_wrist_command: function (frame) {
@@ -145,33 +155,5 @@ function draw() {
 
     ellipse(canvasWidth/2, 655, 200, 100);
     text("Start Game", canvasWidth/2 - 50, 660)
-
-
-
-    // text(instruction0, 80, 130, 250, 250);
-    // ellipse(windowWidth/6, windowHeight/4, 100, 100);
-    // ellipse(windowWidth/8, windowHeight/9, 50, 50);
-
-    // start_button_shape = ellipse(windowWidth/4, windowHeight/1.5, 270, 135);
-    // textSize(40);
-    // stroke('#ffffff');
-    // textAlign(LEFT);
-    // text("Start Game", windowWidth/5.58, windowHeight/1.449);
-
-    // textSize(50);
-    // noStroke();
-    // textAlign(CENTER);
-    // text("Test your reaction time and take your residential college to the top!", 80, 130, windowHeight/1.5, windowWidth);
-
-    // ellipse(windowWidth/2, windowHeight/2, 200, 200);
-    // ellipse(windowWidth/8, windowHeight/2, 75, 75);
-    // ellipse(windowWidth/3, windowHeight/1.1, 50, 50);
-    // ellipse(windowWidth/9, windowHeight/1.3, 20, 20);
-    // ellipse(10, windowHeight/1.1, 130, 130);
-    // ellipse(30, 50, 80, 80);
-    // ellipse(500, 20, 150, 150);
-
-
-
   }
 
