@@ -19,7 +19,8 @@ function preload () {
   width = this.sys.game.canvas.width;
   height = this.sys.game.canvas.height;
 
-  pointer = this.add.circle(0, 0, 10, '0xff0000')
+  pointer = this.add.circle(0, 0, 10, '0xff0000');
+  leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
   // this.load.image('sky', 'assets/skies/space3.png');
   // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
   // this.load.image('red', 'assets/particles/red.png');
@@ -50,7 +51,7 @@ function update_game () {
   // randomly generate circle
   if (make_shapes) {
     respawnShape(this);
-    console.log(shape);
+    // console.log(shape);
     Phaser.Geom.Intersects.CircleToCircle(shape, shape);
     // var x = Phaser.Math.Between(50, width-50);
     // var y = Phaser.Math.Between(50, height-150);
@@ -65,7 +66,9 @@ function update_game () {
     // console.log('updating hand');
     // console.log(hand_x);
     // console.log(hand_y);
-    updatePointer(width - hand_x, hand_y);
+    updatePointer(pointer, width - hand_x, hand_y);
+    updatePointer(leftPointer, width - leftHand_x, leftHand_y);
+
     if (shape.radius && Phaser.Geom.Intersects.CircleToCircle(pointer, shape)) {
       console.log('TOUCHDOWN');
       score += 100;
@@ -78,9 +81,9 @@ function update_game () {
   }
 }
 
-function updatePointer(x, y) {
-  pointer.x = x;
-  pointer.y = y;
+function updatePointer(p, x, y) {
+  p.x = x;
+  p.y = y;
 }
 
 function respawnShape(game) {
