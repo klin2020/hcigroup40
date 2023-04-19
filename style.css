@@ -28,7 +28,7 @@ html, body {
     grid-row: 1;
     grid-column: 1;
     padding: 10px;
-    
+
   }
 
   #round-button {
@@ -107,6 +107,7 @@ img {
     width: 160px;
     height: 80px;
   }
+
 
 table {
   border-collapse: collapse;
