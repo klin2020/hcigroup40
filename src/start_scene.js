@@ -39,10 +39,15 @@ function create_start () {
     }
   });
 
+  startButton = this.add.rectangle(width/2 + 100, height - 75, 200, 100, "0xffffff");
   pointer = this.add.circle(0, 0, 10, '0xff0000');
 }
 
 var oldTime = 0;
+var startButton;
+
+var startClickTime = null;
+var startVerifyTime = 3;
 
 function update_start () {
   // console.log('updating');
@@ -51,9 +56,7 @@ function update_start () {
   // update timer
   let elapsedTime = timedEvent.getElapsedSeconds();
   let timeLeft = timeLimitStart - elapsedTime;
-  console.log(timeLimitStart);
-
-  this.add.ellipse(width/2 + 100, height - 75, 200, 100, "0xffffff");
+  // console.log(timeLimitStart);
 
 
   //display time and score
@@ -78,6 +81,18 @@ function update_start () {
   if (timeLeft <= 0) {
     //reset circles, loop
     this.scene.start('start_scene');
+  }
+  if (Phaser.Geom.Intersects.CircleToRectangle(startButton, pointer)) {
+    if (startClickTime == null) {
+      startClickTime = elapsedTime;
+    } else {
+      console.log(elapsedTime - startClickTime);
+      if (elapsedTime - startClickTime > startVerifyTime) {
+        this.scene.start('game_scene');
+      }
+    }
+  } else {
+    startClickTime = null;
   }
 }
 
