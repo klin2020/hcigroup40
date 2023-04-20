@@ -4,6 +4,7 @@ var start_scene = {
   update: update_start,
 };
 
+timeLimitStart = 10
 function create_start () {
   width = this.sys.game.canvas.width;
   height = this.sys.game.canvas.height;
@@ -13,7 +14,7 @@ function create_start () {
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
   score = 0;
   this.make.text({
-    x: width/2,
+    x: width/2 - 150 ,
     y: 100,
     text: 'Test your reaction time and take your residential college to the top!',
     origin: { x: 0.5, y: 0.5},
@@ -21,22 +22,27 @@ function create_start () {
       font: 'bold 40px Arial',
       fill: 'white',
       wordWrap: {width: 600},
-      align: "center"
+      align: "left"
     }
   });
 
   this.make.text({
-    x: width/2,
-    y: height - 100,
-    text: 'Stand still in front of screen for 3 seconds to begin',
+    x: width/2 - 275,
+    y: height - 50,
+    text: 'Raise your hand to the ellipse to begin',
     origin: { x: 0.5, y: 0.5},
     style: {
-      font: 'bold 25px Arial',
+      font: 'bold 20px Arial',
       fill: 'white',
-      wordWrap: {width: 700},
-      align: "center"
+      wordWrap: {width: 600},
+      align: "left"
     }
   });
+
+ 
+  //this.add.circle(width/2, height - 50, 100, "#ffffff");
+
+
 }
 
 var oldTime = 0;
@@ -46,7 +52,11 @@ function update_start () {
 
   // update timer
   let elapsedTime = timedEvent.getElapsedSeconds();
-  let timeLeft = timeLimit - elapsedTime;
+  let timeLeft = timeLimitStart - elapsedTime;
+  console.log(timeLimitStart);
+
+  this.add.ellipse(width/2 + 100, height - 75, 200, 100, "0xffffff");
+
 
   //display time and score
   // timeText.setText('Time Remaining: ' + Math.floor(timeLeft).toString());
@@ -69,6 +79,6 @@ function update_start () {
 
   if (timeLeft <= 0) {
     //reset circles, loop
-    this.scene.start('game_scene');
+    this.scene.start('start_scene');
   }
 }
