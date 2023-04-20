@@ -68,7 +68,7 @@ function update_game () {
     updatePointer(pointer, width - hand_x, hand_y);
     updatePointer(leftPointer, width - leftHand_x, leftHand_y);
 
-    if (shape.radius && Phaser.Geom.Intersects.CircleToCircle(pointer, shape)) {
+    if (shape.radius && (Phaser.Geom.Intersects.CircleToCircle(pointer, shape) || Phaser.Geom.Intersects.CircleToCircle(pointer, shape))) {
       console.log('TOUCHDOWN');
       score += 100;
       respawnShape(this);
