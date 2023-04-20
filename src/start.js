@@ -13,6 +13,8 @@ var frames = {
     var url = "ws://" + host + "/frames";
     frames.socket = new WebSocket(url);
     frames.socket.onmessage = function (event) {
+      //get spine_naval coordinates
+      //how to indicate time elapsed for stillness?
       var command = frames.get_spine_naval_command(JSON.parse(event.data)); //where does get_spine_chest_command
       // if (command !== null) {
       //   sendNavalCommand(command); //in example, function determined direction
