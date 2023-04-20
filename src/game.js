@@ -11,7 +11,7 @@ var timeText;
 var scoreText;
 var score;
 var timedEvent;
-var timeLimit = 1000;
+var timeLimit = 10;
 var pointer;
 
 function preload () {
