@@ -37,12 +37,15 @@ function create_start () {
       align: "center"
     }
   });
+
+  pointer = this.add.circle(0, 0, 10, '0xff0000');
 }
 
 var oldTime = 0;
 
 function update_start () {
   // console.log('updating');
+  updatePointers();
 
   // update timer
   let elapsedTime = timedEvent.getElapsedSeconds();
@@ -53,22 +56,32 @@ function update_start () {
   // scoreText.setText('Score: ' + score.toString());
 
 
-    //create new circle every second until time runs out
-    if (parseInt(oldTime) != parseInt(timeLeft)){
-      let x = Phaser.Math.Between(0, width);
-      let y = Phaser.Math.Between(height-350, height - 175);
-      let size = Phaser.Math.Between(10, 50);
-      let color = new Phaser.Display.Color();
-      color = color.random();
-      let shape = this.add.circle(x, y, size, color.color);
-      shape = this.add.group();
+  //create new circle every second until time runs out
+  if (parseInt(oldTime) != parseInt(timeLeft)){
+    let x = Phaser.Math.Between(0, width);
+    let y = Phaser.Math.Between(height-350, height - 175);
+    let size = Phaser.Math.Between(10, 50);
+    let color = new Phaser.Display.Color();
+    color = color.random();
+    let shape = this.add.circle(x, y, size, color.color);
+    shape = this.add.group();
 
-      // shape = this.add.circle(x, y, size, '0x00bfff');
-      oldTime = timeLeft;
-    }
+    // shape = this.add.circle(x, y, size, '0x00bfff');
+    oldTime = timeLeft;
+  }
 
   if (timeLeft <= 0) {
     //reset circles, loop
     this.scene.start('game_scene');
+  }
+}
+
+function updatePointers(p) {
+  if (hand_x) {
+    // console.log('updating hand');
+    // console.log(hand_x);
+    // console.log(hand_y);
+    updatePointer(pointer, width - hand_x, hand_y);
+    updatePointer(leftPointer, width - leftHand_x, leftHand_y);
   }
 }

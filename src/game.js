@@ -12,7 +12,6 @@ var scoreText;
 var score;
 var timedEvent;
 var timeLimit = 1000;
-var pointer;
 
 function preload () {
   this.load.setBaseURL('http://labs.phaser.io');
