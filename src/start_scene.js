@@ -4,7 +4,7 @@ var start_scene = {
   update: update_start,
 };
 
-timeLimitStart = 10
+timeLimitStart = 1
 function create_start () {
   width = this.sys.game.canvas.width;
   height = this.sys.game.canvas.height;
@@ -38,6 +38,9 @@ function create_start () {
       align: "left"
     }
   });
+  
+  this.add.ellipse(width/2 + 100, height - 75, 200, 100, "0xffffff");
+
 
  
   //this.add.circle(width/2, height - 50, 100, "#ffffff");
@@ -79,6 +82,6 @@ function update_start () {
 
   if (timeLeft <= 0) {
     //reset circles, loop
-    this.scene.start('start_scene');
+    this.scene.start('instruction_scene');
   }
 }

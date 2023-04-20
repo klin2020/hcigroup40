@@ -10,6 +10,7 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+game.scene.add("instruction_scene", instruction_scene);
 game.scene.add('game_scene', game_scene);
 game.scene.add('gameover_scene', gameover_scene);
 game.scene.add('start_scene', start_scene);
