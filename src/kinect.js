@@ -3,7 +3,7 @@
 // local playback
 var host = "localhost:4444";
 // tv 4
-// var host = "cpsc484-02.yale.internal:8888"
+var host = "cpsc484-04.yale.internal:8888"
 
 $(document).ready(function() {
   frames.start();

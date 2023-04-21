@@ -16,5 +16,5 @@ game.scene.add('start_scene', start_scene);
 game.scene.add('end_scene', end_scene);
 game.scene.add('confirmcollege_scene', confirmcollege_scene);
 
-game.scene.start('game_scene', game_scene);
+game.scene.start('game_scene', game_scene); // change to bottom line when done testing
 // game.scene.start('start_scene', start_scene);
