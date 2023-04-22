@@ -38,10 +38,10 @@ var instruction_scene = {
       }
     }); 
   
-    instructionButton = this.add.rectangle(width/2 + 300, height - 75, 200, 100, "0xffffff");
+    instructionButton = this.add.rectangle(width/2 + 300, height - 65, 200, 100, "0xffffff");
     this.make.text({
       x: width/2 + 300,
-      y: height-75,
+      y: height-65,
       text: "Start Game",
       origin: {x: 0.5, y: 0.5},
       style: {
@@ -60,9 +60,9 @@ function create_instruction () {
     timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
 
     this.make.text({
-        x: width/2 - 270,
-        y: 110,
-        text: "This is a one player game.",
+        x: width/2 - 170,
+        y: 120,
+        text: "This is a one player game. You can use one hand or two hands.",
         origin: {x: 0.5, y: 0.5},
         style: {
             font: 'bold 30px Arial',
@@ -73,8 +73,9 @@ function create_instruction () {
     });
 
     this.make.text({
+      //165
       x: width/2 - 165,
-      y: 190,
+      y: 220,
       text: "Hit as many circles as you can with your hands in 90 seconds to add to your residential college score!",
       origin: {x: 0.5, y: 0.5},
       style: {
@@ -87,7 +88,7 @@ function create_instruction () {
 
   this.make.text({
     x: width/2 - 155,
-    y: 300,
+    y: 320,
     text: "Hitting circles will gain you points. Hitting squares will lose you points.",
     origin: {x: 0.5, y: 0.5},
     style: {
@@ -100,7 +101,7 @@ function create_instruction () {
 
   this.make.text({
     x: width/2 - 200,
-    y: 390,
+    y: 400,
     text: "Point at the rectangle in the top left corner to exit the game at any time.",
     origin: {x: 0.5, y: 0.5},
     style: {
@@ -113,7 +114,7 @@ function create_instruction () {
 
   this.make.text({
     x: width/2 - 175,
-    y: 480,
+    y: 490,
     text: "Point at the rectangle in on the right to start the game!",
     origin: {x: 0.5, y: 0.5},
     style: {
@@ -173,7 +174,14 @@ function create_instruction () {
   else {
     startClickTime = null;
   }
+  
+  //if nothing happens for 2 minutes, return to start scene
+  if (elapsedTime == 120){
+    this.scene.start('start_scene');
   }
+}
+
+
   
   function updatePointers(p) {
     if (hand_x || leftHand_x) {
