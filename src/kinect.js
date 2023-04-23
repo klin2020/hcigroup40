@@ -20,6 +20,10 @@ var hand_y = null;
 var leftHand_x = null;
 var leftHand_y = null;
 
+var activeBodyId = null;
+var userLocked = false; // whether user playing the game has been chosen; this locks when start button is activated
+var userInactive = false; // restart if true
+
 /**
  *
  * convert kinect coordinates to phaser canvas coordinates
@@ -45,8 +49,8 @@ var frames = {
   },
 
   show: function(frame) {
-    // console.log(frame);
     frames.set_hands(frame);
+    console.log(frame.people);
   },
 
   set_hands: function(frame) {
@@ -58,8 +62,31 @@ var frames = {
       return null;
     }
 
-    let leftHand = frame.people[0].joints[8];
-    let rightHand = frame.people[0].joints[15];
+    let user = null;
+
+    console.log('active user: ' + activeBodyId);
+
+    if (userLocked) {
+      // after start button has been clicked
+      user = frame.people.find(p => p.body_id === activeBodyId);
+      if (user === undefined) {
+        console.log('active body has left the screen. Restarting');
+        userInactive = true;
+      }
+    } else {
+      user = frame.people.reduce(function(prev, current) {
+        return (prev.joints[0]?.position.z < current.joints[0]?.position.z) ? prev : current
+      });
+      activeBodyId = user.body_id;
+    }
+
+    let leftHand = null;
+    let rightHand = null;
+
+    if (user) {
+      leftHand = user.joints[8];
+      rightHand = user.joints[15];
+    }
 
     if (leftHand) {
       // console.log(hand.position);
@@ -103,8 +130,3 @@ var twod = {
     $('.twod').attr("src", 'data:image/pnjpegg;base64,'+twod.src);
   }
 };
-
-// let startButton = document.getElementById('start-button');
-// startButton.addEventListener("click", () => {
-//   window.location.replace("instructions.html");
-// });

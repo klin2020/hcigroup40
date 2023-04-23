@@ -4,8 +4,6 @@ var game_scene = {
   update: update_game,
 };
 
-var width;
-var height;
 var start_time;
 var timeText;
 var scoreText;
@@ -13,11 +11,9 @@ var score;
 var timedEvent;
 var timeLimit = 90;
 
+
 function preload () {
   this.load.setBaseURL('http://labs.phaser.io');
-  width = this.sys.game.canvas.width;
-  height = this.sys.game.canvas.height;
-
   pointer = this.add.circle(0, 0, 10, '0xff0000');
   leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
 }
@@ -45,7 +41,6 @@ function update_game () {
   // randomly generate circle
   if (make_shapes) {
     respawnShape(this);
-
     Phaser.Geom.Intersects.CircleToCircle(shape, shape);
     make_shapes = false;
   }
@@ -76,6 +71,22 @@ function update_game () {
   if (timeLeft <= 0) {
     this.scene.start('gameover_scene');
   }
+
+  // if (userInactive) {
+  //   if (inactiveStartTime) {
+  //     let inactiveCountdown = inactiveTimeLimit - (elapsedTime - inactiveStartTime);
+  //     this.inactiveText.setText(0, 0, 'User has left the screen \n Restarting in ' + inactiveCountdown);
+  //     if (inactiveCountdown <= 0) {
+  //       this.scene.start('start_scene');
+  //     }
+  //   }
+  //   else {
+  //     this.inactiveAlert = this.add.rectangle(width/2, height/2, width*.75, height*.75, '0x808080').setOrigin(0.5);
+  //     this.inactiveText = this.add.text(0, 0, 'User has left the screen \n Restarting in ' + inactiveTimeLimit);
+  //     Phaser.Display.Align.In.Center(this.inactiveText, this.inactiveAlert);
+  //   }
+  // }
+  checkInactive(elapsedTime, this);
 }
 
 function updatePointer(p, x, y) {

@@ -4,7 +4,8 @@ var start_scene = {
   update: update_start,
 };
 
-timeLimitStart = 0;
+var timedEvent;
+var timeLimitStart = 0;
 
 function preload(){
   this.load.setBaseURL('http://labs.phaser.io');
@@ -22,7 +23,7 @@ function preload(){
   Phaser.Display.Align.In.Center(this.startButtonText, startButton);
 }
 function create_start () {
-
+  userInactive = false;
 
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
   score = 0;
@@ -56,7 +57,7 @@ function create_start () {
   pointer = this.add.circle(0, 0, 10, '0xff0000');
   leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
 
-
+  inactiveStartTime = null;
 }
 
 var prevTime = 0;
@@ -118,8 +119,9 @@ function update_start () {
         startClickTime = elapsedTime;
       } else {
         const timeToStart = startVerifyTime - (elapsedTime - startClickTime);
-        console.log(elapsedTime - startClickTime);
+        // console.log(elapsedTime - startClickTime);
         if (timeToStart <= 0) {
+          userLocked = true;
           this.scene.start('instruction_scene');
         }
         this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
