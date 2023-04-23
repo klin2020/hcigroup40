@@ -13,20 +13,13 @@ function preload(){
 
 
   startButton = this.add.rectangle(width/2 + 300, height - 75, 200, 100, "0xffffff");
-  this.make.text({
-    x: width/2 + 300,
-    y: height - 75,
-    text: 'Start',
-    origin: { x: 0.5, y: 0.5},
-    style: {
-      font: 'bold 30px Arial',
-      fill: 'black',
-      wordWrap: {width: 600},
-      align: "left"
-    }
+  this.startButtonText = this.add.text(0, 0, "Hover to start", {
+    font: 'bold 20px Arial',
+    fill: 'black',
+    wordWrap: {width: 600},
+    align: "left"
   });
-
-
+  Phaser.Display.Align.In.Center(this.startButtonText, startButton);
 }
 function create_start () {
 
@@ -58,8 +51,8 @@ function create_start () {
       align: "left"
     }
   });
-  
-  
+
+
   pointer = this.add.circle(0, 0, 10, '0xff0000');
   leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
 
@@ -70,14 +63,14 @@ var prevTime = 0;
 var arrIndex = 0;
 var shapeArr = new Array(10);
 var startClickTime = null;
-var startVerifyTime = 1;
+var startVerifyTime = 2;
 
 function update_start () {
   updatePointers();
 
   // update timer
   let elapsedTime = timedEvent.getElapsedSeconds();
-  
+
   var graphics = this.add.graphics();
     //create new circle every second until time runs out
     if (parseInt(prevTime) != parseInt(elapsedTime)){
@@ -93,15 +86,15 @@ function update_start () {
       color = color.random();
       let color32 = Phaser.Display.Color.GetColor32(color["r"], color["g"], color["b"], color["a"]);
 
-      //create circle 
+      //create circle
       let shape = graphics.fillStyle(color32);
       shape = graphics.fillCircle(x, y, size);
 
       //add circle to array
       shapeArr[arrIndex] = shape;
       arrIndex++;
-      
-      
+
+
       prevTime =  elapsedTime; //update second
     }
 
@@ -118,20 +111,24 @@ function update_start () {
 
 
     //hover over Start for 3 seconds
-    if (Phaser.Geom.Intersects.CircleToRectangle(startButton, pointer) 
+    if (Phaser.Geom.Intersects.CircleToRectangle(startButton, pointer)
     || Phaser.Geom.Intersects.CircleToRectangle(startButton, leftPointer)) {
+      startButton.fillColor = '0x808080';
       if (startClickTime == null) {
         startClickTime = elapsedTime;
       } else {
+        const timeToStart = startVerifyTime - (elapsedTime - startClickTime);
         console.log(elapsedTime - startClickTime);
-        if (elapsedTime - startClickTime > startVerifyTime) {
-          console.log("going to instruction scene");
+        if (timeToStart <= 0) {
           this.scene.start('instruction_scene');
         }
+        this.startButtonText.setText('Starting in ' + timeToStart);
       }
-    } 
+    }
     else {
       startClickTime = null;
+      startButton.fillColor = '0xffffff';
+      this.startButtonText.setText('Hover to start');
     }
 
     // if(timeLimitStart == 0){
