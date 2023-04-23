@@ -10,8 +10,7 @@ function preload(){
   this.load.setBaseURL('http://labs.phaser.io');
   width = this.sys.game.canvas.width;
   height = this.sys.game.canvas.height;
-  pointer = this.add.circle(0, 0, 10, '0xff0000');
-  leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
+
 
   startButton = this.add.rectangle(width/2 + 300, height - 75, 200, 100, "0xffffff");
   this.make.text({
@@ -26,6 +25,7 @@ function preload(){
       align: "left"
     }
   });
+
 
 }
 function create_start () {
@@ -60,6 +60,8 @@ function create_start () {
   });
   
   
+  pointer = this.add.circle(0, 0, 10, '0xff0000');
+  leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
 
 
 }
@@ -68,7 +70,7 @@ var prevTime = 0;
 var arrIndex = 0;
 var shapeArr = new Array(10);
 var startClickTime = null;
-var startVerifyTime = 3;
+var startVerifyTime = 1;
 
 function update_start () {
   updatePointers();
@@ -79,7 +81,7 @@ function update_start () {
   var graphics = this.add.graphics();
     //create new circle every second until time runs out
     if (parseInt(prevTime) != parseInt(elapsedTime)){
-      console.log(prevTime);
+      // console.log(prevTime);
 
       //randomize position and size of circle
       let x = Phaser.Math.Between(0, width);
@@ -113,6 +115,8 @@ function update_start () {
       arrIndex = 0;
     }
 
+
+
     //hover over Start for 3 seconds
     if (Phaser.Geom.Intersects.CircleToRectangle(startButton, pointer) 
     || Phaser.Geom.Intersects.CircleToRectangle(startButton, leftPointer)) {
@@ -135,13 +139,14 @@ function update_start () {
 
 }
 
-function updatePointers(p) {
+function updatePointers() {
   if (hand_x || leftHand_x) {
-    // console.log('updating hand');
-    // console.log(hand_x);
-    // console.log(hand_y);
     updatePointer(pointer, width - hand_x, hand_y);
     updatePointer(leftPointer, width - leftHand_x, leftHand_y);
   }
 }
 
+function updatePointer(p, x, y) {
+  p.x = x;
+  p.y = y;
+}

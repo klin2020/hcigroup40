@@ -20,8 +20,6 @@ var instruction_scene = {
     width = this.sys.game.canvas.width;
     height = this.sys.game.canvas.height;
   
-    pointer = this.add.circle(0, 0, 10, '0xff0000');
-    leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
 
     // startButton = this.add.rectangle(width/2 + 300, height - 75, 200, 100, "0xffffff");
     instructionExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
@@ -54,9 +52,11 @@ var instruction_scene = {
   }
   
 var instructionClickTime = null;
-var instructionVerifyTime = 3;
+var instructionVerifyTime = 1;
 
 function create_instruction () {
+  pointer = this.add.circle(0, 0, 10, '0xff0000');
+  leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
     timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
 
     this.make.text({
@@ -144,35 +144,35 @@ function create_instruction () {
   //hover over Start Game for 3 seconds
   if (Phaser.Geom.Intersects.CircleToRectangle(instructionButton, pointer) 
   || Phaser.Geom.Intersects.CircleToRectangle(instructionButton, leftPointer)) {
-      if (startClickTime == null) {
-        startClickTime = elapsedTime;
+      if (instructionClickTime == null) {
+        instructionClickTime = elapsedTime;
       } 
       else {
-        console.log(elapsedTime - startClickTime);
-        if (elapsedTime - startClickTime > startVerifyTime) {
+        console.log(elapsedTime - instructionClickTime);
+        if (elapsedTime - instructionClickTime > instructionVerifyTime) {
           this.scene.start('game_scene');
         }
       }
   } 
   else {
-    startClickTime = null;
+    instructionClickTime = null;
   }
 
   //hover over Exit for 3 seconds
   if (Phaser.Geom.Intersects.CircleToRectangle(instructionExitButton, pointer) 
   || Phaser.Geom.Intersects.CircleToRectangle(instructionExitButton, leftPointer)) {
-    if (startClickTime == null) {
-        startClickTime = elapsedTime;
+    if (instructionClickTime == null) {
+      instructionClickTime = elapsedTime;
     } 
     else {
-        console.log(elapsedTime - startClickTime);
-        if (elapsedTime - startClickTime > startVerifyTime) {
+        console.log(elapsedTime - instructionClickTime);
+        if (elapsedTime - instructionClickTime > instructionVerifyTime) {
           this.scene.start('start_scene');
         }
     }
   } 
   else {
-    startClickTime = null;
+    instructionClickTime = null;
   }
   
   //if nothing happens for 2 minutes, return to start scene
@@ -183,13 +183,17 @@ function create_instruction () {
 
 
   
-  function updatePointers(p) {
-    if (hand_x || leftHand_x) {
+  function updatePointers() {
+    if (hand_x) {
       // console.log('updating hand');
       // console.log(hand_x);
       // console.log(hand_y);
       updatePointer(pointer, width - hand_x, hand_y);
       updatePointer(leftPointer, width - leftHand_x, leftHand_y);
     }
+  }
+  function updatePointer(p, x, y) {
+    p.x = x;
+    p.y = y;
   }
   
