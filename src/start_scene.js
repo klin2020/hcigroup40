@@ -70,7 +70,7 @@ var prevTime = 0;
 var arrIndex = 0;
 var shapeArr = new Array(10);
 var startClickTime = null;
-var startVerifyTime = 1;
+var startVerifyTime = 2;
 
 function update_start () {
   updatePointers();

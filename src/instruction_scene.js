@@ -36,10 +36,10 @@ var instruction_scene = {
       }
     }); 
   
-    instructionButton = this.add.rectangle(width/2 + 300, height - 65, 200, 100, "0xffffff");
+    instructionButton = this.add.rectangle(width/2 + 300, 320, 200, 100, "0xffffff");
     this.make.text({
       x: width/2 + 300,
-      y: height-65,
+      y: 320,
       text: "Start Game",
       origin: {x: 0.5, y: 0.5},
       style: {
@@ -52,10 +52,10 @@ var instruction_scene = {
   }
   
 var instructionClickTime = null;
-var instructionVerifyTime = 1;
+var instructionVerifyTime = 2;
 
 var instructionToExitClickTime = null;
-var instructionToExitVerifyTime = 1;
+var instructionToExitVerifyTime = 2;
 
 function create_instruction () {
   pointer = this.add.circle(0, 0, 10, '0xff0000');
@@ -160,7 +160,7 @@ function create_instruction () {
   else {
     instructionClickTime = null;
   }
-  
+
   //hover over Exit for 3 seconds
   if (Phaser.Geom.Intersects.CircleToRectangle(instructionExitButton, pointer) 
   || Phaser.Geom.Intersects.CircleToRectangle(instructionExitButton, leftPointer)) {
