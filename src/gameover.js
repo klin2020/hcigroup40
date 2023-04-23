@@ -22,6 +22,8 @@ var collegeSelected = false;
 var selectionTimer;
 var collegeName;
 var timedEventss;
+var collegeClickTime = null;
+var collegeVerifyTime = 3;
 
 function create_gameover () {
   text0 = this.add.text(width/2, 99, "Thanks for Playing!" + " Score: " + score.toString(),{ fontSize: 24 }).setOrigin(0.5,0.5);
@@ -65,6 +67,11 @@ function create_gameover () {
 }
 
 function update_gameover () {
+  updatePointers();
+
+  // update timer
+  let elapsedTime = timedEvent.getElapsedSeconds();
+  
   if (hand_x) {
     // console.log('updating hand');
     // console.log(hand_x);
@@ -81,23 +88,43 @@ function update_gameover () {
       if (timeLeftss <= 0) { // && Phaser.Geom.Intersects.CircleToRectangle(pointer, rect4)
         //this.scene.start('confirmcollege_scene');
         //this.scene.start('confirmcollege_scene', confirmcollege_scene);
-        collegeName = "Branford";
+        collegeName = 0;
         collegeSelected = true;
       }
       
     }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5)) { // while loop?
-      console.log('TOUCHDOWN');
-      selectionTimer = 3;
-      let elapsedTimess = timedEventss.getElapsedSeconds();
-      let timeLeftss = selectionTimer - elapsedTimess;
-      if (timeLeftss <= 0 && Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5)) {
-        //this.scene.start('confirmcollege_scene');
-        //this.scene.start('confirmcollege_scene', confirmcollege_scene);
-        collegeName = "Davenport";
-        collegeSelected = true;
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5)) { // while loop?
+    //   console.log('TOUCHDOWN');
+    //   selectionTimer = 3;
+    //   let elapsedTimess = timedEventss.getElapsedSeconds();
+    //   let timeLeftss = selectionTimer - elapsedTimess;
+    //   if (timeLeftss <= 0 && Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5)) {
+    //     //this.scene.start('confirmcollege_scene');
+    //     //this.scene.start('confirmcollege_scene', confirmcollege_scene);
+    //     collegeName = "Davenport";
+    //     collegeSelected = true;
+    //   }
+
+    if (Phaser.Geom,Intersects.CircleToRectangle(pointer, rect5) ||
+    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect5)) {
+      rect5.fillColor = '0x808080';
+      if (collegeClickTime == null) {
+        collegeClickTime = elapsedTime;
+      } else {
+        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+        console.log(elapsedTime - collegeClickTime);
+        if (timeToStart <= 0) {
+          this.scene.start('confirmcollege_scene');
+        }
+        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
       }
+    }
+    else {
+      startClickTime = null;
+      startButton.fillColor = '0xffffff';
+      this.startButtonText.setText('Hover to start');
+    }
       
     }
     if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect6)) { // while loop?
@@ -244,7 +271,7 @@ function update_gameover () {
         collegeSelected = true;
       }
     }
-  }
+  
   
   if(collegeSelected){
     this.scene.start('confirmcollege_scene', confirmcollege_scene);
