@@ -22,6 +22,7 @@ var leftHand_y = null;
 
 var activeBodyId = null;
 var userLocked = false; // whether user playing the game has been chosen; this locks when start button is activated
+var userInactive = false; // restart if true
 
 /**
  *
@@ -63,14 +64,20 @@ var frames = {
 
     let user = null;
 
+    console.log('active user: ' + activeBodyId);
+
     if (userLocked) {
+      // after start button has been clicked
       user = frame.people.find(p => p.body_id === activeBodyId);
+      if (user === undefined) {
+        console.log('active body has left the screen. Restarting');
+        userInactive = true;
+      }
     } else {
       user = frame.people.reduce(function(prev, current) {
         return (prev.joints[0]?.position.z < current.joints[0]?.position.z) ? prev : current
       });
       activeBodyId = user.body_id;
-      console.log(activeBodyId)
     }
 
     let leftHand = null;
