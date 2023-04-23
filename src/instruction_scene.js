@@ -54,6 +54,9 @@ var instruction_scene = {
 var instructionClickTime = null;
 var instructionVerifyTime = 1;
 
+var instructionToExitClickTime = null;
+var instructionToExitVerifyTime = 1;
+
 function create_instruction () {
   pointer = this.add.circle(0, 0, 10, '0xff0000');
   leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
@@ -157,22 +160,22 @@ function create_instruction () {
   else {
     instructionClickTime = null;
   }
-
+  
   //hover over Exit for 3 seconds
   if (Phaser.Geom.Intersects.CircleToRectangle(instructionExitButton, pointer) 
   || Phaser.Geom.Intersects.CircleToRectangle(instructionExitButton, leftPointer)) {
-    if (instructionClickTime == null) {
-      instructionClickTime = elapsedTime;
+    if (instructionToExitClickTime == null) {
+      instructionToExitClickTime = elapsedTime;
     } 
     else {
-        console.log(elapsedTime - instructionClickTime);
-        if (elapsedTime - instructionClickTime > instructionVerifyTime) {
+        console.log(elapsedTime - instructionToExitClickTime);
+        if (elapsedTime - instructionToExitClickTime > instructionToExitVerifyTime) {
           this.scene.start('start_scene');
         }
     }
   } 
   else {
-    instructionClickTime = null;
+    instructionToExitClickTime = null;
   }
   
   //if nothing happens for 2 minutes, return to start scene
