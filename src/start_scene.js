@@ -125,6 +125,7 @@ function update_start () {
       } else {
         console.log(elapsedTime - startClickTime);
         if (elapsedTime - startClickTime > startVerifyTime) {
+          console.log("going to instruction scene");
           this.scene.start('instruction_scene');
         }
       }
