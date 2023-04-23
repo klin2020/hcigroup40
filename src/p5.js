@@ -1,4 +1,5 @@
 // modifying after having copied from sketch.js
+//deprecated
 //
 
 let timeLimit = 90; // limit in seconds

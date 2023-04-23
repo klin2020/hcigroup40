@@ -1,3 +1,5 @@
+// deprecated
+
 var colleges = [
     { name: "Branford", score: 0 },
     { name: "Berkeley", score: 0 },
