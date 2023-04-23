@@ -118,8 +118,9 @@ function update_start () {
         startClickTime = elapsedTime;
       } else {
         const timeToStart = startVerifyTime - (elapsedTime - startClickTime);
-        console.log(elapsedTime - startClickTime);
+        // console.log(elapsedTime - startClickTime);
         if (timeToStart <= 0) {
+          userLocked = true;
           this.scene.start('instruction_scene');
         }
         this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
