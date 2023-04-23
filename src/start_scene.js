@@ -122,7 +122,7 @@ function update_start () {
         if (timeToStart <= 0) {
           this.scene.start('instruction_scene');
         }
-        this.startButtonText.setText('Starting in ' + timeToStart);
+        this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
       }
     }
     else {
