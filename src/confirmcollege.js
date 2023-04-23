@@ -6,20 +6,48 @@ var confirmcollege_scene = {
 
 var width;
 var height;
-var timeLimitcc = 10;
+var timeLimitcc = 90;
 var timedEventcc;
+var db;
+parseLeaderboard();
 
 function create_confirmcollege(){
-    text0 = this.add.text(width/2, 400, "Thanks for " +  score.toString(),{ fontSize: 24 }).setOrigin(0.5,0.5);
+    text0 = this.add.text(width/2, 100, "Confirm that you are adding your",{ fontSize: 24 }).setOrigin(0.5,0.5);
+    text1 = this.add.text(width/2, 150, "score of " + score.toString() + " to " + db[collegeName].name,{ fontSize: 24 }).setOrigin(0.5,0.5);
+    accept = this.add.rectangle(width/2 - 200, 250, 250, 40, '0x065929');
+    accepttext = this.add.text(width/2 - 200, 250, "Yes, add score",{ fontSize: 18 }).setOrigin(0.5,0.5);
+    accept.setInteractive();
+    goback = this.add.rectangle(width/2 + 200, 250, 250, 40, '0xff0099');
+    backtext = this.add.text(width/2 + 200, 250, "No, choose another",{ fontSize: 18 }).setOrigin(0.5,0.5);
+
+    // game.load.image("berk", "../images/berk.png");
+    // game.add.sprite(100, 100, "berk");
+
+    accept.on('pointerdown', () => {
+        // add score to college
+        console.log(db[collegeName].score);
+        db[collegeName].score += score;
+        console.log(db[collegeName].score);
+        //upload to leaderboard
+        this.scene.start('leader_scene', leader_scene);
+    });
+
+    
+
     timedEventcc = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
 }
 
 function update_confirmcollege(){
+    // 90 seconds to choose a college or reset
     let elapsedTimecc = timedEventcc.getElapsedSeconds();
     let timeLeftcc = timeLimitcc - elapsedTimecc;
     if (timeLeftcc <= 0) {
+        score = 0;
+        // other reset stuff...
         this.scene.start('start_scene');
     }
+
+    
 }
 
 function parseLeaderboard() {
@@ -50,8 +78,10 @@ function parseLeaderboard() {
     xhr.onload = function() {
       // Parse the JSON data into a JavaScript object
       const data = JSON.parse(xhr.responseText);
+      db = data;
       console.log(data);
-      console.log(data[colleges][0].name);
+      //console.log(data[0].name);
+      console.log(collegeName);
     
       // Convert the JavaScript object back to JSON format
       const json = JSON.stringify(data);
@@ -68,5 +98,3 @@ function parseLeaderboard() {
     xhr.send();
   
   }
-
-parseLeaderboard();

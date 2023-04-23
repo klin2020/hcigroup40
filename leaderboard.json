@@ -1,5 +1,4 @@
-{
-    "colleges":[
+[
     { "name": "Branford", "score": 0 },
     { "name": "Berkeley", "score": 0 },
     { "name": "Davenport", "score": 0 },
@@ -14,5 +13,4 @@
     { "name": "Ezra Stiles", "score": 0 },
     { "name": "Timothy Dwight", "score": 0 },
     { "name": "Trumbull", "score": 0 }
-    ]
-}
+]
