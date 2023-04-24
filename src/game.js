@@ -62,19 +62,7 @@ function update_game () {
 
     if (shape.radius && (Phaser.Geom.Intersects.CircleToCircle(pointer, shape) || Phaser.Geom.Intersects.CircleToCircle(leftPointer, shape))) {
       console.log('TOUCHDOWN');
-      console.log(shape.radius);
-      if(shape.radius < 5){
-        score += 200;
-      }
-      else if(shape.radius < 11){
-        score += 100;
-      }
-      else if(shape.radius > 10 && shape.radius < 31){
-        score += 50;
-      }
-      else{
-        score+= 20;
-      }
+      score+= 100;
       respawnShape(this);
     }
   }
