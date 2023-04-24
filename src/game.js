@@ -52,7 +52,6 @@ function create_game () {
   this.badShape = null;
   respawnShape(this);
   initializePointers(this);
-  this.gameExitButton
 }
 
 

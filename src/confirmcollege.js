@@ -24,7 +24,6 @@ var colleges = [
   ];
 
 function create_confirmcollege(){
-  initializePointers(this);
   this.exitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
   this.exitButtonText = this.add.text(0, 0, "Hover to exit", {
     font: 'bold 15px Arial',
@@ -92,6 +91,7 @@ function create_confirmcollege(){
     collegeName = null;
     this.scene.start('gameover_scene', gameover_scene);
   }, "No, choose another", "Back in ", '0xff0099', '0x540133');
+  initializePointers(this);
 }
 
 function update_confirmcollege(){
