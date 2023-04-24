@@ -62,7 +62,7 @@ this.instructionButtonSuper = activateButton(
     userLocked = true;
     this.scene.start('game_scene');
   },
-  "Hover to start",
+  "Hover to start game",
   "Starting in ",
   '0xffffff',
   '0x808080'
@@ -124,7 +124,7 @@ this.make.text({
 });
 
 this.make.text({
-  x: width/2 - 200,
+  x: width/2 - 180,
   y: 400,
   text: "Hover over the rectangle in the top left corner to exit the game at any time.",
   origin: {x: 0.5, y: 0.5},
