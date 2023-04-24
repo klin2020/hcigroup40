@@ -71,8 +71,8 @@ function create_start () {
   });
 
 
-  pointer = this.add.circle(0, 0, 10, '0xff0000');
-  leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
+  pointer = this.add.circle(-50, 0, 10, '0xff0000');
+  leftPointer = this.add.circle(-50, 0, 10, '0x00ff00');
 
   // reset inactive issues
   resetInactive();

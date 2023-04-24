@@ -11,8 +11,11 @@ var score;
 var timedEvent;
 var timeLimit = 30;
 
-var lastShapeX = -9999;
-var lastShapeY = -9999
+var lastCircleX = -9999;
+var lastCircleY = -9999
+
+var lastSquareX = -9999;
+var lastSquareY = -9999
 
 var gameExitClickTime = null;
 var gameExitVerifyTime = 2;
@@ -20,13 +23,17 @@ var gameExitVerifyTime = 2;
 
 function preload () {
   this.load.setBaseURL('http://labs.phaser.io');
-  pointer = this.add.circle(0, 0, 10, '0xff0000');
-  leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
+  pointer = this.add.circle(-50, 0, 10, '0xff0000');
+  leftPointer = this.add.circle(-50, 0, 10, '0x00ff00');
 }
 
 
 function create_game () {
-  timedEvent.remove();
+  width = this.sys.game.canvas.width;
+  height = this.sys.game.canvas.height;
+  if (timedEvent) {
+    timedEvent.remove();
+  }
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
 
   gameExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
@@ -44,6 +51,7 @@ function create_game () {
 }
 
 var shape;
+var badShape;
 var make_shapes = true;
 
 function update_game () {
@@ -56,7 +64,6 @@ function update_game () {
   // randomly generate circle
   if (make_shapes) {
     respawnShape(this);
-    Phaser.Geom.Intersects.CircleToCircle(shape, shape);
     make_shapes = false;
   }
 
@@ -67,6 +74,12 @@ function update_game () {
     if (shape.radius && (Phaser.Geom.Intersects.CircleToCircle(pointer, shape) || Phaser.Geom.Intersects.CircleToCircle(leftPointer, shape))) {
       console.log('TOUCHDOWN');
       score += 100;
+      respawnShape(this);
+    }
+
+    if (shape.radius && (circleOnRect(pointer, badShape) || circleOnRect(leftPointer, shape))) {
+      console.log('OOPS');
+      score -= 100;
       respawnShape(this);
     }
   }
@@ -86,15 +99,22 @@ function respawnShape(game) {
   if (shape) {
     shape.destroy();
   };
+  if (badShape) {
+    badShape.destroy();
+  }
 
   let x = Phaser.Math.Between(50, width-50);
   let y = Phaser.Math.Between(250, height-250);
-  while (Math.sqrt((x - lastShapeX)**2 + (y - lastShapeY)**2) < 100) {
+  while (distance(x,y,lastCircleX,lastCircleY) < 200
+    || distance(x,y, lastSquareX, lastSquareY) < 200)
+  {
     x = Phaser.Math.Between(50, width-50);
     y = Phaser.Math.Between(250, height-250);
   }
+  lastShapeX = x;
+  lastShapeY = y;
 
-  const size = Phaser.Math.Between(10, 50);
+  const size = 50 * kinectScaleFactor;
   let circleColor = new Phaser.Display.Color();
   circleColor = circleColor.random();
   circleColor = Phaser.Display.Color.GetColor32(circleColor["r"], circleColor["g"], circleColor["b"], circleColor["a"]);
@@ -102,8 +122,27 @@ function respawnShape(game) {
   shape.setInteractive();
   //testing
   shape.on('pointerdown', function (shape) {
-    this.destroy();
-    score += 100;
-    make_shapes = true;
+    score += 100
+    respawnShape(game)
+  });
+
+  let x1 = Phaser.Math.Between(50, width-50);
+  let y1 = Phaser.Math.Between(250, height-250);
+  while (distance(x1,y1, lastCircleX,lastCircleY) < 200
+      || distance(x1,y1, lastSquareX, lastSquareY) < 200
+      || distance(x1,y1,x,y) < 200)
+  {
+    x1 = Phaser.Math.Between(50, width-50);
+    y1 = Phaser.Math.Between(250, height-250);
+  }
+  lastSquareX = x1;
+  lastSquareY = y1;
+
+  badShape = game.add.rectangle(x1, y1, size, size, circleColor);
+  badShape.setInteractive();
+  //testing
+  badShape.on('pointerdown', function (shape) {
+    score -= 100;
+    respawnShape(game);
   });
 }
