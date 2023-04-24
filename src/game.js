@@ -9,7 +9,7 @@ var timeText;
 var scoreText;
 var score;
 var timedEvent;
-var timeLimit = 30;
+var timeLimit = 3;
 
 var lastCircleX = -9999;
 var lastCircleY = -9999
@@ -43,6 +43,31 @@ function create_game () {
     wordWrap: {width: 600},
     align: "left"
   });
+  gameExitButton.setInteractive();
+  gameExitButton.on('pointerdown', () => {
+    score = 0;
+    // collegeName = null;
+    // userLocked = false;
+    // collegeSelected = false;
+    this.scene.start('start_scene');
+  });
+  gameExitButtonSuper = activateButton(
+    gameExitButton,
+    this.gameExitButtonText,
+    3,
+    () => {
+      score = 0;
+      // other reset stuff...
+      //collegeName = null;
+      // userLocked = false;
+      // collegeSelected = false;
+      this.scene.start('start_scene');
+    },
+    "Hover to exit",
+    "Exiting in ",
+    '0xffffff',
+    '0x808080'
+  );
   Phaser.Display.Align.In.Center(this.gameExitButtonText, gameExitButton);
 
   timeText = this.add.text(300, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);

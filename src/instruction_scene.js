@@ -23,6 +23,10 @@ this.instructionExitButtonText = this.add.text(0, 0, "Hover to exit", {
   wordWrap: {width: 600},
   align: "left"
 });
+this.instructionExitButton.setInteractive();
+this.instructionExitButton.on('pointerdown', () => {
+  this.scene.start('start_scene');
+});
 Phaser.Display.Align.In.Center(this.instructionExitButtonText, this.instructionExitButton);
 this.instructionExitButtonSuper = activateButton(
   this.instructionExitButton,
@@ -44,6 +48,11 @@ this.instructionButtonText = this.add.text(0, 0, "Hover to start game", {
   wordWrap: {width: 600},
   align: "left"
 });
+this.instructionButton.setInteractive();
+this.instructionButton.on('pointerdown', () => {
+  userLocked = true;
+  this.scene.start('game_scene');
+});
 Phaser.Display.Align.In.Center(this.instructionButtonText, this.instructionButton);
 this.instructionButtonSuper = activateButton(
   this.instructionButton,
@@ -55,8 +64,8 @@ this.instructionButtonSuper = activateButton(
   },
   "Hover to start",
   "Starting in ",
-  '0x808080',
-  '0xffffff'
+  '0xffffff',
+  '0x808080'
 )
 }
 

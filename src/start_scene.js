@@ -15,6 +15,7 @@ function preload(){
 
 
   this.startButton = this.add.rectangle(width/2 + 300, height - 75, 200, 100, "0xffffff");
+  this.startButton.setInteractive();
   this.startButtonText = this.add.text(0, 0, "Hover to start", {
     font: 'bold 20px Arial',
     fill: 'black',
@@ -36,6 +37,11 @@ function preload(){
     '0x808080'
   )
   console.log(this.startButtonSuper);
+
+  this.startButton.on('pointerdown', () => {
+    userLocked = true; //user playing game is locked in
+    this.scene.start('instruction_scene');
+  })
 
   Phaser.Display.Align.In.Center(this.startButtonText, this.startButton);
 }
