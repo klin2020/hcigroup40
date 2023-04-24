@@ -28,7 +28,9 @@ this.instructionExitButtonSuper = activateButton(
     this.scene.start('start_scene');
   },
   "Hover to exit",
-  "Exiting in "
+  "Exiting in ",
+  '0xffffff',
+  '0x808080'
 )
   // this.load.image('sky', 'assets/skies/space3.png');
   // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
@@ -37,48 +39,83 @@ this.instructionExitButtonSuper = activateButton(
 
 var width;
 var height;
-var timeLimitcc = 90;
-var timedEventcc;
+// var timeLimitcc = 90;
+// var timedEventcc;
 var db;
 parseLeaderboard();
 
 function create_confirmcollege(){
     text0 = this.add.text(width/2, 100, "Confirm that you are adding your",{ fontSize: 24 }).setOrigin(0.5,0.5);
     text1 = this.add.text(width/2, 150, "score of " + score.toString() + " to " + db[collegeName].name,{ fontSize: 24 }).setOrigin(0.5,0.5);
-    accept = this.add.rectangle(width/2 - 200, 250, 250, 40, '0x065929');
+    accept = this.add.rectangle(width/2 - 200, 250, 250, 40, '0x004b63');
     accepttext = this.add.text(width/2 - 200, 250, "Yes, add score",{ fontSize: 18 }).setOrigin(0.5,0.5);
     accept.setInteractive();
-    goback = this.add.rectangle(width/2 + 200, 250, 250, 40, '0xff0099');
+    goback = this.add.rectangle(width/2 + 200, 250, 250, 40, '0x540133');
     backtext = this.add.text(width/2 + 200, 250, "No, choose another",{ fontSize: 18 }).setOrigin(0.5,0.5);
+    goback.setInteractive();
 
     // game.load.image("berk", "../images/berk.png");
     // game.add.sprite(100, 100, "berk");
 
     accept.on('pointerdown', () => {
         // add score to college
-        console.log(db[collegeName].score);
+        console.log(db[collegeName].name + " " + db[collegeName].score);
         db[collegeName].score += score;
-        console.log(db[collegeName].score);
-        //upload to leaderboard
+        console.log(db[collegeName].name + " " + db[collegeName].score);
+        //upload to leaderboard...
         this.scene.start('leader_scene', leader_scene);
     });
+    goback.on('pointerdown', () => {
+      console.log(db[collegeName].name + " " + db[collegeName].score);
+      collegeSelected = false;
+      collegeName = null;
+      this.scene.start('gameover_scene', gameover_scene);
+    });
 
+    if (timedEvent) {
+      timedEvent.remove();
+    }
     
-
-    timedEventcc = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
+    timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
+  
+    acceptSuper = activateButton(accept, accepttext, 3, () => {
+      console.log(db[collegeName].name + " " + db[collegeName].score);
+      db[collegeName].score += score;
+      console.log(db[collegeName].name + " " + db[collegeName].score);
+      //upload to leaderboard...
+      this.scene.start('leader_scene', leader_scene);
+    }, "Yes, add score", "Adding in ", '0x00bfff', '0x004b63');
+    backSuper = activateButton(goback, backtext, 3, () => {
+      console.log(db[collegeName].name + " " + db[collegeName].score);
+      collegeSelected = false;
+      collegeName = null;
+      this.scene.start('gameover_scene', gameover_scene);
+    }, "No, choose another", "Back in ", '0xff0099', '0x540133');
 }
 
 function update_confirmcollege(){
     // 90 seconds to choose a college or reset
-    let elapsedTimecc = timedEventcc.getElapsedSeconds();
-    let timeLeftcc = timeLimitcc - elapsedTimecc;
-    if (timeLeftcc <= 0) {
-        score = 0;
-        // other reset stuff...
-        this.scene.start('start_scene');
+    let elapsedTime = timedEvent.getElapsedSeconds();
+    // let timeLeft = timeLimit - elapsedTimecc;
+    // if (timeLeft <= 0) {
+    //     score = 0;
+    //     // other reset stuff...
+    //     this.scene.start('start_scene');
+    // }
+
+    updatePointers();
+
+    if (hand_x) {
+      // console.log('updating hand');
+      // console.log(hand_x);
+      // console.log(hand_y);
+      updatePointer(pointer, width - hand_x, hand_y);
+      updatePointer(leftPointer, width - leftHand_x, leftHand_y);
     }
 
-    
+    this.instructionExitButtonSuper.update(elapsedTime);
+    acceptSuper.update(elapsedTime);
+    backSuper.update(elapsedTime);
 }
 
 function parseLeaderboard() {

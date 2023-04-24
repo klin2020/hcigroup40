@@ -32,8 +32,8 @@ function preload(){
     },
     'Hover to start',
     'Starting in ',
-    '0x808080',
-    '0xffffff'
+    '0xffffff',
+    '0x808080'
   )
   console.log(this.startButtonSuper);
 

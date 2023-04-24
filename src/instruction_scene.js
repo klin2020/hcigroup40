@@ -32,7 +32,9 @@ this.instructionExitButtonSuper = activateButton(
     this.scene.start('start_scene');
   },
   "Hover to exit",
-  "Exiting in "
+  "Exiting in ",
+  '0xffffff',
+  '0x808080'
 )
 
 this.instructionButton = this.add.rectangle(width/2 + 300, 320, 200, 100, "0xffffff");
@@ -52,7 +54,9 @@ this.instructionButtonSuper = activateButton(
     this.scene.start('game_scene');
   },
   "Hover to start",
-  "Starting in "
+  "Starting in ",
+  '0x808080',
+  '0xffffff'
 )
 }
 

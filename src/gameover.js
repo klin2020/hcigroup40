@@ -28,7 +28,9 @@ this.instructionExitButtonSuper = activateButton(
     this.scene.start('start_scene');
   },
   "Hover to exit",
-  "Exiting in "
+  "Exiting in ",
+  '0xffffff',
+  '0x808080'
 )
   // this.load.image('sky', 'assets/skies/space3.png');
   // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
@@ -47,37 +49,37 @@ var collegeVerifyTime = 3;
 function create_gameover () {
   text0 = this.add.text(width/2, 99, "Thanks for Playing!" + " Score: " + score.toString(),{ fontSize: 24 }).setOrigin(0.5,0.5);
   // text1 = this.add.text(width/2 - 200, height/2 + 50, " Score: " + score.toString(),{ fontSize: 24 }).setOrigin(0.5,0.5);
-  //text2 = this.add.text(width/2, 175, "Click to Play Again",{ fontSize: 24 }).setOrigin(0.5,0.5);
+  //text2 = this.add.text(width/2, 250, "Click to Play Again",{ fontSize: 24 }).setOrigin(0.5,0.5);
   text3 = this.add.text(width/2, 150, "Choose Your College To Add Your Score!",{ fontSize: 24 }).setOrigin(0.5,0.5);
   text33 = this.add.text(width/2, 200, "Hold your hand over your college for 3 seconds",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  rect4 = this.add.rectangle(width/2 - 200, 250, 175, 20, '0x00bfff');
-  text4 = this.add.text(width/2 - 200, 250, "Branford",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect5 = this.add.rectangle(width/2 - 200, 290, 175, 20, '0x00bfff');
-  text5 = this.add.text(width/2 - 200, 290, "Davenport",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect6 = this.add.rectangle(width/2 - 200, 330, 175, 20, '0x00bfff');
-  text6 = this.add.text(width/2 - 200, 330, "Jonathan Edwards",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect7 = this.add.rectangle(width/2 - 200, 370, 175, 20, '0x00bfff');
-  text7 = this.add.text(width/2 - 200, 370, "Pierson",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect8 = this.add.rectangle(width/2 - 200, 410, 175, 20, '0x00bfff');
-  text8 = this.add.text(width/2 - 200, 410, "Saybrook",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect9 = this.add.rectangle(width/2 - 200, 450, 175, 20, '0x00bfff');
-  text9 = this.add.text(width/2 - 200, 450, "Stiles",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect10 = this.add.rectangle(width/2 - 200, 490, 175, 20, '0x00bfff');
-  text10 = this.add.text(width/2 - 200, 490, "Timothy Dwight",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect11 = this.add.rectangle(width/2 + 200, 250, 175, 20, '0x00bfff');
-  text11 = this.add.text(width/2 + 200, 250, "Trumbull",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect12 = this.add.rectangle(width/2 + 200, 290, 175, 20, '0x00bfff');
-  text12 = this.add.text(width/2 + 200, 290, "Grace Hopper",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect13 = this.add.rectangle(width/2 + 200, 330, 175, 20, '0x00bfff');
-  text13 = this.add.text(width/2 + 200, 330, "Pauli Murray",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect14 = this.add.rectangle(width/2 + 200, 370, 175, 20, '0x00bfff');
-  text14 = this.add.text(width/2 + 200, 370, "Silliman",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect15 = this.add.rectangle(width/2 + 200, 410, 175, 20, '0x00bfff');
-  text15 = this.add.text(width/2 + 200, 410, "Franklin",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect16 = this.add.rectangle(width/2 + 200, 450, 175, 20, '0x00bfff');
-  text16 = this.add.text(width/2 + 200, 450, "Morse",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  this.rect17 = this.add.rectangle(width/2 + 200, 490, 175, 20, '0x00bfff');
-  this.text17 = this.add.text(width/2 + 200, 490, "Berkeley",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect4 = this.add.rectangle(width/2 - 250, 250, 250, 20, '0x00bfff');
+  text4 = this.add.text(width/2 - 250, 250, "Branford",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect5 = this.add.rectangle(width/2 - 250, 290, 250, 20, '0x00bfff');
+  text5 = this.add.text(width/2 - 250, 290, "Davenport",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect6 = this.add.rectangle(width/2 - 250, 330, 250, 20, '0x00bfff');
+  text6 = this.add.text(width/2 - 250, 330, "Jonathan Edwards",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect7 = this.add.rectangle(width/2 - 250, 370, 250, 20, '0x00bfff');
+  text7 = this.add.text(width/2 - 250, 370, "Pierson",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect8 = this.add.rectangle(width/2 - 250, 410, 250, 20, '0x00bfff');
+  text8 = this.add.text(width/2 - 250, 410, "Saybrook",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect9 = this.add.rectangle(width/2 - 250, 450, 250, 20, '0x00bfff');
+  text9 = this.add.text(width/2 - 250, 450, "Stiles",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect10 = this.add.rectangle(width/2 - 250, 490, 250, 20, '0x00bfff');
+  text10 = this.add.text(width/2 - 250, 490, "Timothy Dwight",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect11 = this.add.rectangle(width/2 + 250, 250, 250, 20, '0x00bfff');
+  text11 = this.add.text(width/2 + 250, 250, "Trumbull",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect12 = this.add.rectangle(width/2 + 250, 290, 250, 20, '0x00bfff');
+  text12 = this.add.text(width/2 + 250, 290, "Grace Hopper",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect13 = this.add.rectangle(width/2 + 250, 330, 250, 20, '0x00bfff');
+  text13 = this.add.text(width/2 + 250, 330, "Pauli Murray",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect14 = this.add.rectangle(width/2 + 250, 370, 250, 20, '0x00bfff');
+  text14 = this.add.text(width/2 + 250, 370, "Silliman",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect15 = this.add.rectangle(width/2 + 250, 410, 250, 20, '0x00bfff');
+  text15 = this.add.text(width/2 + 250, 410, "Franklin",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect16 = this.add.rectangle(width/2 + 250, 450, 250, 20, '0x00bfff');
+  text16 = this.add.text(width/2 + 250, 450, "Morse",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  rect17 = this.add.rectangle(width/2 + 250, 490, 250, 20, '0x00bfff');
+  text17 = this.add.text(width/2 + 250, 490, "Berkeley",{ fontSize: 18 }).setOrigin(0.5,0.5);
   
 
   // first half of colleges
@@ -88,10 +90,83 @@ function create_gameover () {
   
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
 
+  rect4Super = activateButton(rect4, text4, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 0;
+    this.scene.start('confirmcollege_scene');
+  }, "Branford", "Branford in ", '0x00bfff', '0x004b63');
+  rect5Super = activateButton(rect5, text5, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 2;
+    this.scene.start('confirmcollege_scene');
+  }, "Davenport", "Davenport in ", '0x00bfff', '0x004b63');
+  rect6Super = activateButton(rect6, text6, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 5;
+    this.scene.start('confirmcollege_scene');
+  }, "Jonathan Edwards", "Jonathan Edwards in ", '0x00bfff', '0x004b63');
+  rect7Super = activateButton(rect7, text7, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 8;
+    this.scene.start('confirmcollege_scene');
+  }, "Pierson", "Pierson in ", '0x00bfff', '0x004b63');
+  rect8Super = activateButton(rect8, text8, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 9;
+    this.scene.start('confirmcollege_scene');
+  }, "Saybrook", "Saybrook in ", '0x00bfff', '0x004b63');
+  rect9Super = activateButton(rect9, text9, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 11;
+    this.scene.start('confirmcollege_scene');
+  }, "Stiles", "Stiles in ", '0x00bfff', '0x004b63');
+  rect10Super = activateButton(rect10, text10, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 12;
+    this.scene.start('confirmcollege_scene');
+  }, "Timothy Dwight", "Timothy Dwight in ", '0x00bfff', '0x004b63');
+  rect11Super = activateButton(rect11, text11, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 13;
+    this.scene.start('confirmcollege_scene');
+  }, "Trumbull", "Trumbull in ", '0x00bfff', '0x004b63');
+  rect12Super = activateButton(rect12, text12, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 4;
+    this.scene.start('confirmcollege_scene');
+  }, "Grace Hopper", "Grace Hopper in ", '0x00bfff', '0x004b63');
+  rect13Super = activateButton(rect13, text13, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 7;
+    this.scene.start('confirmcollege_scene');
+  }, "Pauli Murray", "Pauli Murray in ", '0x00bfff', '0x004b63');
+  rect14Super = activateButton(rect14, text14, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 10;
+    this.scene.start('confirmcollege_scene');
+  }, "Silliman", "Silliman in ", '0x00bfff', '0x004b63');
+  rect15Super = activateButton(rect15, text15, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 3;
+    this.scene.start('confirmcollege_scene');
+  }, "Franklin", "Franklin in ", '0x00bfff', '0x004b63');
+  rect16Super = activateButton(rect16, text16, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 6;
+    this.scene.start('confirmcollege_scene');
+  }, "Morse", "Morse in ", '0x00bfff', '0x004b63');
+  rect17Super = activateButton(rect17, text17, 3, () => {
+    collegeSelected = true; //user playing game is locked in
+    collegeName = 1;
+    this.scene.start('confirmcollege_scene');
+  }, "Berkeley", "Berkeley in ", '0x00bfff', '0x004b63');
+
 }
 
 function update_gameover () {
   updatePointers();
+
+  let elapsedTime = timedEvent.getElapsedSeconds();
 
   // update timer
   // let elapsedTime = timedEvent.getElapsedSeconds();
@@ -118,365 +193,365 @@ function update_gameover () {
       
     // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect4) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect4)) {
-      rect4.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        if (timeToStart <= 0) {
-          collegeName = 0;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect4.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
-
-    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5)) { // while loop?
-    //   console.log('TOUCHDOWN');
-    //   selectionTimer = 3;
-    //   let elapsedTimess = timedEventss.getElapsedSeconds();
-    //   let timeLeftss = selectionTimer - elapsedTimess;
-    //   if (timeLeftss <= 0 && Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5)) {
-    //     //this.scene.start('confirmcollege_scene');
-    //     //this.scene.start('confirmcollege_scene', confirmcollege_scene);
-    //     collegeName = "Davenport";
-    //     collegeSelected = true;
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect4) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect4)) {
+    //   rect4.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 0;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
     //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect4.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect5)) {
-      rect5.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 2;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect5.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5)) { // while loop?
+    // //   console.log('TOUCHDOWN');
+    // //   selectionTimer = 3;
+    // //   let elapsedTimess = timedEventss.getElapsedSeconds();
+    // //   let timeLeftss = selectionTimer - elapsedTimess;
+    // //   if (timeLeftss <= 0 && Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5)) {
+    // //     //this.scene.start('confirmcollege_scene');
+    // //     //this.scene.start('confirmcollege_scene', confirmcollege_scene);
+    // //     collegeName = "Davenport";
+    // //     collegeSelected = true;
+    // //   }
+
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect5)) {
+    //   rect5.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 2;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect5.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
       
-    }
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect6) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect6)) {
-      rect6.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 5;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect6.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect6) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect6)) {
+    //   rect6.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 5;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect6.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect7) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect7)) {
-      rect7.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 8;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect7.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect7) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect7)) {
+    //   rect7.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 8;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect7.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect8) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect8)) {
-      rect8.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 9;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect8.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect8) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect8)) {
+    //   rect8.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 9;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect8.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect9) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect9)) {
-      rect9.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 11;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect9.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect9) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect9)) {
+    //   rect9.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 11;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect9.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect10) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect10)) {
-      rect10.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 12;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect10.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect10) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect10)) {
+    //   rect10.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 12;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect10.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect11) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect11)) {
-      rect11.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 13;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect11.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect11) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect11)) {
+    //   rect11.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 13;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect11.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect12) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect12)) {
-      rect12.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 4;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect12.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect12) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect12)) {
+    //   rect12.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 4;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect12.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect13) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect13)) {
-      rect13.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 7;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect13.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect13) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect13)) {
+    //   rect13.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 7;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect13.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect14) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect14)) {
-      rect14.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 10;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect14.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect14) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect14)) {
+    //   rect14.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 10;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect14.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect15) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect15)) {
-      rect15.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 3;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect15.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect15) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect15)) {
+    //   rect15.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 3;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect15.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect16) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect16)) {
-      rect16.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      console.log(collegeClickTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 6;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect16.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect16) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect16)) {
+    //   rect16.fillColor = '0x004b63';
+    //   //let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   console.log(collegeClickTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 6;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect16.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
 
-    rect17Super = activateButton(this.rect17, this.text17, 3, () => {
-      collegeSelected = true; //user playing game is locked in
-      this.scene.start('confirmcollege_scene');
-    }, text17, text17, '0x065929', '0x00bfff');
+    // rect17Super = activateButton(this.rect17, this.text17, 3, () => {
+    //   collegeSelected = true; //user playing game is locked in
+    //   this.scene.start('confirmcollege_scene');
+    // }, text17, text17, '0x00bfff', '0x004b63');
     
     // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect17) ||
     // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect17)) {
-    //   rect17.fillColor = '0x065929';
+    //   rect17.fillColor = '0x004b63';
     //   let elapsedTime = timedEvent.getElapsedSeconds();
     //   console.log(elapsedTime);
     //   if (collegeClickTime == null) {
@@ -642,7 +717,7 @@ function update_gameover () {
     //     collegeName = "Berkeley";
     //     collegeSelected = true;
     //   }
-    // }
+    }
   
   
   if(collegeSelected){
@@ -650,7 +725,9 @@ function update_gameover () {
   }
 
   // on click methods mainly for testing
+  // update method needed for kinect to detect 3 second hovering for confirm button
   
+  this.instructionExitButtonSuper.update(elapsedTime);
   rect4Super.update(elapsedTime);
   rect4.setInteractive();
   rect5Super.update(elapsedTime);
@@ -683,7 +760,7 @@ function update_gameover () {
   rect4.on('pointerdown', () =>
   {
     rect4.destroy();
-    rect4.fillColor = '0x065929';
+    rect4.fillColor = '0x004b63';
     collegeSelected = true;
     collegeName = 0;
     console.log("collegeSelected: " + collegeSelected);
@@ -798,7 +875,7 @@ function update_gameover () {
     console.log("collegeName: " + collegeName);
     this.scene.start('confirmcollege_scene', confirmcollege_scene);
   });
-  this.rect17.on('pointerdown', () =>
+  rect17.on('pointerdown', () =>
   {
     this.rect17.destroy();
     collegeSelected = true;
