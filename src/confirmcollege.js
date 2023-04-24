@@ -11,6 +11,25 @@ function preload() {
 
   pointer = this.add.circle(0, 0, 10, '0xff0000');
   leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
+
+  this.instructionExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
+this.instructionExitButtonText = this.add.text(0, 0, "Hover to exit", {
+  font: 'bold 15px Arial',
+  fill: 'black',
+  wordWrap: {width: 600},
+  align: "left"
+});
+Phaser.Display.Align.In.Center(this.instructionExitButtonText, this.instructionExitButton);
+this.instructionExitButtonSuper = activateButton(
+  this.instructionExitButton,
+  this.instructionExitButtonText,
+  3,
+  () => {
+    this.scene.start('start_scene');
+  },
+  "Hover to exit",
+  "Exiting in "
+)
   // this.load.image('sky', 'assets/skies/space3.png');
   // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
   // this.load.image('red', 'assets/particles/red.png');
