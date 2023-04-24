@@ -12,26 +12,39 @@ function preload () {
   pointer = this.add.circle(0, 0, 10, '0xff0000');
   leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
 
-  this.instructionExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
-this.instructionExitButtonText = this.add.text(0, 0, "Hover to exit", {
+  overExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
+overExitButtonText = this.add.text(0, 0, "Hover to exit", {
   font: 'bold 15px Arial',
   fill: 'black',
   wordWrap: {width: 600},
   align: "left"
 });
-Phaser.Display.Align.In.Center(this.instructionExitButtonText, this.instructionExitButton);
-this.instructionExitButtonSuper = activateButton(
-  this.instructionExitButton,
-  this.instructionExitButtonText,
+Phaser.Display.Align.In.Center(overExitButtonText, overExitButton);
+overExitButton.setInteractive();
+overExitButton.on('pointerdown', () => {
+  score = 0;
+  collegeName = null;
+  // userLocked = false;
+  collegeSelected = false;
+  this.scene.start('start_scene');
+});
+overExitButtonSuper = activateButton(
+  overExitButton,
+  overExitButtonText,
   3,
   () => {
+    score = 0;
+    // other reset stuff...
+    collegeName = null;
+    // userLocked = false;
+    // collegeSelected = false;
     this.scene.start('start_scene');
   },
   "Hover to exit",
   "Exiting in ",
   '0xffffff',
   '0x808080'
-)
+);
   // this.load.image('sky', 'assets/skies/space3.png');
   // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
   // this.load.image('red', 'assets/particles/red.png');
@@ -160,6 +173,151 @@ function create_gameover () {
     collegeName = 1;
     this.scene.start('confirmcollege_scene');
   }, "Berkeley", "Berkeley in ", '0x00bfff', '0x004b63');
+
+  // for on click testing purposes
+
+  rect4.setInteractive();
+  rect5.setInteractive();
+  rect6.setInteractive();
+  rect7.setInteractive();
+  rect8.setInteractive();
+  rect9.setInteractive();
+  rect10.setInteractive();
+  rect11.setInteractive();
+  rect12.setInteractive();
+  rect13.setInteractive();
+  rect14.setInteractive();
+  rect15.setInteractive();
+  rect16.setInteractive();
+  rect17.setInteractive();
+
+  rect4.on('pointerdown', () =>
+  {
+    rect4.destroy();
+    rect4.fillColor = '0x004b63';
+    collegeSelected = true;
+    collegeName = 0;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect5.on('pointerdown', () =>
+  {
+    rect5.destroy();
+    collegeSelected = true;
+    collegeName = 2;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect6.on('pointerdown', () =>
+  {
+    rect6.destroy();
+    collegeSelected = true;
+    collegeName = 5;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect7.on('pointerdown', () =>
+  {
+    rect7.destroy();
+    collegeSelected = true;
+    collegeName = 8;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect8.on('pointerdown', () =>
+  {
+    rect8.destroy();
+    collegeSelected = true;
+    collegeName = 9;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect9.on('pointerdown', () =>
+  {
+    rect9.destroy();
+    collegeSelected = true;
+    collegeName = 11;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect10.on('pointerdown', () =>
+  {
+    rect10.destroy();
+    collegeSelected = true;
+    collegeName = 12;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect11.on('pointerdown', () =>
+  {
+    rect11.destroy();
+    collegeSelected = true;
+    collegeName = 13;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect12.on('pointerdown', () =>
+  {
+    rect12.destroy();
+    collegeSelected = true;
+    collegeName = 4;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect13.on('pointerdown', () =>
+  {
+    rect13.destroy();
+    collegeSelected = true;
+    collegeName = 7;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect14.on('pointerdown', () =>
+  {
+    rect14.destroy();
+    collegeSelected = true;
+    collegeName = 10;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect15.on('pointerdown', () =>
+  {
+    rect15.destroy();
+    collegeSelected = true;
+    collegeName = 3;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect16.on('pointerdown', () =>
+  {
+    rect16.destroy();
+    collegeSelected = true;
+    collegeName = 6;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
+  rect17.on('pointerdown', () =>
+  {
+    this.rect17.destroy();
+    collegeSelected = true;
+    collegeName = 1;
+    console.log("collegeSelected: " + collegeSelected);
+    console.log("collegeName: " + collegeName);
+    this.scene.start('confirmcollege_scene', confirmcollege_scene);
+  });
 
 }
 
@@ -727,161 +885,27 @@ function update_gameover () {
   // on click methods mainly for testing
   // update method needed for kinect to detect 3 second hovering for confirm button
   
-  this.instructionExitButtonSuper.update(elapsedTime);
-  rect4Super.update(elapsedTime);
-  rect4.setInteractive();
-  rect5Super.update(elapsedTime);
-  rect5.setInteractive();
-  rect6Super.update(elapsedTime);
-  rect6.setInteractive();
-  rect7Super.update(elapsedTime);
-  rect7.setInteractive();
-  rect8Super.update(elapsedTime);
-  rect8.setInteractive();
-  rect9Super.update(elapsedTime);
-  rect9.setInteractive();
+  overExitButtonSuper.update(elapsedTime);
+  rect4Super.update(elapsedTime);  
+  rect5Super.update(elapsedTime); 
+  rect6Super.update(elapsedTime); 
+  rect7Super.update(elapsedTime); 
+  rect8Super.update(elapsedTime);  
+  rect9Super.update(elapsedTime); 
   rect10Super.update(elapsedTime);
-  rect10.setInteractive();
+ 
   rect11Super.update(elapsedTime);
-  rect11.setInteractive();
+ 
   rect12Super.update(elapsedTime);
-  rect12.setInteractive();
+ 
   rect13Super.update(elapsedTime);
-  rect13.setInteractive();
+ 
   rect14Super.update(elapsedTime);
-  rect14.setInteractive();
+ 
   rect15Super.update(elapsedTime);
-  rect15.setInteractive();
+ 
   rect16Super.update(elapsedTime);
-  rect16.setInteractive();
+ 
   rect17Super.update(elapsedTime);
-  rect17.setInteractive();
-
-  rect4.on('pointerdown', () =>
-  {
-    rect4.destroy();
-    rect4.fillColor = '0x004b63';
-    collegeSelected = true;
-    collegeName = 0;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect5.on('pointerdown', () =>
-  {
-    rect5.destroy();
-    collegeSelected = true;
-    collegeName = 2;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect6.on('pointerdown', () =>
-  {
-    rect6.destroy();
-    collegeSelected = true;
-    collegeName = 5;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect7.on('pointerdown', () =>
-  {
-    rect7.destroy();
-    collegeSelected = true;
-    collegeName = 8;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect8.on('pointerdown', () =>
-  {
-    rect8.destroy();
-    collegeSelected = true;
-    collegeName = 9;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect9.on('pointerdown', () =>
-  {
-    rect9.destroy();
-    collegeSelected = true;
-    collegeName = 11;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect10.on('pointerdown', () =>
-  {
-    rect10.destroy();
-    collegeSelected = true;
-    collegeName = 12;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect11.on('pointerdown', () =>
-  {
-    rect11.destroy();
-    collegeSelected = true;
-    collegeName = 13;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect12.on('pointerdown', () =>
-  {
-    rect12.destroy();
-    collegeSelected = true;
-    collegeName = 4;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect13.on('pointerdown', () =>
-  {
-    rect13.destroy();
-    collegeSelected = true;
-    collegeName = 7;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect14.on('pointerdown', () =>
-  {
-    rect14.destroy();
-    collegeSelected = true;
-    collegeName = 10;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect15.on('pointerdown', () =>
-  {
-    rect15.destroy();
-    collegeSelected = true;
-    collegeName = 3;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect16.on('pointerdown', () =>
-  {
-    rect16.destroy();
-    collegeSelected = true;
-    collegeName = 6;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
-  rect17.on('pointerdown', () =>
-  {
-    this.rect17.destroy();
-    collegeSelected = true;
-    collegeName = 1;
-    console.log("collegeSelected: " + collegeSelected);
-    console.log("collegeName: " + collegeName);
-    this.scene.start('confirmcollege_scene', confirmcollege_scene);
-  });
+ 
 }
