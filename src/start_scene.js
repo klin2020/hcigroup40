@@ -14,14 +14,28 @@ function preload(){
   height = this.sys.game.canvas.height;
 
 
-  startButton = this.add.rectangle(width/2 + 300, height - 75, 200, 100, "0xffffff");
+  this.startButton = this.add.rectangle(width/2 + 300, height - 75, 200, 100, "0xffffff");
   this.startButtonText = this.add.text(0, 0, "Hover to start", {
     font: 'bold 20px Arial',
     fill: 'black',
     wordWrap: {width: 600},
     align: "left"
   });
-  Phaser.Display.Align.In.Center(this.startButtonText, startButton);
+
+  this.startButtonSuper = activateButton(
+    this.startButton,
+    this.startButtonText,
+    3,
+    () => {
+      userLocked = true; //user playing game is locked in
+      this.scene.start('instruction_scene');
+    },
+    'Hover to start',
+    'Starting in '
+  )
+  console.log(this.startButtonSuper);
+
+  Phaser.Display.Align.In.Center(this.startButtonText, this.startButton);
 }
 function create_start () {
   userInactive = false;
@@ -116,26 +130,25 @@ function update_start () {
 
 
     //hover over Start for 2 seconds
-    if (Phaser.Geom.Intersects.CircleToRectangle(startButton, pointer)
-    || Phaser.Geom.Intersects.CircleToRectangle(startButton, leftPointer)) {
-      startButton.fillColor = '0x808080';
-      if (startClickTime == null) {
-        startClickTime = elapsedTime;
-      } else {
-        const timeToStart = startVerifyTime - (elapsedTime - startClickTime);
-        // console.log(elapsedTime - startClickTime);
-        if (timeToStart <= 0) {
-          userLocked = true; //user playing game is locked in
-          this.scene.start('instruction_scene');
-        }
-        this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      startClickTime = null;
-      startButton.fillColor = '0xffffff';
-      this.startButtonText.setText('Hover to start');
-    }
+    this.startButtonSuper.update(elapsedTime);
+    // if (circleOnRect(pointer, startButton) || circleOnRect(leftPointer, startButton)) {
+    //   startButton.fillColor = '0x808080';
+    //   if (startClickTime == null) {
+    //     startClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = startVerifyTime - (elapsedTime - startClickTime);
+    //     if (timeToStart <= 0) {
+    //       userLocked = true; //user playing game is locked in
+    //       this.scene.start('instruction_scene');
+    //     }
+    //     this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   startClickTime = null;
+    //   startButton.fillColor = '0xffffff';
+    //   this.startButtonText.setText('Hover to start');
+    // }
 
     // if(timeLimitStart == 0){
     //   this.scene.start('instruction_scene');

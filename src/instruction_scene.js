@@ -8,7 +8,6 @@ var start_time;
 var timeText;
 var scoreText;
 var score;
-var pointer;
 var timeLeft;
 
 function preload () {
@@ -16,26 +15,45 @@ function preload () {
   width = this.sys.game.canvas.width;
   height = this.sys.game.canvas.height;
 
-
   // startButton = this.add.rectangle(width/2 + 300, height - 75, 200, 100, "0xffffff");
-  instructionExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
+  this.instructionExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
   this.instructionExitButtonText = this.add.text(0, 0, "Hover to exit", {
     font: 'bold 15px Arial',
     fill: 'black',
     wordWrap: {width: 600},
     align: "left"
   });
-  Phaser.Display.Align.In.Center(this.instructionExitButtonText, instructionExitButton);
+  Phaser.Display.Align.In.Center(this.instructionExitButtonText, this.instructionExitButton);
+  this.instructionExitButtonSuper = activateButton(
+    this.instructionExitButton,
+    this.instructionExitButtonText,
+    3,
+    () => {
+      this.scene.start('start_scene');
+    },
+    "Hover to exit",
+    "Exiting in "
+  )
 
-  instructionButton = this.add.rectangle(width/2 + 300, 320, 200, 100, "0xffffff");
+  this.instructionButton = this.add.rectangle(width/2 + 300, 320, 200, 100, "0xffffff");
   this.instructionButtonText = this.add.text(0, 0, "Hover to start game", {
     font: 'bold 15px Arial',
     fill: 'black',
     wordWrap: {width: 600},
     align: "left"
   });
-  Phaser.Display.Align.In.Center(this.instructionButtonText, instructionButton);
-
+  Phaser.Display.Align.In.Center(this.instructionButtonText, this.instructionButton);
+  this.instructionButtonSuper = activateButton(
+    this.instructionButton,
+    this.instructionButtonText,
+    3,
+    () => {
+      userLocked = true;
+      this.scene.start('game_scene');
+    },
+    "Hover to start",
+    "Starting in "
+  )
 }
 
 var instructionClickTime = null;
@@ -50,7 +68,7 @@ function create_instruction () {
   pointer = this.add.circle(0, 0, 10, '0xff0000');
   leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
-  
+
 
   this.make.text({
       x: width/2 - 170,
@@ -126,54 +144,10 @@ function create_instruction () {
     let elapsedTime = timedEvent.getElapsedSeconds();
 
   //INSTRUCTION BUTTON: hover over Start Game for 2 seconds
-  if (Phaser.Geom.Intersects.CircleToRectangle(instructionButton, pointer)
-  || Phaser.Geom.Intersects.CircleToRectangle(instructionButton, leftPointer)) {
-    instructionButton.fillColor = '0x808080';
-    if (instructionClickTime == null) {
-        instructionClickTime = elapsedTime;
-    }
-    else {
-      const timeToGame = instructionVerifyTime - (elapsedTime - instructionClickTime);
-      // console.log(elapsedTime - instructionClickTime);
-      if (timeToGame <= 0){
-        userLocked = true; //**NEED HERE?
-        this.scene.start('game_scene');
-      }
-      this.instructionButtonText.setText('Starting in ' + Math.ceil(timeToGame));
-    }
-  }
-  else {
-    //reset hover time
-    instructionClickTime = null;
-    instructionButton.fillColor = '0xffffff';
-    this.instructionButtonText.setText("Hover to start game");
-  }
+  this.instructionButtonSuper.update(elapsedTime);
 
   //EXIT BUTTON: hover over Exit for 2 seconds
-  if (Phaser.Geom.Intersects.CircleToRectangle(instructionExitButton, pointer)
-  || Phaser.Geom.Intersects.CircleToRectangle(instructionExitButton, leftPointer)) {
-    instructionExitButton.fillColor = '0x808080';
-    if (instructionToExitClickTime == null) {
-      instructionToExitClickTime = elapsedTime;
-    }
-    else {
-      const timeToHomeScreen = instructionToExitVerifyTime - (elapsedTime - instructionToExitClickTime);
-        // console.log(elapsedTime - instructionToExitClickTime);
-        if(timeToHomeScreen <= 0){
-          userLocked = true;
-          this.scene.start('start_scene');
-        }
-        this.instructionExitButtonText.setText('Exiting in ' + Math.ceil(timeToHomeScreen));
-        // if (elapsedTime - instructionToExitClickTime > instructionToExitVerifyTime) {
-        //   this.scene.start('start_scene');
-        // }
-    }
-  }
-  else {
-    instructionToExitClickTime = null;
-    instructionExitButton.fillColor = '0xffffff';
-    this.instructionExitButtonText.setText("Hover to exit");
-  }
+  this.instructionExitButtonSuper.update(elapsedTime);
 
 
   checkInactive(elapsedTime, this);

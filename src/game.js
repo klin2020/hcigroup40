@@ -72,26 +72,26 @@ function update_game () {
   }
 
   //EXIT BUTTON: hover over Exit for 2 seconds
-  if (Phaser.Geom.Intersects.CircleToRectangle(gameExitButton, pointer)
-  || Phaser.Geom.Intersects.CircleToRectangle(gameExitButton, leftPointer)) {
-    gameExitButton.fillColor = '0x808080';
-    if (gameExitClickTime == null) {
-      gameExitClickTime = elapsedTime;
-    }
-    else {
-      const gameToHomeScreen = gameExitVerifyTime - (elapsedTime - gameExitClickTime);
-      if(gameToHomeScreen <= 0){
-        userLocked = true;
-        this.scene.start('start_scene');
-      }
-      this.instructionExitButtonText.setText('Exiting in ' + Math.ceil(gameToHomeScreen));
-    }
-  }
-  else {
-    gameExitClickTime = null;
-    gameExitButton.fillColor = '0xffffff';
-    this.gameExitButtonText.setText("Hover to exit");
-  }
+  // if (Phaser.Geom.Intersects.CircleToRectangle(gameExitButton, pointer)
+  // || Phaser.Geom.Intersects.CircleToRectangle(gameExitButton, leftPointer)) {
+  //   gameExitButton.fillColor = '0x808080';
+  //   if (gameExitClickTime == null) {
+  //     gameExitClickTime = elapsedTime;
+  //   }
+  //   else {
+  //     const gameToHomeScreen = gameExitVerifyTime - (elapsedTime - gameExitClickTime);
+  //     if(gameToHomeScreen <= 0){
+  //       userLocked = true;
+  //       this.scene.start('start_scene');
+  //     }
+  //     this.instructionExitButtonText.setText('Exiting in ' + Math.ceil(gameToHomeScreen));
+  //   }
+  // }
+  // else {
+  //   gameExitClickTime = null;
+  //   gameExitButton.fillColor = '0xffffff';
+  //   this.gameExitButtonText.setText("Hover to exit");
+  // }
   // if (userInactive) {
   //   if (inactiveStartTime) {
   //     let inactiveCountdown = inactiveTimeLimit - (elapsedTime - inactiveStartTime);
@@ -126,23 +126,11 @@ function respawnShape(game) {
   circleColor = Phaser.Display.Color.GetColor32(circleColor["r"], circleColor["g"], circleColor["b"], circleColor["a"]);
   shape = game.add.circle(x, y, size, circleColor);
   shape.setInteractive();
-  
+
   //testing
-  shape.on('pointerdown', function (shape)
-    {
-      this.destroy();
-      make_shapes = true;
-      if(size < 5){
-        score += 200;
-      }
-      else if(size < 11){
-        score += 100;
-      }
-      else if(size > 10 && score < 31){
-        score += 50;
-      }
-      else{
-        score+= 20;
-      }
-    });
+  shape.on('pointerdown', function (shape) {
+    this.destroy();
+    score += 100;
+    make_shapes = true;
+  });
 }

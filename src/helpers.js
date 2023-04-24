@@ -18,3 +18,46 @@ function checkInactive(time, scene) {
     }
   }
 }
+
+// put a time limit on the button and make it usable
+function activateButton(button, text, timeLimit, callback, textDefault, textOn) {
+  return {
+    button: button,
+    text: text,
+    clickStartTime: null,
+    clickVerifyTime: timeLimit,
+    update (time) {
+      // time is elapsedTime
+      if (circleOnRect(pointer, button) || circleOnRect(leftPointer, button)) {
+        button.fillColor = '0x808080';
+        if (this.clickStartTime == null) {
+          this.clickStartTime = time;
+        }
+        else {
+          const countdown = this.clickVerifyTime - (time - this.clickStartTime);
+            // console.log(elapsedTime - instructionToExitClickTime);
+            if(countdown <= 0){
+              callback();
+            }
+            console.log(textOn);
+            this.text.setText(textOn + Math.ceil(countdown));
+        }
+      }
+      else {
+        this.clickStartTime = null;
+        button.fillColor = '0xffffff';
+        this.text.setText(textDefault);
+      }
+    }
+  }
+}
+
+function circleOnRect(circle, rect) {
+  if (
+    (circle.x > rect.x - rect.width/2 && circle.x < rect.x + rect.width/2) &&
+    (circle.y < rect.y + rect.height/2 && circle.y > rect.y - rect.height/2)
+  ) {
+    return true;
+  }
+  return false;
+}
