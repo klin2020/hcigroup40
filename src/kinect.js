@@ -23,6 +23,8 @@ var leftHand_y = null;
 var activeBodyId = null;
 var userLocked = false; // whether user playing the game has been chosen; this locks when start button is activated
 var userInactive = false; // restart if true
+var inactiveTimeLimit = 3; // can't actually return if you leave
+var inactiveStartTime = null;
 
 /**
  *
@@ -35,6 +37,16 @@ function kinect2canvas(x, y) {
   newX /= kinectScaleFactor;
   newY /= kinectScaleFactor;
   return [newX, newY];
+}
+
+/**
+ * resetting the game
+ */
+function resetInactive() {
+  inactiveStartTime = null;
+  activeBodyId = null;
+  userLocked = false;
+  userInactive = false;
 }
 
 var frames = {

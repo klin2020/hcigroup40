@@ -1,10 +1,6 @@
 var width;
 var height;
 
-var inactiveTimeLimit = 3; // can't actually return if you leave
-var inactiveTime = null;
-var inactiveStartTime = null;
-
 function checkInactive(time, scene) {
   if (userInactive) {
     if (inactiveStartTime) {
