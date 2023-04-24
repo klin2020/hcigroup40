@@ -1,6 +1,27 @@
 var width;
 var height;
 
+// update pointers based on hand positions
+function updatePointers() {
+  if (hand_x || leftHand_x) {
+    updatePointer(pointer, width - hand_x, hand_y);
+    updatePointer(leftPointer, width - leftHand_x, leftHand_y);
+  }
+}
+
+// update single pointer
+function updatePointer(p, x, y) {
+  p.x = x;
+  p.y = y;
+}
+
+function initializePointers(game) {
+  pointer = game.add.circle(-50, 0, 10, '0xff0000');
+  leftPointer = game.add.circle(-50, 0, 10, '0x00ff00');
+}
+
+
+// calculate Euclidean distance
 function distance(x1, y1, x2, y2) {
   return Math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
 }
