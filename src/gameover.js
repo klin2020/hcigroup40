@@ -106,7 +106,7 @@ function update_gameover () {
     //     collegeSelected = true;
     //   }
 
-    if (Phaser.Geom,Intersects.CircleToRectangle(pointer, rect5) ||
+    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect5) ||
     Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect5)) {
       rect5.fillColor = '0x808080';
       if (collegeClickTime == null) {
