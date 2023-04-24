@@ -11,6 +11,9 @@ var score;
 var timedEvent;
 var timeLimit = 30;
 
+var lastShapeX = -9999;
+var lastShapeY = -9999
+
 var gameExitClickTime = null;
 var gameExitVerifyTime = 2;
 
@@ -62,7 +65,7 @@ function update_game () {
 
     if (shape.radius && (Phaser.Geom.Intersects.CircleToCircle(pointer, shape) || Phaser.Geom.Intersects.CircleToCircle(leftPointer, shape))) {
       console.log('TOUCHDOWN');
-      score+= 100;
+      score += 100;
       respawnShape(this);
     }
   }
@@ -70,42 +73,6 @@ function update_game () {
   if (timeLeft <= 0) {
     this.scene.start('gameover_scene');
   }
-
-  //EXIT BUTTON: hover over Exit for 2 seconds
-  // if (Phaser.Geom.Intersects.CircleToRectangle(gameExitButton, pointer)
-  // || Phaser.Geom.Intersects.CircleToRectangle(gameExitButton, leftPointer)) {
-  //   gameExitButton.fillColor = '0x808080';
-  //   if (gameExitClickTime == null) {
-  //     gameExitClickTime = elapsedTime;
-  //   }
-  //   else {
-  //     const gameToHomeScreen = gameExitVerifyTime - (elapsedTime - gameExitClickTime);
-  //     if(gameToHomeScreen <= 0){
-  //       userLocked = true;
-  //       this.scene.start('start_scene');
-  //     }
-  //     this.instructionExitButtonText.setText('Exiting in ' + Math.ceil(gameToHomeScreen));
-  //   }
-  // }
-  // else {
-  //   gameExitClickTime = null;
-  //   gameExitButton.fillColor = '0xffffff';
-  //   this.gameExitButtonText.setText("Hover to exit");
-  // }
-  // if (userInactive) {
-  //   if (inactiveStartTime) {
-  //     let inactiveCountdown = inactiveTimeLimit - (elapsedTime - inactiveStartTime);
-  //     this.inactiveText.setText(0, 0, 'User has left the screen \n Restarting in ' + inactiveCountdown);
-  //     if (inactiveCountdown <= 0) {
-  //       this.scene.start('start_scene');
-  //     }
-  //   }
-  //   else {
-  //     this.inactiveAlert = this.add.rectangle(width/2, height/2, width*.75, height*.75, '0x808080').setOrigin(0.5);
-  //     this.inactiveText = this.add.text(0, 0, 'User has left the screen \n Restarting in ' + inactiveTimeLimit);
-  //     Phaser.Display.Align.In.Center(this.inactiveText, this.inactiveAlert);
-  //   }
-  // }
   checkInactive(elapsedTime, this);
 }
 
@@ -118,15 +85,20 @@ function respawnShape(game) {
   if (shape) {
     shape.destroy();
   };
-  var x = Phaser.Math.Between(50, width-50);
-  var y = Phaser.Math.Between(250, height-250);
-  var size = Phaser.Math.Between(10, 50);
-  var circleColor = new Phaser.Display.Color();
+
+  let x = Phaser.Math.Between(50, width-50);
+  let y = Phaser.Math.Between(250, height-250);
+  while (Math.sqrt((x - lastShapeX)**2 + (y - lastShapeY)**2) < 100) {
+    x = Phaser.Math.Between(50, width-50);
+    y = Phaser.Math.Between(250, height-250);
+  }
+
+  const size = Phaser.Math.Between(10, 50);
+  let circleColor = new Phaser.Display.Color();
   circleColor = circleColor.random();
   circleColor = Phaser.Display.Color.GetColor32(circleColor["r"], circleColor["g"], circleColor["b"], circleColor["a"]);
   shape = game.add.circle(x, y, size, circleColor);
   shape.setInteractive();
-
   //testing
   shape.on('pointerdown', function (shape) {
     this.destroy();
