@@ -50,7 +50,7 @@ var frames = {
 
   show: function(frame) {
     frames.set_hands(frame);
-    console.log(frame.people);
+    // console.log(frame.people);
   },
 
   set_hands: function(frame) {
@@ -64,13 +64,13 @@ var frames = {
 
     let user = null;
 
-    console.log('active user: ' + activeBodyId);
+    // console.log('active user: ' + activeBodyId);
 
     if (userLocked) {
       // after start button has been clicked
       user = frame.people.find(p => p.body_id === activeBodyId);
       if (user === undefined) {
-        console.log('active body has left the screen. Restarting');
+        // console.log('active body has left the screen. Restarting');
         userInactive = true;
       }
     } else {

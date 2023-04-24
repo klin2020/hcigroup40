@@ -4,6 +4,7 @@ var start_scene = {
   update: update_start,
 };
 
+
 var timedEvent;
 var timeLimitStart = 0;
 
@@ -28,9 +29,9 @@ function create_start () {
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
   score = 0;
   this.make.text({
-    x: width/2 - 150 ,
+    x: width/2 - 160 ,
     y: 100,
-    text: 'Test your reaction time and take your residential college to the top!',
+    text: 'Test your reaction time in 90 seconds and take your residential college to the top!',
     origin: { x: 0.5, y: 0.5},
     style: {
       font: 'bold 40px Arial',
@@ -65,6 +66,8 @@ var arrIndex = 0;
 var shapeArr = new Array(10);
 var startClickTime = null;
 var startVerifyTime = 2;
+
+// var dummyTimer = 1;
 
 function update_start () {
   updatePointers();
@@ -111,7 +114,7 @@ function update_start () {
 
 
 
-    //hover over Start for 3 seconds
+    //hover over Start for 2 seconds
     if (Phaser.Geom.Intersects.CircleToRectangle(startButton, pointer)
     || Phaser.Geom.Intersects.CircleToRectangle(startButton, leftPointer)) {
       startButton.fillColor = '0x808080';
@@ -121,7 +124,7 @@ function update_start () {
         const timeToStart = startVerifyTime - (elapsedTime - startClickTime);
         // console.log(elapsedTime - startClickTime);
         if (timeToStart <= 0) {
-          userLocked = true;
+          userLocked = true; //user playing game is locked in
           this.scene.start('instruction_scene');
         }
         this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
@@ -137,6 +140,9 @@ function update_start () {
     //   this.scene.start('instruction_scene');
     // }
 
+  //  if(dummyTimer == 1){
+  //    this.scene.start('instruction_scene');
+  //   }
 }
 
 function updatePointers() {

@@ -11,6 +11,9 @@ var score;
 var timedEvent;
 var timeLimit = 90;
 
+var gameExitClickTime = null;
+var gameExitVerifyTime = 2;
+
 
 function preload () {
   this.load.setBaseURL('http://labs.phaser.io');
@@ -18,16 +21,24 @@ function preload () {
   leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
 }
 
-function create_game () {
 
-  timeText = this.add.text(150, 20, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  scoreText = this.add.text(700, 20, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
+function create_game () {
+  gameExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
+  this.gameExitButtonText = this.add.text(0, 0, "Hover to exit", {
+    font: 'bold 15px Arial',
+    fill: 'black',
+    wordWrap: {width: 600},
+    align: "left"
+  });
+  Phaser.Display.Align.In.Center(this.gameExitButtonText, gameExitButton);
+
+  timeText = this.add.text(300, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
+  scoreText = this.add.text(800, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
   score = 0;
 }
 
 var shape;
-
 var make_shapes = true;
 
 function update_game () {
@@ -72,6 +83,27 @@ function update_game () {
     this.scene.start('gameover_scene');
   }
 
+  //EXIT BUTTON: hover over Exit for 2 seconds
+  if (Phaser.Geom.Intersects.CircleToRectangle(gameExitButton, pointer)
+  || Phaser.Geom.Intersects.CircleToRectangle(gameExitButton, leftPointer)) {
+    gameExitButton.fillColor = '0x808080';
+    if (gameExitClickTime == null) {
+      gameExitClickTime = elapsedTime;
+    }
+    else {
+      const gameToHomeScreen = gameExitVerifyTime - (elapsedTime - gameExitClickTime);
+      if(gameToHomeScreen <= 0){
+        userLocked = true;
+        this.scene.start('start_scene');
+      }
+      this.instructionExitButtonText.setText('Exiting in ' + Math.ceil(gameToHomeScreen));
+    }
+  }
+  else {
+    gameExitClickTime = null;
+    gameExitButton.fillColor = '0xffffff';
+    this.gameExitButtonText.setText("Hover to exit");
+  }
   // if (userInactive) {
   //   if (inactiveStartTime) {
   //     let inactiveCountdown = inactiveTimeLimit - (elapsedTime - inactiveStartTime);
@@ -99,14 +131,15 @@ function respawnShape(game) {
     shape.destroy();
   };
   var x = Phaser.Math.Between(50, width-50);
-  var y = Phaser.Math.Between(100, height-250);
+  var y = Phaser.Math.Between(250, height-250);
   var size = Phaser.Math.Between(10, 50);
   var circleColor = new Phaser.Display.Color();
   circleColor = circleColor.random();
   circleColor = Phaser.Display.Color.GetColor32(circleColor["r"], circleColor["g"], circleColor["b"], circleColor["a"]);
   shape = game.add.circle(x, y, size, circleColor);
-  // shape = game.add.circle(x, y, 50, '0x00bfff');
   shape.setInteractive();
+  
+  //testing
   shape.on('pointerdown', function (shape)
     {
       this.destroy();
