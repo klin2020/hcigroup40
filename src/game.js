@@ -49,6 +49,7 @@ function create_game () {
     // collegeName = null;
     // userLocked = false;
     // collegeSelected = false;
+    timedEvent.remove();
     this.scene.start('start_scene');
   });
   gameExitButtonSuper = activateButton(
@@ -61,6 +62,7 @@ function create_game () {
       //collegeName = null;
       // userLocked = false;
       // collegeSelected = false;
+      timedEvent.remove();
       this.scene.start('start_scene');
     },
     "Hover to exit",

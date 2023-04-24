@@ -12,26 +12,41 @@ function preload() {
   pointer = this.add.circle(0, 0, 10, '0xff0000');
   leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
 
-  this.instructionExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
-this.instructionExitButtonText = this.add.text(0, 0, "Hover to exit", {
+  confirmExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
+confirmExitButtonText = this.add.text(0, 0, "Hover to exit", {
   font: 'bold 15px Arial',
   fill: 'black',
   wordWrap: {width: 600},
   align: "left"
 });
-Phaser.Display.Align.In.Center(this.instructionExitButtonText, this.instructionExitButton);
-this.instructionExitButtonSuper = activateButton(
-  this.instructionExitButton,
-  this.instructionExitButtonText,
+Phaser.Display.Align.In.Center(confirmExitButtonText, confirmExitButton);
+confirmExitButton.setInteractive();
+confirmExitButton.on('pointerdown', () => {
+  score = 0;
+  collegeName = null;
+  // userLocked = false;
+  collegeSelected = false;
+  timedEvent.remove();
+  this.scene.start('start_scene');
+});
+confirmExitButtonSuper = activateButton(
+  confirmExitButton,
+  confirmExitButtonText,
   3,
   () => {
+    score = 0;
+    // other reset stuff...
+    collegeName = null;
+    // userLocked = false;
+    // collegeSelected = false;
+    timedEvent.remove();
     this.scene.start('start_scene');
   },
   "Hover to exit",
   "Exiting in ",
   '0xffffff',
   '0x808080'
-)
+);
   // this.load.image('sky', 'assets/skies/space3.png');
   // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
   // this.load.image('red', 'assets/particles/red.png');
@@ -113,12 +128,12 @@ function update_confirmcollege(){
       updatePointer(leftPointer, width - leftHand_x, leftHand_y);
     }
 
-    this.instructionExitButtonSuper.update(elapsedTime);
+    confirmExitButtonSuper.update(elapsedTime);
     acceptSuper.update(elapsedTime);
     backSuper.update(elapsedTime);
 }
 
-function parseLeaderboard() {
+function parseLeaderboard() { // does not work
     // show the top 3 colleges in the leaderboard
     // var leaderboard = [];
     // var colleges = require('../leaderboard.json');

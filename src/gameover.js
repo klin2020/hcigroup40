@@ -26,6 +26,7 @@ overExitButton.on('pointerdown', () => {
   collegeName = null;
   // userLocked = false;
   collegeSelected = false;
+  timedEvent.remove();
   this.scene.start('start_scene');
 });
 overExitButtonSuper = activateButton(
@@ -38,6 +39,7 @@ overExitButtonSuper = activateButton(
     collegeName = null;
     // userLocked = false;
     // collegeSelected = false;
+    timedEvent.remove();
     this.scene.start('start_scene');
   },
   "Hover to exit",

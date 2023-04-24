@@ -33,6 +33,7 @@ this.instructionExitButtonSuper = activateButton(
   this.instructionExitButtonText,
   3,
   () => {
+    timedEvent.remove();
     this.scene.start('start_scene');
   },
   "Hover to exit",

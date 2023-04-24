@@ -15,26 +15,41 @@ function preload () {
     // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
     // this.load.image('red', 'assets/particles/red.png');
 
-    this.instructionExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
-this.instructionExitButtonText = this.add.text(0, 0, "Hover to exit", {
+    leaderExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
+leaderExitButtonText = this.add.text(0, 0, "Hover to exit", {
   font: 'bold 15px Arial',
   fill: 'black',
   wordWrap: {width: 600},
   align: "left"
 });
-Phaser.Display.Align.In.Center(this.instructionExitButtonText, this.instructionExitButton);
-this.instructionExitButtonSuper = activateButton(
-  this.instructionExitButton,
-  this.instructionExitButtonText,
+Phaser.Display.Align.In.Center(leaderExitButtonText, leaderExitButton);
+leaderExitButton.setInteractive();
+leaderExitButton.on('pointerdown', () => {
+  score = 0;
+  collegeName = null;
+  // userLocked = false;
+  collegeSelected = false;
+  timedEvent.remove();
+  this.scene.start('start_scene');
+});
+leaderExitButtonSuper = activateButton(
+  leaderExitButton,
+  leaderExitButtonText,
   3,
   () => {
+    score = 0;
+    // other reset stuff...
+    collegeName = null;
+    // userLocked = false;
+    collegeSelected = false;
+    timedEvent.remove();
     this.scene.start('start_scene');
   },
   "Hover to exit",
   "Exiting in ",
   '0xffffff',
   '0x808080'
-)
+);
   }
 
 function create_leader(){
@@ -57,16 +72,17 @@ function create_leader(){
         score = 0;
         // other reset stuff...
         collegeName = null;
-        userLocked = false;
+        //userLocked = false;
         collegeSelected = false;
+        timedEvent.remove();
         this.scene.start('start_scene');
     }, "Play Again", "Play Again in ", '0x00bfff', '0x004b63');
 
-    playagain.on('pointerdown', function (pointer) {
+    playagain.on('pointerdown', () => {
         score = 0;
         // other reset stuff...
         collegeName = null;
-        userLocked = false;
+        //userLocked = false;
         collegeSelected = false;
         this.scene.start('start_scene');
     });
@@ -112,7 +128,7 @@ function update_leader(){
       updatePointer(leftPointer, width - leftHand_x, leftHand_y);
     }
 
-    this.instructionExitButtonSuper.update(elapsedTime);
+    leaderExitButtonSuper.update(elapsedTime);
     againSuper.update(elapsedTime);
 
     var graphics = this.add.graphics();
