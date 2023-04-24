@@ -31,7 +31,7 @@ function create_start () {
   this.make.text({
     x: width/2 - 160 ,
     y: 100,
-    text: 'Test your reaction time in 90 seconds and take your residential college to the top!',
+    text: 'Test your reaction time in 30 seconds and take your residential college to the top!',
     origin: { x: 0.5, y: 0.5},
     style: {
       font: 'bold 40px Arial',

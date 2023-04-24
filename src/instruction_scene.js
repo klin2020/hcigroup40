@@ -69,7 +69,7 @@ function create_instruction () {
     //165
     x: width/2 - 165,
     y: 220,
-    text: "Hit as many circles as you can with your hands in 90 seconds to add to your residential college score!",
+    text: "Hit as many circles as you can with your hands in 30 seconds to add to your residential college score!",
     origin: {x: 0.5, y: 0.5},
     style: {
         font: 'bold 30px Arial',

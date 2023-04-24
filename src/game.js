@@ -9,7 +9,7 @@ var timeText;
 var scoreText;
 var score;
 var timedEvent;
-var timeLimit = 90;
+var timeLimit = 30;
 
 var gameExitClickTime = null;
 var gameExitVerifyTime = 2;
