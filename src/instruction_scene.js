@@ -100,7 +100,7 @@ function create_instruction () {
   this.make.text({
     x: width/2 - 155,
     y: 320,
-    text: "Hitting smaller circles will gain you more points than hitting larger circles.",
+    text: "Hitting circles will gain you points. Hitting squares will lose you points.",
     origin: {x: 0.5, y: 0.5},
     style: {
         font: 'bold 30px Arial',
@@ -113,7 +113,7 @@ function create_instruction () {
   this.make.text({
     x: width/2 - 200,
     y: 400,
-    text: "Point at the rectangle in the top left corner to exit the game at any time.",
+    text: "Hover over the rectangle in the top left corner to exit the game at any time.",
     origin: {x: 0.5, y: 0.5},
     style: {
         font: 'bold 30px Arial',
@@ -126,7 +126,7 @@ function create_instruction () {
   this.make.text({
     x: width/2 - 175,
     y: 490,
-    text: "Point at the rectangle in on the right to start the game!",
+    text: "Hover over the rectangle in on the right to start the game!",
     origin: {x: 0.5, y: 0.5},
     style: {
         font: 'bold 30px Arial',
