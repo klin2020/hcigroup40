@@ -86,46 +86,46 @@ function update_start () {
   let elapsedTime = timedEvent.getElapsedSeconds();
 
   var graphics = this.add.graphics();
-    //create new circle every second until time runs out
-    if (parseInt(prevTime) != parseInt(elapsedTime)){
-      // console.log(prevTime);
+  //create new circle every second until time runs out
+  if (parseInt(prevTime) != parseInt(elapsedTime)){
+    // console.log(prevTime);
 
-      //randomize position and size of circle
-      let x = Phaser.Math.Between(0, width);
-      let y = Phaser.Math.Between(height-350, height - 175);
-      let size = Phaser.Math.Between(10, 50);
+    //randomize position and size of circle
+    let x = Phaser.Math.Between(0, width);
+    let y = Phaser.Math.Between(height-350, height - 175);
+    let size = Phaser.Math.Between(10, 50);
 
-      //randomize color
-      let color = new Phaser.Display.Color();
-      color = color.random();
-      let color32 = Phaser.Display.Color.GetColor32(color["r"], color["g"], color["b"], color["a"]);
+    //randomize color
+    let color = new Phaser.Display.Color();
+    color = color.random();
+    let color32 = Phaser.Display.Color.GetColor32(color["r"], color["g"], color["b"], color["a"]);
 
-      //create circle
-      let shape = graphics.fillStyle(color32);
-      if(parseInt(elapsedTime)%2 == 0){
-        shape = graphics.fillRect(x, y, size, size);
-      }
-      else{
-        shape = graphics.fillCircle(x, y, size);
-      }
-
-      //add circle to array
-      shapeArr[arrIndex] = shape;
-      arrIndex++;
-
-
-      prevTime =  elapsedTime; //update second
+    //create circle
+    let shape = graphics.fillStyle(color32);
+    if(parseInt(elapsedTime)%2 == 0){
+      shape = graphics.fillRect(x, y, size, size);
+    }
+    else{
+      shape = graphics.fillCircle(x, y, size);
     }
 
-    //reset circles every 10 seconds
-    if (parseInt(elapsedTime) != 0 && parseInt(elapsedTime) % 10 == 0){
-      //destroy all objects in the array
-      // console.log("10 seconds passed");
-      for(var i = 0; i < 10; i++){
-        shapeArr[i].destroy();
-      }
-      arrIndex = 0;
+    //add circle to array
+    shapeArr[arrIndex] = shape;
+    arrIndex++;
+
+
+    prevTime =  elapsedTime; //update second
+  }
+
+  //reset circles every 10 seconds
+  if (parseInt(elapsedTime) != 0 && parseInt(elapsedTime) % 10 == 0){
+    //destroy all objects in the array
+    // console.log("10 seconds passed");
+    for(var i = 0; i < 10; i++){
+      shapeArr[i].destroy();
     }
-    //hover over Start for 2 seconds
-    this.startButtonSuper.update(elapsedTime);
+    arrIndex = 0;
+  }
+  //hover over Start for 2 seconds
+  this.startButtonSuper.update(elapsedTime);
 }

@@ -53,76 +53,26 @@ function create_instruction () {
     },
     "Hover to start",
     "Starting in ",
+    '0xffffff',
     '0x808080',
-    '0xffffff'
   )
 
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
 
   this.make.text({
-      x: width/2 - 170,
-      y: 120,
-      text: "This is a one player game. You can use one hand or two hands.",
-      origin: {x: 0.5, y: 0.5},
+      x: scale(50),
+      y: scale(120),
+      text: [
+        "This is a one player game. You can use one hand or two hands.",
+        "Hit as many circles as you can with your hands in 30 seconds to add to your residential college score!",
+        "Hitting circles will gain you points. Hitting squares will lose you points.",
+      ].join("\n\n"),
       style: {
           font: 'bold 30px Arial',
           fill: 'white',
           wordWrap: {width: 600},
           align: "left"
       }
-  });
-
-  this.make.text({
-    //165
-    x: width/2 - 165,
-    y: 220,
-    text: "Hit as many circles as you can with your hands in 30 seconds to add to your residential college score!",
-    origin: {x: 0.5, y: 0.5},
-    style: {
-        font: 'bold 30px Arial',
-        fill: 'white',
-        wordWrap: {width: 650},
-        align: "left"
-    }
-  });
-
-  this.make.text({
-    x: width/2 - 155,
-    y: 320,
-    text: "Hitting circles will gain you points. Hitting squares will lose you points.",
-    origin: {x: 0.5, y: 0.5},
-    style: {
-        font: 'bold 30px Arial',
-        fill: 'white',
-        wordWrap: {width: 650},
-        align: "left"
-    }
-  });
-
-  this.make.text({
-    x: width/2 - 200,
-    y: 400,
-    text: "Hover over the rectangle in the top left corner to exit the game at any time.",
-    origin: {x: 0.5, y: 0.5},
-    style: {
-        font: 'bold 30px Arial',
-        fill: 'white',
-        wordWrap: {width: 600},
-        align: "left"
-    }
-  });
-
-  this.make.text({
-    x: width/2 - 175,
-    y: 490,
-    text: "Hover over the rectangle in on the right to start the game!",
-    origin: {x: 0.5, y: 0.5},
-    style: {
-        font: 'bold 30px Arial',
-        fill: 'white',
-        wordWrap: {width: 600},
-        align: "left"
-    }
   });
 }
 

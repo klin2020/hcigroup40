@@ -20,5 +20,5 @@ game.scene.add('instruction_scene', instruction_scene);
 game.scene.add('confirmcollege_scene', confirmcollege_scene);
 game.scene.add('leader_scene', leader_scene);
 
-game.scene.start('game_scene', game_scene);
-// game.scene.start('start_scene', start_scene);
+// game.scene.start('game_scene', game_scene);
+game.scene.start('start_scene', start_scene);
