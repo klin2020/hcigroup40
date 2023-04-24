@@ -111,8 +111,13 @@ function update_start () {
 
       //create circle
       let shape = graphics.fillStyle(color32);
-      shape = graphics.fillCircle(x, y, size);
-
+      if(parseInt(elapsedTime)%2 == 0){
+        shape = graphics.fillRect(x, y, size, size);
+      }
+      else{
+        shape = graphics.fillCircle(x, y, size);
+      }
+      
       //add circle to array
       shapeArr[arrIndex] = shape;
       arrIndex++;
