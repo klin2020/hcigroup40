@@ -26,6 +26,9 @@ function preload () {
 
 
 function create_game () {
+  timedEvent.remove();
+  timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
+
   gameExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
   this.gameExitButtonText = this.add.text(0, 0, "Hover to exit", {
     font: 'bold 15px Arial',
@@ -37,7 +40,6 @@ function create_game () {
 
   timeText = this.add.text(300, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
   scoreText = this.add.text(800, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
   score = 0;
 }
 
@@ -45,7 +47,6 @@ var shape;
 var make_shapes = true;
 
 function update_game () {
-
   // update timer
   let elapsedTime = timedEvent.getElapsedSeconds();
   let timeLeft = timeLimit - elapsedTime;

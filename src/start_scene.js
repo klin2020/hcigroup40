@@ -39,7 +39,9 @@ function preload(){
 }
 function create_start () {
   userInactive = false;
-
+  if (timedEvent) {
+    timedEvent.remove();
+  }
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
   score = 0;
   this.make.text({

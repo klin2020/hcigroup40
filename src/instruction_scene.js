@@ -67,8 +67,8 @@ var instructionToExitVerifyTime = 2;
 function create_instruction () {
   pointer = this.add.circle(0, 0, 10, '0xff0000');
   leftPointer = this.add.circle(0, 0, 10, '0x00ff00');
+  timedEvent.remove();
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
-
 
   this.make.text({
       x: width/2 - 170,

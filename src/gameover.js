@@ -13,5 +13,6 @@ function create_gameover () {
 }
 
 function update_gameover () {
+  let elapsedTime = timedEvent.getElapsedSeconds();
   checkInactive(elapsedTime, this);
 }

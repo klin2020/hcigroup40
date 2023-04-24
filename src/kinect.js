@@ -91,6 +91,7 @@ var frames = {
       });
       activeBodyId = user.body_id;
     }
+    console.log(activeBodyId);
 
     let leftHand = null;
     let rightHand = null;
