@@ -13,5 +13,5 @@ function create_gameover () {
 }
 
 function update_gameover () {
-  ;
+  checkInactive(elapsedTime, this);
 }
