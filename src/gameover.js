@@ -57,9 +57,9 @@ function create_gameover () {
   text15 = this.add.text(width/2 + 200, 410, "Franklin",{ fontSize: 18 }).setOrigin(0.5,0.5);
   rect16 = this.add.rectangle(width/2 + 200, 450, 175, 20, '0x00bfff');
   text16 = this.add.text(width/2 + 200, 450, "Morse",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect17 = this.add.rectangle(width/2 + 200, 490, 175, 20, '0x00bfff');
-  text17 = this.add.text(width/2 + 200, 490, "Berkeley",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  activateButton(rect17, text17, 3, callback(), text17, text17);
+  this.rect17 = this.add.rectangle(width/2 + 200, 490, 175, 20, '0x00bfff');
+  this.text17 = this.add.text(width/2 + 200, 490, "Berkeley",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  
 
   // first half of colleges
   // for loop?
@@ -450,31 +450,36 @@ function update_gameover () {
       //this.startButtonText.setText('Hover to start');
     }
 
-    if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect17) ||
-    Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect17)) {
-      rect17.fillColor = '0x065929';
-      let elapsedTime = timedEvent.getElapsedSeconds();
-      console.log(elapsedTime);
-      if (collegeClickTime == null) {
-        collegeClickTime = elapsedTime;
-      } else {
-        const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
-        console.log(elapsedTime - collegeClickTime);
-        console.log(timeToStart);
-        console.log(timeToStart <= 0);
-        if (timeToStart <= 0) {
-          collegeName = 1;
-          collegeSelected = true;
-          this.scene.start('confirmcollege_scene');
-        }
-        //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
-      }
-    }
-    else {
-      collegeClickTime = null;
-      rect17.fillColor = '0x00bfff';
-      //this.startButtonText.setText('Hover to start');
-    }
+    rect17Super = activateButton(this.rect17, this.text17, 3, () => {
+      collegeSelected = true; //user playing game is locked in
+      this.scene.start('confirmcollege_scene');
+    }, text17, text17, '0x065929', '0x00bfff');
+    
+    // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect17) ||
+    // Phaser.Geom.Intersects.CircleToRectangle(leftPointer, rect17)) {
+    //   rect17.fillColor = '0x065929';
+    //   let elapsedTime = timedEvent.getElapsedSeconds();
+    //   console.log(elapsedTime);
+    //   if (collegeClickTime == null) {
+    //     collegeClickTime = elapsedTime;
+    //   } else {
+    //     const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
+    //     console.log(elapsedTime - collegeClickTime);
+    //     console.log(timeToStart);
+    //     console.log(timeToStart <= 0);
+    //     if (timeToStart <= 0) {
+    //       collegeName = 1;
+    //       collegeSelected = true;
+    //       this.scene.start('confirmcollege_scene');
+    //     }
+    //     //this.startButtonText.setText('Starting in ' + Math.ceil(timeToStart));
+    //   }
+    // }
+    // else {
+    //   collegeClickTime = null;
+    //   rect17.fillColor = '0x00bfff';
+    //   //this.startButtonText.setText('Hover to start');
+    // }
     // if (Phaser.Geom.Intersects.CircleToRectangle(pointer, rect6)) { // while loop?
     //   console.log('TOUCHDOWN');
     //   selectionTimer = 3;
@@ -627,19 +632,33 @@ function update_gameover () {
 
   // on click methods mainly for testing
   
+  rect4Super.update(elapsedTime);
   rect4.setInteractive();
+  rect5Super.update(elapsedTime);
   rect5.setInteractive();
+  rect6Super.update(elapsedTime);
   rect6.setInteractive();
+  rect7Super.update(elapsedTime);
   rect7.setInteractive();
+  rect8Super.update(elapsedTime);
   rect8.setInteractive();
+  rect9Super.update(elapsedTime);
   rect9.setInteractive();
+  rect10Super.update(elapsedTime);
   rect10.setInteractive();
+  rect11Super.update(elapsedTime);
   rect11.setInteractive();
+  rect12Super.update(elapsedTime);
   rect12.setInteractive();
+  rect13Super.update(elapsedTime);
   rect13.setInteractive();
+  rect14Super.update(elapsedTime);
   rect14.setInteractive();
+  rect15Super.update(elapsedTime);
   rect15.setInteractive();
+  rect16Super.update(elapsedTime);
   rect16.setInteractive();
+  rect17Super.update(elapsedTime);
   rect17.setInteractive();
 
   rect4.on('pointerdown', () =>
@@ -760,9 +779,9 @@ function update_gameover () {
     console.log("collegeName: " + collegeName);
     this.scene.start('confirmcollege_scene', confirmcollege_scene);
   });
-  rect17.on('pointerdown', () =>
+  this.rect17.on('pointerdown', () =>
   {
-    rect17.destroy();
+    this.rect17.destroy();
     collegeSelected = true;
     collegeName = 1;
     console.log("collegeSelected: " + collegeSelected);

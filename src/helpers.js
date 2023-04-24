@@ -20,7 +20,7 @@ function checkInactive(time, scene) {
 }
 
 // put a time limit on the button and make it usable
-function activateButton(button, text, timeLimit, callback, textDefault, textOn) {
+function activateButton(button, text, timeLimit, callback, textDefault, textOn, fillColorDefault, fillColorOn) {
   return {
     button: button,
     text: text,
@@ -29,7 +29,7 @@ function activateButton(button, text, timeLimit, callback, textDefault, textOn) 
     update (time) {
       // time is elapsedTime
       if (circleOnRect(pointer, button) || circleOnRect(leftPointer, button)) {
-        button.fillColor = '0x808080';
+        button.fillColor = fillColorDefault;
         if (this.clickStartTime == null) {
           this.clickStartTime = time;
         }
@@ -45,7 +45,7 @@ function activateButton(button, text, timeLimit, callback, textDefault, textOn) 
       }
       else {
         this.clickStartTime = null;
-        button.fillColor = '0xffffff';
+        button.fillColor = fillColorOn;
         this.text.setText(textDefault);
       }
     }
