@@ -21,7 +21,7 @@ var start_time;
 var collegeSelected = false;
 var selectionTimer;
 var collegeName;
-var timedEventss;
+var timedEvent;
 var collegeClickTime = null;
 var collegeVerifyTime = 3;
 
@@ -62,7 +62,11 @@ function create_gameover () {
 
   // first half of colleges
   // for loop?
-  timedEventss = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
+  if (timedEvent) {
+    timedEvent.remove();
+  }
+  
+  timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
 
 }
 
@@ -140,6 +144,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 2;
           collegeSelected = true;
@@ -166,6 +172,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 5;
           collegeSelected = true;
@@ -190,6 +198,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 8;
           collegeSelected = true;
@@ -200,7 +210,7 @@ function update_gameover () {
     }
     else {
       collegeClickTime = null;
-      rect5.fillColor = '0x00bfff';
+      rect7.fillColor = '0x00bfff';
       //this.startButtonText.setText('Hover to start');
     }
 
@@ -214,6 +224,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 9;
           collegeSelected = true;
@@ -238,6 +250,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 11;
           collegeSelected = true;
@@ -262,6 +276,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 12;
           collegeSelected = true;
@@ -286,6 +302,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 13;
           collegeSelected = true;
@@ -310,6 +328,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 4;
           collegeSelected = true;
@@ -334,6 +354,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 7;
           collegeSelected = true;
@@ -358,6 +380,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 10;
           collegeSelected = true;
@@ -382,6 +406,8 @@ function update_gameover () {
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 3;
           collegeSelected = true;
@@ -401,11 +427,14 @@ function update_gameover () {
       rect16.fillColor = '0x065929';
       let elapsedTime = timedEvent.getElapsedSeconds();
       console.log(elapsedTime);
+      console.log(collegeClickTime);
       if (collegeClickTime == null) {
         collegeClickTime = elapsedTime;
       } else {
         const timeToStart = collegeVerifyTime - (elapsedTime - collegeClickTime);
         console.log(elapsedTime - collegeClickTime);
+        console.log(timeToStart);
+        console.log(timeToStart <= 0);
         if (timeToStart <= 0) {
           collegeName = 6;
           collegeSelected = true;
