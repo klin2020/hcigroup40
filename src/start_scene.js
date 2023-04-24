@@ -31,7 +31,9 @@ function preload(){
       this.scene.start('instruction_scene');
     },
     'Hover to start',
-    'Starting in '
+    'Starting in ',
+    '0xffffff',
+    '0x808080'
   )
   console.log(this.startButtonSuper);
 

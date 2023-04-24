@@ -1,3 +1,5 @@
+// deprecated
+
 var colleges = [
     { name: "Branford", score: 0 },
     { name: "Berkeley", score: 0 },
@@ -14,6 +16,36 @@ var colleges = [
     { name: "Timothy Dwight", score: 0 },
     { name: "Trumbull", score: 0 },
     ];
+
+    //console.log(colleges);
+
+function parseLeaderboard() {
+    // show the top 3 colleges in the leaderboard
+    var leaderboard = [];
+    // var first = obj[0].name;
+    // var second = obj[1].name;
+    // var third = obj[2].name;
+    // for(var i = 0; i < obj.length; i++) {
+    //     console.log(obj[i].name + " " + obj[i].score);
+        
+    // }    
+    colleges.sort(function(a, b) {
+        return b.score - a.score;
+    });
+    for(var i = 0; i < colleges.length; i++) {
+        //obj[i].name + " " + obj[i].score
+        leaderboard.push({name: colleges[i].name, score: colleges[i].score});
+    }
+    console.log(leaderboard);
+    return leaderboard;
+}
+
+// function topThree(leaderboard) {
+//     for(var i = 0; i < 3; i++) {
+//         //obj[i].name + " " + obj[i].score
+//         leaderboard.push({name: colleges[i].name, score: colleges[i].score});
+//     }
+// }    
 
 // Function to add a score to a college's total score
 function addToLeaderboard(score, college) {
@@ -93,3 +125,5 @@ function displayLeaderboard()
         })
     }
 }
+
+parseLeaderboard();
