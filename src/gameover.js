@@ -59,6 +59,7 @@ function create_gameover () {
   text16 = this.add.text(width/2 + 200, 450, "Morse",{ fontSize: 18 }).setOrigin(0.5,0.5);
   rect17 = this.add.rectangle(width/2 + 200, 490, 175, 20, '0x00bfff');
   text17 = this.add.text(width/2 + 200, 490, "Berkeley",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  activateButton(rect17, text17, 3, callback(), text17, text17);
 
   // first half of colleges
   // for loop?
