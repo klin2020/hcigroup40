@@ -51,9 +51,9 @@ function create_leader(){
       text: 'Thanks for playing!',
       origin: { x: 0.5, y: 0.5},
       style: {
-        font: 'bold ' + scale(40) + 'px Arial',
+        fontSize: scale(40),
+        fontStyle: 'bold',
         fill: 'white',
-        wordWrap: {width: 600},
         align: "left"
       }
     });

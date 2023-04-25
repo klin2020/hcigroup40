@@ -49,7 +49,7 @@ function create_instruction () {
         "Try moving your hands around and see the yellow dots move!"
       ].join("\n\n"),
       style: {
-          font: 'bold ' + scale(25) + 'px Arial',
+          fontSize:scale(25),
           fill: 'white',
           wordWrap: {width: scale(600)},
           align: "left"

@@ -53,7 +53,8 @@ function create_start () {
     y: scale(30),
     text: 'Test your reaction time in 30 seconds and add to your residential college\'s score!',
     style: {
-      font: 'bold ' + scale(40) + 'px Arial',
+      fontSize:scale(30),
+      fontStyle:'bold',
       fill: 'white',
       wordWrap: {width: scale(600)},
       align: "left"
@@ -76,11 +77,11 @@ function create_start () {
     x: scale(50),
     y: height - scale(100),
     text: [
-      "Raise your hand to the rectangle to begin",
-      "Your hand(s) will be represented as small, yellow circles",
+      "Raise your hand to the rectangle to begin.",
+      "Your hand(s) will be represented as small, yellow circles.",
     ].join("\n\n"),
     style: {
-        font: 'bold ' + scale(20) + 'px Arial',
+        fontSize:scale(20),
         fill: 'white',
         wordWrap: {width: scale(600)},
         align: "left"
@@ -98,9 +99,10 @@ this.make.text({
     "..."
   ].join("\n"),
   style: {
-      font: 'bold ' + scale(24) + 'px Arial',
+      fontSize: scale(20),
+      fontStyle: 'bold',
       fill: 'white',
-      wordWrap: {width: 600},
+      wordWrap: {width: scale(300)},
       align: "left"
   }
 });
