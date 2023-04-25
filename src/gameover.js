@@ -27,7 +27,7 @@ function create_gameover () {
   rect5 = this.add.rectangle(width/2 - scale(250), scale(290), buttonWidth, buttonHeight, '0x00bfff');
   text5 = this.add.text(width/2 - scale(250), scale(290), "Davenport",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
   rect6 = this.add.rectangle(width/2 - scale(250), scale(330), buttonWidth, buttonHeight, '0x00bfff');
-  text6 = this.add.text(width/2 - scale(250), scale(330), "Jonathan Edwards",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  text6 = this.add.text(width/2 - scale(250), scale(330), "JE",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
   rect7 = this.add.rectangle(width/2 - scale(250), scale(370), buttonWidth, buttonHeight, '0x00bfff');
   text7 = this.add.text(width/2 - scale(250), scale(370), "Pierson",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
   rect8 = this.add.rectangle(width/2 - scale(250), scale(410), buttonWidth, buttonHeight, '0x00bfff');
@@ -35,13 +35,13 @@ function create_gameover () {
   rect9 = this.add.rectangle(width/2 - scale(250), scale(450), buttonWidth, buttonHeight, '0x00bfff');
   text9 = this.add.text(width/2 - scale(250), scale(450), "Stiles",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
   rect10 = this.add.rectangle(width/2 - scale(250), scale(490), buttonWidth, buttonHeight, '0x00bfff');
-  text10 = this.add.text(width/2 - scale(250), scale(490), "Timothy Dwight",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  text10 = this.add.text(width/2 - scale(250), scale(490), "TD",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
   rect11 = this.add.rectangle(width/2 + scale(250), scale(250), buttonWidth, buttonHeight, '0x00bfff');
   text11 = this.add.text(width/2 + scale(250), scale(250), "Trumbull",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
   rect12 = this.add.rectangle(width/2 + scale(250), scale(290), buttonWidth, buttonHeight, '0x00bfff');
-  text12 = this.add.text(width/2 + scale(250), scale(290), "Grace Hopper",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  text12 = this.add.text(width/2 + scale(250), scale(290), "Hopper",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
   rect13 = this.add.rectangle(width/2 + scale(250), scale(330), buttonWidth, buttonHeight, '0x00bfff');
-  text13 = this.add.text(width/2 + scale(250), scale(330), "Pauli Murray",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  text13 = this.add.text(width/2 + scale(250), scale(330), "Murray",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
   rect14 = this.add.rectangle(width/2 + scale(250), scale(370), buttonWidth, buttonHeight, '0x00bfff');
   text14 = this.add.text(width/2 + scale(250), scale(370), "Silliman",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
   rect15 = this.add.rectangle(width/2 + scale(250), scale(410), buttonWidth, buttonHeight, '0x00bfff');
@@ -75,9 +75,9 @@ function create_gameover () {
   rect6Super = activateButton(rect6, text6, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 5;
-    collegeName = "Jonathan Edwards";
+    collegeName = "JE";
     this.scene.start('confirmcollege_scene');
-  }, "Jonathan Edwards", "Jonathan Edwards in ", '0x00bfff', '0x004b63');
+  }, "JE", "JE in ", '0x00bfff', '0x004b63');
   rect7Super = activateButton(rect7, text7, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 8;
@@ -93,15 +93,15 @@ function create_gameover () {
   rect9Super = activateButton(rect9, text9, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 11;
-    collegeName = "Ezra Stiles";
+    collegeName = "Stiles";
     this.scene.start('confirmcollege_scene');
   }, "Stiles", "Stiles in ", '0x00bfff', '0x004b63');
   rect10Super = activateButton(rect10, text10, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 12;
-    collegeName = "Timothy Dwight";
+    collegeName = "TD";
     this.scene.start('confirmcollege_scene');
-  }, "Timothy Dwight", "Timothy Dwight in ", '0x00bfff', '0x004b63');
+  }, "TD", "TD in ", '0x00bfff', '0x004b63');
   rect11Super = activateButton(rect11, text11, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 13;
@@ -111,15 +111,15 @@ function create_gameover () {
   rect12Super = activateButton(rect12, text12, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 4;
-    collegeName = "Grace Hopper";
+    collegeName = "Hopper";
     this.scene.start('confirmcollege_scene');
-  }, "Grace Hopper", "Grace Hopper in ", '0x00bfff', '0x004b63');
+  }, "Hopper", "Hopper in ", '0x00bfff', '0x004b63');
   rect13Super = activateButton(rect13, text13, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 7;
-    collegeName = "Pauli Murray";
+    collegeName = "Murray";
     this.scene.start('confirmcollege_scene');
-  }, "Pauli Murray", "Pauli Murray in ", '0x00bfff', '0x004b63');
+  }, "Murray", "Murray in ", '0x00bfff', '0x004b63');
   rect14Super = activateButton(rect14, text14, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 10;
@@ -129,7 +129,7 @@ function create_gameover () {
   rect15Super = activateButton(rect15, text15, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 3;
-    collegeName = "Benjamin Franklin";
+    collegeName = "Franklin";
     this.scene.start('confirmcollege_scene');
   }, "Franklin", "Franklin in ", '0x00bfff', '0x004b63');
   rect16Super = activateButton(rect16, text16, 3, () => {

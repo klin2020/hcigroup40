@@ -5,7 +5,7 @@ var game_scene = {
 };
 
 var score;
-var timeLimit = 30;
+var timeLimit = 1;
 
 var lastCircleX = -9999;
 var lastCircleY = -9999
@@ -69,7 +69,7 @@ function update_game () {
   this.exitButtonSuper.update(elapsedTime);
 
   checkInactive(elapsedTime, this);
-  
+
 }
 
 function updatePointer(p, x, y) {

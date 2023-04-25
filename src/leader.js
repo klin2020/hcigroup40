@@ -11,11 +11,11 @@ function sortLeaderboard(){
 function create_leader(){
   this.exitButtonSuper = makeExitButton(this);
   sortLeaderboard();
-  text0 = this.add.text(width/2+scale(250), scale(150), "Leaderboard",{ fontSize: 24 }).setOrigin(0.5,0.5);
+  text0 = this.add.text(width/2+scale(250), scale(150), "Leaderboard",{ fontSize: scale(24) }).setOrigin(0.5,0.5);
   // show the top 3 colleges in the leaderboard, currently placeholders
-  text1 = this.add.text(width/2+scale(250), scale(200), "1. " + colleges[0].name + " " + colleges[0].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
-  text2 = this.add.text(width/2+scale(250), scale(250), "2. " + colleges[1].name + " " + colleges[1].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
-  text3 = this.add.text(width/2+scale(250), scale(300), "3. " + colleges[2].name + " " + colleges[2].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
+  text1 = this.add.text(width/2+scale(250), scale(200), "1. " + colleges[0].name + " " + colleges[0].score,{ fontSize: scale(24) }).setOrigin(0.5,0.5);
+  text2 = this.add.text(width/2+scale(250), scale(250), "2. " + colleges[1].name + " " + colleges[1].score,{ fontSize: scale(24) }).setOrigin(0.5,0.5);
+  text3 = this.add.text(width/2+scale(250), scale(300), "3. " + colleges[2].name + " " + colleges[2].score,{ fontSize: scale(24) }).setOrigin(0.5,0.5);
   playagain = this.add.rectangle(width/2+scale(250), scale(400), scale(200), scale(40), '0x065929');
   playagain.setInteractive();
   playtext = this.add.text(width/2+scale(250), scale(400), "Play Again",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
