@@ -1,6 +1,34 @@
 var width;
 var height;
 
+// update pointers based on hand positions
+function updatePointers() {
+  if (hand_x || leftHand_x) {
+    updatePointer(pointer, width - hand_x, hand_y);
+    updatePointer(leftPointer, width - leftHand_x, leftHand_y);
+  }
+}
+
+// update single pointer
+function updatePointer(p, x, y) {
+  p.x = x;
+  p.y = y;
+}
+
+function initializePointers(game) {
+  pointer = game.add.circle(-50, 0, 10, '0xff0000');
+  leftPointer = game.add.circle(-50, 0, 10, '0x00ff00');
+}
+
+/**
+ * gives back styling based on scale
+ */
+function scale(x) {
+  return x * (2/kinectScaleFactor)
+}
+
+
+// calculate Euclidean distance
 function distance(x1, y1, x2, y2) {
   return Math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
 }
@@ -26,6 +54,10 @@ function checkInactive(time, scene) {
 // put a time limit on the button and make it usable
 // kenan's note: i added color parameters, if it does not remove them
 function activateButton(button, text, timeLimit, callback, textDefault, textOn, fillColorDefault, fillColorOn) {
+  button.setInteractive();
+  button.on('pointerdown', function () {
+    callback();
+  });
   return {
     button: button,
     text: text,
@@ -65,4 +97,18 @@ function circleOnRect(circle, rect) {
     return true;
   }
   return false;
+}
+
+
+var mediumText = {
+  font: 'bold ' + scale(15) + 'px Arial',
+  fill: 'black',
+  align: "left"
+}
+
+var largeText = {
+  font: 'bold ' + scale(30) + 'px Arial',
+  fill: 'white',
+  align: "left",
+  wordWrap: {width: 600},
 }
