@@ -22,7 +22,7 @@ function create_leader(){
 
   if (timedEvent) {
       timedEvent.remove();
-    }
+  }
 
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
 

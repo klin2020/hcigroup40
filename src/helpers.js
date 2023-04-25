@@ -50,6 +50,12 @@ function checkInactive(time, scene) {
     }
   } else {
     inactiveStartTime = null;
+    if (scene.inactiveAlert) {
+      scene.inactiveAlert.destroy();
+    };
+    if (scene.inactiveText) {
+      scene.inactiveText.destroy();
+    }
   }
 }
 
