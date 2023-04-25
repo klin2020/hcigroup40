@@ -83,19 +83,20 @@ function respawnShape(game) {
     game.badShape.destroy();
   }
 
-  let x = Phaser.Math.Between(50, width-50);
-  let y = Phaser.Math.Between(250, height-250);
+  let x = Phaser.Math.Between(scale(50), width-scale(50));
+  let y = Phaser.Math.Between(scale(125), height-scale(125));
   while (distance(x,y,lastCircleX,lastCircleY) < scale(100)
     || distance(x,y, lastSquareX, lastSquareY) < scale(100))
   {
     console.log('generating');
-    x = Phaser.Math.Between(50, width-50);
-    y = Phaser.Math.Between(250, height-scale(100));
+    x = Phaser.Math.Between(scale(50), width-scale(50));
+    y = Phaser.Math.Between(scale(125), height-scale(125));
   }
   lastShapeX = x;
   lastShapeY = y;
 
   const size = scale(50);
+  const badSize = scale(75);
   let circleColor = new Phaser.Display.Color();
   circleColor = circleColor.random();
   circleColor = Phaser.Display.Color.GetColor32(circleColor["r"], circleColor["g"], circleColor["b"], circleColor["a"]);
@@ -109,20 +110,20 @@ function respawnShape(game) {
     game.expText.setColor("#00ff00")
   });
 
-  let x1 = Phaser.Math.Between(50, width-50);
-  let y1 = Phaser.Math.Between(250, height-250);
+  let x1 = Phaser.Math.Between(scale(50), width-scale(50));
+  let y1 = Phaser.Math.Between(scale(125), height-scale(125));
   while (distance(x1,y1, lastCircleX,lastCircleY) < scale(100)
       || distance(x1,y1, lastSquareX, lastSquareY) < scale(100)
       || distance(x1,y1,x,y) < scale(200))
   {
     console.log('generating');
-    x1 = Phaser.Math.Between(50, width-50);
-    y1 = Phaser.Math.Between(250, height-scale(150));
+    x1 = Phaser.Math.Between(scale(50), width-scale(50));
+    y1 = Phaser.Math.Between(scale(125), height-scale(125));
   }
   lastSquareX = x1;
   lastSquareY = y1;
 
-  game.badShape = game.add.rectangle(x1, y1, size, size, circleColor);
+  game.badShape = game.add.rectangle(x1, y1, badSize, badSize, circleColor);
   game.badShape.setInteractive();
   //testing
   game.badShape.on('pointerdown', function () {
