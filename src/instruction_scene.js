@@ -11,7 +11,6 @@ var score;
 var timeLeft;
 
 function create_instruction () {
-  initializePointers(this);
   timedEvent.remove();
 
   this.instructionExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
@@ -74,6 +73,7 @@ function create_instruction () {
           align: "left"
       }
   });
+  initializePointers(this);
 }
 
 

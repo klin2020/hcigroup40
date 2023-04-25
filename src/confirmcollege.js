@@ -107,4 +107,5 @@ function update_confirmcollege(){
   this.exitButtonSuper.update(elapsedTime);
   this.acceptSuper.update(elapsedTime);
   this.goBackSuper.update(elapsedTime);
+  checkInactive(elapsedTime, this);
 }

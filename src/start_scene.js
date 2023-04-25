@@ -18,7 +18,6 @@ function preload(){
 }
 
 function create_start () {
-  initializePointers(this);
   this.startButton = this.add.rectangle(width/2 + 300, height - 75, 200, 100, "0xffffff");
   this.startButton.setInteractive();
   this.startButtonText = this.add.text(0, 0, "Hover to start", {
@@ -77,6 +76,7 @@ function create_start () {
 
   // reset inactive issues
   resetInactive();
+  initializePointers(this);
 }
 
 function update_start () {

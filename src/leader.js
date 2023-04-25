@@ -138,5 +138,5 @@ function update_leader(){
     }
     arrIndex = 0;
   }
-  checkInactive();
+  checkInactive(elapsedTime, this);
 }
