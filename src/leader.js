@@ -9,50 +9,16 @@ function sortLeaderboard(){
 }
 
 function create_leader(){
-  leaderExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
-  leaderExitButtonText = this.add.text(0, 0, "Hover to exit", {
-    font: 'bold 15px Arial',
-    fill: 'black',
-    wordWrap: {width: 600},
-    align: "left"
-  });
-  Phaser.Display.Align.In.Center(leaderExitButtonText, leaderExitButton);
-  leaderExitButton.setInteractive();
-  leaderExitButton.on('pointerdown', () => {
-    score = 0;
-    collegeName = null;
-    // userLocked = false;
-    collegeSelected = false;
-    timedEvent.remove();
-    this.scene.start('start_scene');
-  });
-  leaderExitButtonSuper = activateButton(
-    leaderExitButton,
-    leaderExitButtonText,
-    3,
-    () => {
-      score = 0;
-      // other reset stuff...
-      collegeName = null;
-      // userLocked = false;
-      collegeSelected = false;
-      timedEvent.remove();
-      this.scene.start('start_scene');
-    },
-    "Hover to exit",
-    "Exiting in ",
-    '0xffffff',
-    '0x808080'
-  );
+  this.exitButtonSuper = makeExitButton(this);
   sortLeaderboard();
-  text0 = this.add.text(width/2+250, 150, "Leaderboard",{ fontSize: 24 }).setOrigin(0.5,0.5);
+  text0 = this.add.text(width/2+scale(250), scale(150), "Leaderboard",{ fontSize: 24 }).setOrigin(0.5,0.5);
   // show the top 3 colleges in the leaderboard, currently placeholders
-  text1 = this.add.text(width/2+250, 200, "1. " + colleges[0].name + " " + colleges[0].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
-  text2 = this.add.text(width/2+250, 250, "2. " + colleges[1].name + " " + colleges[1].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
-  text3 = this.add.text(width/2+250, 300, "3. " + colleges[2].name + " " + colleges[2].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
-  playagain = this.add.rectangle(width/2+250, 400, 200, 40, '0x065929');
+  text1 = this.add.text(width/2+scale(250), scale(200), "1. " + colleges[0].name + " " + colleges[0].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
+  text2 = this.add.text(width/2+scale(250), scale(250), "2. " + colleges[1].name + " " + colleges[1].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
+  text3 = this.add.text(width/2+scale(250), scale(300), "3. " + colleges[2].name + " " + colleges[2].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
+  playagain = this.add.rectangle(width/2+scale(250), scale(400), scale(200), scale(40), '0x065929');
   playagain.setInteractive();
-  playtext = this.add.text(width/2+250, 400, "Play Again",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  playtext = this.add.text(width/2+scale(250), scale(400), "Play Again",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
 
   if (timedEvent) {
       timedEvent.remove();
@@ -85,7 +51,7 @@ function create_leader(){
       text: 'Thanks for playing!',
       origin: { x: 0.5, y: 0.5},
       style: {
-        font: 'bold 40px Arial',
+        font: 'bold ' + scale(40) + 'px Arial',
         fill: 'white',
         wordWrap: {width: 600},
         align: "left"
@@ -99,7 +65,7 @@ function update_leader(){
   updatePointers();
   let elapsedTime = timedEvent.getElapsedSeconds();
 
-  leaderExitButtonSuper.update(elapsedTime);
+  this.exitButtonSuper.update(elapsedTime);
   againSuper.update(elapsedTime);
 
   var graphics = this.add.graphics();
@@ -108,9 +74,9 @@ function update_leader(){
     // console.log(prevTime);
 
     //randomize position and size of circle
-    let x = Phaser.Math.Between(0, width/2+50);
-    let y = Phaser.Math.Between(height-350, height - 175);
-    let size = Phaser.Math.Between(10, 50);
+    let x = Phaser.Math.Between(0, width/2+scale(50));
+    let y = Phaser.Math.Between(height-scale(350), height - scale(175));
+    let size = Phaser.Math.Between(scale(10), scale(50));
 
     //randomize color
     let color = new Phaser.Display.Color();

@@ -21,7 +21,7 @@ function create_start () {
   this.startButton = this.add.rectangle(width/2 + scale(300), height - scale(75), scale(200), scale(100), "0xffffff");
   this.startButton.setInteractive();
   this.startButtonText = this.add.text(0, 0, "Hover to start", {
-    font: 'bold 20px Arial',
+    font: 'bold ' + scale(20) + 'px Arial',
     fill: 'black',
     wordWrap: {width: 600},
     align: "left"
@@ -51,11 +51,11 @@ function create_start () {
   this.make.text({
     x: scale(30),
     y: scale(30),
-    text: 'Test your reaction time in 30 seconds and take your residential college to the top!',
+    text: 'Test your reaction time in 30 seconds and add to your residential college\'s score!',
     style: {
-      font: 'bold 40px Arial',
+      font: 'bold ' + scale(40) + 'px Arial',
       fill: 'white',
-      wordWrap: {width: 600},
+      wordWrap: {width: scale(600)},
       align: "left"
     }
   });
@@ -80,9 +80,9 @@ function create_start () {
       "Your hand(s) will be represented as small, yellow circles",
     ].join("\n\n"),
     style: {
-        font: '20px Arial',
+        font: 'bold ' + scale(20) + 'px Arial',
         fill: 'white',
-        wordWrap: {width: 600},
+        wordWrap: {width: scale(600)},
         align: "left"
     }
 });
@@ -98,7 +98,7 @@ this.make.text({
     "..."
   ].join("\n"),
   style: {
-      font: '24px Arial',
+      font: 'bold ' + scale(24) + 'px Arial',
       fill: 'white',
       wordWrap: {width: 600},
       align: "left"
@@ -124,7 +124,7 @@ function update_start () {
     //randomize position and size of circle
     let x = Phaser.Math.Between(0, width);
     let y = Phaser.Math.Between(height-scale(350), height - scale(175));
-    let size = Phaser.Math.Between(10, 50);
+    let size = Phaser.Math.Between(scale(10), scale(50));
 
     //randomize color
     let color = new Phaser.Display.Color();

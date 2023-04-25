@@ -35,49 +35,28 @@ function getScore(ofName){
 
 function updateScore(ofName, scoretoAdd){
   for (var i = 0; i < colleges.length; i++){
-    console.log(i);
-    console.log(colleges[i]);
     if (colleges[i].name == ofName){
       console.log("og score " + colleges[i].score);
       if (scoretoAdd > 0) {
         colleges[i].score += scoretoAdd;
       }
       console.log("new score " + colleges[i].score);
+      return;
     }
   }
+  return;
 }
 
 function create_confirmcollege(){
-  this.exitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
-  this.exitButtonText = this.add.text(0, 0, "Hover to exit", {
-    font: 'bold 15px Arial',
-    fill: 'black',
-    wordWrap: {width: 600},
-    align: "left"
-  });
-  Phaser.Display.Align.In.Center(this.exitButtonText, this.exitButton);
-  this.exitButtonSuper = activateButton(
-    this.exitButton,
-    this.exitButtonText,
-    3,
-    () => {
-      this.scene.start('start_scene');
-    },
-    "Hover to exit",
-    "Exiting in ",
-    '0xffffff',
-    '0x808080'
-  )
+  this.exitButtonSuper = makeExitButton(this);
 
-  this.text0 = this.add.text(width/2, 100, "Confirm that you are adding your",{ fontSize: 24 }).setOrigin(0.5,0.5);
+  this.text0 = this.add.text(width/2, scale(100), "Confirm that you are adding your",{ fontSize: scale(24) }).setOrigin(0.5,0.5);
   //this.text1 = this.add.text(width/2, 150, "score of " + score.toString() + " to " + colleges[collegeName].name,{ fontSize: 24 }).setOrigin(0.5,0.5);
-  this.text1 = this.add.text(width/2, 150, "score of " + score.toString() + " to " + collegeName,{ fontSize: 24 }).setOrigin(0.5,0.5);
-  this.accept = this.add.rectangle(width/2 - 200, 250, 250, 40, '0x004b63');
-  this.acceptText = this.add.text(width/2 - 200, 250, "Yes, add score",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  this.accept.setInteractive();
-  this.goBack = this.add.rectangle(width/2 + 200, 250, 250, 40, '0x540133');
-  this.goBackText = this.add.text(width/2 + 200, 250, "No, choose another",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  this.goBack.setInteractive();
+  this.text1 = this.add.text(width/2, scale(150), "score of " + score.toString() + " to " + collegeName,{ fontSize: scale(24) }).setOrigin(0.5,0.5);
+  this.accept = this.add.rectangle(width/2 - scale(200), scale(250), scale(250), scale(40), '0x004b63');
+  this.acceptText = this.add.text(width/2 - scale(200), scale(250), "Yes, add score",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  this.goBack = this.add.rectangle(width/2 + scale(200), scale(250), scale(250), scale(40), '0x540133');
+  this.goBackText = this.add.text(width/2 + scale(200), scale(250), "No, choose another",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
 
   if (timedEvent) {
     timedEvent.remove();

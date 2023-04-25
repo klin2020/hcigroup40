@@ -48,6 +48,8 @@ function checkInactive(time, scene) {
       scene.inactiveText = scene.add.text(0, 0, 'User has left the screen\nRestarting in ' + inactiveTimeLimit);
       Phaser.Display.Align.In.Center(scene.inactiveText, scene.inactiveAlert);
     }
+  } else {
+    inactiveStartTime = null;
   }
 }
 
@@ -91,8 +93,8 @@ function activateButton(button, text, timeLimit, callback, textDefault, textOn, 
 
 function circleOnRect(circle, rect) {
   if (
-    (circle.x > rect.x - rect.width/2 && circle.x < rect.x + rect.width/2) &&
-    (circle.y < rect.y + rect.height/2 && circle.y > rect.y - rect.height/2)
+    (circle.x > rect.x - rect.width/2 - circle.radius && circle.x < rect.x + rect.width/2 + circle.radius) &&
+    (circle.y < rect.y + rect.height/2 + circle.radius && circle.y > rect.y - rect.height/2 - circle.radius)
   ) {
     return true;
   }
@@ -111,4 +113,27 @@ var largeText = {
   fill: 'white',
   align: "left",
   wordWrap: {width: 600},
+}
+
+function makeExitButton (game) {
+  game.exitButton = game.add.rectangle(scale(75), scale(50), scale(100), scale(50), "0xffffff");
+  game.exitButtonText = game.add.text(0, 0, "Hover to exit", {
+    font: 'bold ' + scale(15) + 'px Arial',
+    fill: 'black',
+    wordWrap: {width: 600},
+    align: "left"
+  });
+  Phaser.Display.Align.In.Center(game.exitButtonText, game.exitButton);
+  return activateButton(
+    game.exitButton,
+    game.exitButtonText,
+    3,
+    () => {
+      game.scene.start('start_scene');
+    },
+    "Hover to exit",
+    "Exiting in ",
+    '0xffffff',
+    '0x808080'
+  )
 }

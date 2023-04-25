@@ -23,7 +23,7 @@ var leftHand_y = null;
 var activeBodyId = null;
 var userLocked = false; // whether user playing the game has been chosen; this locks when start button is activated
 var userInactive = false; // restart if true
-var inactiveTimeLimit = 3; // can't actually return if you leave
+var inactiveTimeLimit = 5; // can't actually return if you leave
 var inactiveStartTime = null;
 
 /**
@@ -84,6 +84,8 @@ var frames = {
       if (user === undefined) {
         // console.log('active body has left the screen. Restarting');
         userInactive = true;
+      } else {
+        userInactive = false;
       }
     } else {
       user = frame.people.reduce(function(prev, current) {

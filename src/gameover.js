@@ -12,65 +12,44 @@ var collegeName;
 var timedEvent;
 
 function create_gameover () {
-  this.overExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
-  this.overExitButtonText = this.add.text(0, 0, "Hover to exit", {
-    font: 'bold 15px Arial',
-    fill: 'black',
-    wordWrap: {width: 600},
-    align: "left"
-  });
-  Phaser.Display.Align.In.Center(this.overExitButtonText, this.overExitButton);
-  this.overExitButtonSuper = activateButton(
-    this.overExitButton,
-    this.overExitButtonText,
-    3,
-    () => {
-      // other reset stuff...
-      collegeName = null;
-      // userLocked = false;
-      // collegeSelected = false;
-      timedEvent.remove();
-      this.scene.start('start_scene');
-    },
-    "Hover to exit",
-    "Exiting in ",
-    '0xffffff',
-    '0x808080'
-  );
+  this.exitButtonSuper = makeExitButton(this);
 
-  text0 = this.add.text(width/2, 99, "Thanks for Playing!" + " Score: " + score.toString(),{ fontSize: 24 }).setOrigin(0.5,0.5);
-  // text1 = this.add.text(width/2 - 200, height/2 + 50, " Score: " + score.toString(),{ fontSize: 24 }).setOrigin(0.5,0.5);
-  //text2 = this.add.text(width/2, 250, "Click to Play Again",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  text3 = this.add.text(width/2, 150, "Choose Your College To Add Your Score!",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  text33 = this.add.text(width/2, 200, "Hold your hand over your college for 3 seconds",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  rect4 = this.add.rectangle(width/2 - 250, 250, 250, 20, '0x00bfff');
-  text4 = this.add.text(width/2 - 250, 250, "Branford",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect5 = this.add.rectangle(width/2 - 250, 290, 250, 20, '0x00bfff');
-  text5 = this.add.text(width/2 - 250, 290, "Davenport",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect6 = this.add.rectangle(width/2 - 250, 330, 250, 20, '0x00bfff');
-  text6 = this.add.text(width/2 - 250, 330, "Jonathan Edwards",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect7 = this.add.rectangle(width/2 - 250, 370, 250, 20, '0x00bfff');
-  text7 = this.add.text(width/2 - 250, 370, "Pierson",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect8 = this.add.rectangle(width/2 - 250, 410, 250, 20, '0x00bfff');
-  text8 = this.add.text(width/2 - 250, 410, "Saybrook",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect9 = this.add.rectangle(width/2 - 250, 450, 250, 20, '0x00bfff');
-  text9 = this.add.text(width/2 - 250, 450, "Stiles",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect10 = this.add.rectangle(width/2 - 250, 490, 250, 20, '0x00bfff');
-  text10 = this.add.text(width/2 - 250, 490, "Timothy Dwight",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect11 = this.add.rectangle(width/2 + 250, 250, 250, 20, '0x00bfff');
-  text11 = this.add.text(width/2 + 250, 250, "Trumbull",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect12 = this.add.rectangle(width/2 + 250, 290, 250, 20, '0x00bfff');
-  text12 = this.add.text(width/2 + 250, 290, "Grace Hopper",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect13 = this.add.rectangle(width/2 + 250, 330, 250, 20, '0x00bfff');
-  text13 = this.add.text(width/2 + 250, 330, "Pauli Murray",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect14 = this.add.rectangle(width/2 + 250, 370, 250, 20, '0x00bfff');
-  text14 = this.add.text(width/2 + 250, 370, "Silliman",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect15 = this.add.rectangle(width/2 + 250, 410, 250, 20, '0x00bfff');
-  text15 = this.add.text(width/2 + 250, 410, "Franklin",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect16 = this.add.rectangle(width/2 + 250, 450, 250, 20, '0x00bfff');
-  text16 = this.add.text(width/2 + 250, 450, "Morse",{ fontSize: 18 }).setOrigin(0.5,0.5);
-  rect17 = this.add.rectangle(width/2 + 250, 490, 250, 20, '0x00bfff');
-  text17 = this.add.text(width/2 + 250, 490, "Berkeley",{ fontSize: 18 }).setOrigin(0.5,0.5);
+  let buttonWidth = scale(250);
+  let buttonHeight = scale(20);
+
+  text0 = this.add.text(width/2, scale(99), "Thanks for Playing!" + " Score: " + score.toString(),{ fontSize: scale(24) }).setOrigin(0.5,0.5);
+  // text1 = this.add.text(width/2 - 200, height/2 + 50, " Score: " + score.toString(),{ fontSize: scale(24) }).setOrigin(0.5,0.5);
+  //text2 = this.add.text(width/2, 250, "Click to Play Again",{ fontSize: scale(24) }).setOrigin(0.5,0.5);
+  text3 = this.add.text(width/2, scale(150), "Choose Your College To Add Your Score!",{ fontSize: scale(24) }).setOrigin(0.5,0.5);
+  text31 = this.add.text(width/2, scale(200), "Hold your hand over your college for 3 seconds",{ fontSize: scale(24) }).setOrigin(0.5,0.5);
+  rect4 = this.add.rectangle(width/2 - scale(250), scale(250), buttonWidth, buttonHeight, '0x00bfff');
+  text4 = this.add.text(width/2 - scale(250), scale(250), "Branford",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect5 = this.add.rectangle(width/2 - scale(250), scale(290), buttonWidth, buttonHeight, '0x00bfff');
+  text5 = this.add.text(width/2 - scale(250), scale(290), "Davenport",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect6 = this.add.rectangle(width/2 - scale(250), scale(330), buttonWidth, buttonHeight, '0x00bfff');
+  text6 = this.add.text(width/2 - scale(250), scale(330), "Jonathan Edwards",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect7 = this.add.rectangle(width/2 - scale(250), scale(370), buttonWidth, buttonHeight, '0x00bfff');
+  text7 = this.add.text(width/2 - scale(250), scale(370), "Pierson",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect8 = this.add.rectangle(width/2 - scale(250), scale(410), buttonWidth, buttonHeight, '0x00bfff');
+  text8 = this.add.text(width/2 - scale(250), scale(410), "Saybrook",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect9 = this.add.rectangle(width/2 - scale(250), scale(450), buttonWidth, buttonHeight, '0x00bfff');
+  text9 = this.add.text(width/2 - scale(250), scale(450), "Stiles",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect10 = this.add.rectangle(width/2 - scale(250), scale(490), buttonWidth, buttonHeight, '0x00bfff');
+  text10 = this.add.text(width/2 - scale(250), scale(490), "Timothy Dwight",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect11 = this.add.rectangle(width/2 + scale(250), scale(250), buttonWidth, buttonHeight, '0x00bfff');
+  text11 = this.add.text(width/2 + scale(250), scale(250), "Trumbull",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect12 = this.add.rectangle(width/2 + scale(250), scale(290), buttonWidth, buttonHeight, '0x00bfff');
+  text12 = this.add.text(width/2 + scale(250), scale(290), "Grace Hopper",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect13 = this.add.rectangle(width/2 + scale(250), scale(330), buttonWidth, buttonHeight, '0x00bfff');
+  text13 = this.add.text(width/2 + scale(250), scale(330), "Pauli Murray",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect14 = this.add.rectangle(width/2 + scale(250), scale(370), buttonWidth, buttonHeight, '0x00bfff');
+  text14 = this.add.text(width/2 + scale(250), scale(370), "Silliman",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect15 = this.add.rectangle(width/2 + scale(250), scale(410), buttonWidth, buttonHeight, '0x00bfff');
+  text15 = this.add.text(width/2 + scale(250), scale(410), "Franklin",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect16 = this.add.rectangle(width/2 + scale(250), scale(450), buttonWidth, buttonHeight, '0x00bfff');
+  text16 = this.add.text(width/2 + scale(250), scale(450), "Morse",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
+  rect17 = this.add.rectangle(width/2 + scale(250), scale(490), buttonWidth, buttonHeight, '0x00bfff');
+  text17 = this.add.text(width/2 + scale(250), scale(490), "Berkeley",{ fontSize: scale(18) }).setOrigin(0.5,0.5);
 
 
   // first half of colleges
@@ -184,7 +163,7 @@ function update_gameover () {
   // on click methods mainly for testing
   // update method needed for kinect to detect 3 second hovering for confirm button
 
-  this.overExitButtonSuper.update(elapsedTime);
+  this.exitButtonSuper.update(elapsedTime);
   rect4Super.update(elapsedTime);
   rect5Super.update(elapsedTime);
   rect6Super.update(elapsedTime);

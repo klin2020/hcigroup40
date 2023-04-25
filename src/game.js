@@ -21,32 +21,12 @@ function create_game () {
     timedEvent.remove();
   }
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
-  this.gameExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
-  this.gameExitButtonText = this.add.text(0, 0, "Hover to exit", mediumText);
-  Phaser.Display.Align.In.Center(this.gameExitButtonText, this.gameExitButton);
-  this.gameExitButtonSuper = activateButton(
-    this.gameExitButton,
-    this.gameExitButtonText,
-    3,
-    () => {
-      score = 0;
-      // other reset stuff...
-      //collegeName = null;
-      // userLocked = false;
-      // collegeSelected = false;
-      timedEvent.remove();
-      this.scene.start('start_scene');
-    },
-    "Hover to exit",
-    "Exiting in ",
-    '0xffffff',
-    '0x808080'
-  );
+  this.exitButtonSuper = makeExitButton(this);
 
-  this.timeText = this.add.text(scale(300), scale(50), "",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  this.scoreText = this.add.text(scale(800), scale(50), "",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  this.helpText = this.add.text(width/2, height - scale(60), "Hit the circles! Avoid the squares!").setOrigin(0.5,0.5)
-  this.expText = this.add.text(width/2, height - scale(30), "").setOrigin(0.5,0.5);
+  this.timeText = this.add.text(width/2, scale(50), "",{ fontSize: scale(24) }).setOrigin(0.5,0.5);
+  this.scoreText = this.add.text(scale(800), scale(50), "",{ fontSize: scale(24) }).setOrigin(0.5,0.5);
+  this.helpText = this.add.text(width/2, height - scale(60), "Hit the circles! Avoid the squares!", {fontSize: scale(15)}).setOrigin(0.5,0.5)
+  this.expText = this.add.text(width/2, height - scale(30), "", {fontSize: scale(15)}).setOrigin(0.5,0.5);
   score = 0;
   this.shape = null;
   this.badShape = null;
@@ -69,15 +49,17 @@ function update_game () {
       score += 100;
       respawnShape(this);
       this.expText.setText("Nice! +100")
-      this.expText.setColor("0x00ff00")
+      this.expText.setColor("#00ff00")
     }
 
     if (circleOnRect(pointer, this.badShape) || circleOnRect(leftPointer, this.badShape)) {
       console.log('OOPS');
-      score -= 100;
+      if (score >= 100) {
+        score -= 100;
+      }
       respawnShape(this);
       this.expText.setText("Oh No! -100")
-      this.expText.setColor("0xff0000")
+      this.expText.setColor("#ff0000")
     }
   }
 
@@ -85,7 +67,7 @@ function update_game () {
     this.scene.start('gameover_scene');
   }
   checkInactive(elapsedTime, this);
-  this.gameExitButtonSuper.update();
+  this.exitButtonSuper.update();
 }
 
 function updatePointer(p, x, y) {
@@ -144,7 +126,9 @@ function respawnShape(game) {
   game.badShape.setInteractive();
   //testing
   game.badShape.on('pointerdown', function () {
-    score -= 100;
+    if (score >= 100) {
+      score -= 100;
+    }
     respawnShape(game);
     game.expText.setText("Oh no! -100")
     game.expText.setColor("#ff0000")
