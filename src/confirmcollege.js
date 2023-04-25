@@ -4,6 +4,8 @@ var confirmcollege_scene = {
     update: update_confirmcollege,
 };
 
+//var colleges;
+//parseLeaderboard();
 var colleges = [
   { name: "Branford", score: 0 },
   { name: "Berkeley", score: 0 },
@@ -19,7 +21,19 @@ var colleges = [
   { name: "Ezra Stiles", score: 0 },
   { name: "Timothy Dwight", score: 0 },
   { name: "Trumbull", score: 0 },
-  ];
+];
+
+function sortLeaderboard(){
+  colleges.sort(function(a, b){return b.score-a.score});
+}
+
+function getScore(ofName){
+  for (var i = 0; i < colleges.length; i++){
+    if (colleges[i].name == ofName){
+      return colleges[i].score;
+    }
+  }
+}
 
 function create_confirmcollege(){
   this.exitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
@@ -44,31 +58,14 @@ function create_confirmcollege(){
   )
 
   this.text0 = this.add.text(width/2, 100, "Confirm that you are adding your",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  this.text1 = this.add.text(width/2, 150, "score of " + score.toString() + " to " + colleges[collegeName].name,{ fontSize: 24 }).setOrigin(0.5,0.5);
+  //this.text1 = this.add.text(width/2, 150, "score of " + score.toString() + " to " + colleges[collegeName].name,{ fontSize: 24 }).setOrigin(0.5,0.5);
+  this.text1 = this.add.text(width/2, 150, "score of " + score.toString() + " to " + collegeName,{ fontSize: 24 }).setOrigin(0.5,0.5);
   this.accept = this.add.rectangle(width/2 - 200, 250, 250, 40, '0x004b63');
   this.acceptText = this.add.text(width/2 - 200, 250, "Yes, add score",{ fontSize: 18 }).setOrigin(0.5,0.5);
   this.accept.setInteractive();
   this.goBack = this.add.rectangle(width/2 + 200, 250, 250, 40, '0x540133');
   this.goBackText = this.add.text(width/2 + 200, 250, "No, choose another",{ fontSize: 18 }).setOrigin(0.5,0.5);
   this.goBack.setInteractive();
-
-  // game.load.image("berk", "../images/berk.png");
-  // game.add.sprite(100, 100, "berk");
-
-  this.accept.on('pointerdown', () => {
-      // add score to college
-      console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
-      colleges[collegeName].score += score;
-      console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
-      //upload to leaderboard...
-      this.scene.start('leader_scene', leader_scene);
-  });
-  this.goBack.on('pointerdown', () => {
-    console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
-    collegeSelected = false;
-    collegeName = null;
-    this.scene.start('gameover_scene', gameover_scene);
-  });
 
   if (timedEvent) {
     timedEvent.remove();
@@ -77,14 +74,16 @@ function create_confirmcollege(){
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
 
   this.acceptSuper = activateButton(this.accept, this.acceptText, 3, () => {
-    console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
-    colleges[collegeName].score += score;
-    console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
+    console.log(collegeName + " " + getScore(collegeName) + " score " + score);
+    var currentScore = getScore(collegeName);
+    currentScore += score; // LOCAL STORAGE, MIGHT NEED TO CHANGE LATER ON IF WE WANNA DO FLASK
+    colleges[collegeName].score = currentScore;
+    console.log(collegeName + " " + getScore(collegeName));
     //upload to leaderboard...
     this.scene.start('leader_scene', leader_scene);
   }, "Yes, add score", "Adding in ", '0x00bfff', '0x004b63');
   this.goBackSuper = activateButton(this.goBack, this.goBackText, 3, () => {
-    console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
+    //console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
     collegeSelected = false;
     collegeName = null;
     this.scene.start('gameover_scene', gameover_scene);
