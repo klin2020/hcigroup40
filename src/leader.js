@@ -57,7 +57,8 @@ function sortLeaderboard(){
 }
 
 function create_leader(){
-    text0 = this.add.text(width/2+250, 150, "Leaderboard",{ fontSize: 24 }).setOrigin(0.5,0.5);
+  sortLeaderboard();  
+  text0 = this.add.text(width/2+250, 150, "Leaderboard",{ fontSize: 24 }).setOrigin(0.5,0.5);
     // show the top 3 colleges in the leaderboard, currently placeholders
     text1 = this.add.text(width/2+250, 200, "1. " + colleges[0].name + " " + colleges[0].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
     text2 = this.add.text(width/2+250, 250, "2. " + colleges[1].name + " " + colleges[1].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
@@ -141,7 +142,7 @@ function update_leader(){
       // console.log(prevTime);
 
       //randomize position and size of circle
-      let x = Phaser.Math.Between(0, width/2+150);
+      let x = Phaser.Math.Between(0, width/2+50);
       let y = Phaser.Math.Between(height-350, height - 175);
       let size = Phaser.Math.Between(10, 50);
 

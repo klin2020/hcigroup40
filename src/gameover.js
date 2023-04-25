@@ -84,72 +84,86 @@ function create_gameover () {
 
   rect4Super = activateButton(rect4, text4, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 0;
+    //collegeName = 0;
+    collegeName = "Branford";
     this.scene.start('confirmcollege_scene');
   }, "Branford", "Branford in ", '0x00bfff', '0x004b63');
   rect5Super = activateButton(rect5, text5, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 2;
+    //collegeName = 2;
+    collegeName = "Davenport";
     this.scene.start('confirmcollege_scene');
   }, "Davenport", "Davenport in ", '0x00bfff', '0x004b63');
   rect6Super = activateButton(rect6, text6, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 5;
+    //collegeName = 5;
+    collegeName = "Jonathan Edwards";
     this.scene.start('confirmcollege_scene');
   }, "Jonathan Edwards", "Jonathan Edwards in ", '0x00bfff', '0x004b63');
   rect7Super = activateButton(rect7, text7, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 8;
+    //collegeName = 8;
+    collegeName = "Pierson";
     this.scene.start('confirmcollege_scene');
   }, "Pierson", "Pierson in ", '0x00bfff', '0x004b63');
   rect8Super = activateButton(rect8, text8, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 9;
+    //collegeName = 9;
+    collegeName = "Saybrook";
     this.scene.start('confirmcollege_scene');
   }, "Saybrook", "Saybrook in ", '0x00bfff', '0x004b63');
   rect9Super = activateButton(rect9, text9, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 11;
+    //collegeName = 11;
+    collegeName = "Stiles";
     this.scene.start('confirmcollege_scene');
   }, "Stiles", "Stiles in ", '0x00bfff', '0x004b63');
   rect10Super = activateButton(rect10, text10, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 12;
+    //collegeName = 12;
+    collegeName = "Timothy Dwight";
     this.scene.start('confirmcollege_scene');
   }, "Timothy Dwight", "Timothy Dwight in ", '0x00bfff', '0x004b63');
   rect11Super = activateButton(rect11, text11, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 13;
+    //collegeName = 13;
+    collegeName = "Trumbull";
     this.scene.start('confirmcollege_scene');
   }, "Trumbull", "Trumbull in ", '0x00bfff', '0x004b63');
   rect12Super = activateButton(rect12, text12, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 4;
+    //collegeName = 4;
+    collegeName = "Grace Hopper";
     this.scene.start('confirmcollege_scene');
   }, "Grace Hopper", "Grace Hopper in ", '0x00bfff', '0x004b63');
   rect13Super = activateButton(rect13, text13, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 7;
+    //collegeName = 7;
+    collegeName = "Pauli Murray";
     this.scene.start('confirmcollege_scene');
   }, "Pauli Murray", "Pauli Murray in ", '0x00bfff', '0x004b63');
   rect14Super = activateButton(rect14, text14, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 10;
+    //collegeName = 10;
+    collegeName = "Silliman";
     this.scene.start('confirmcollege_scene');
   }, "Silliman", "Silliman in ", '0x00bfff', '0x004b63');
   rect15Super = activateButton(rect15, text15, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 3;
+    //collegeName = 3;
+    collegeName = "Franklin";
     this.scene.start('confirmcollege_scene');
   }, "Franklin", "Franklin in ", '0x00bfff', '0x004b63');
   rect16Super = activateButton(rect16, text16, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 6;
+    //collegeName = 6;
+    collegeName = "Morse";
     this.scene.start('confirmcollege_scene');
   }, "Morse", "Morse in ", '0x00bfff', '0x004b63');
   rect17Super = activateButton(rect17, text17, 3, () => {
     collegeSelected = true; //user playing game is locked in
-    collegeName = 1;
+    //collegeName = 1;
+    collegeName = "Berkeley";
     this.scene.start('confirmcollege_scene');
   }, "Berkeley", "Berkeley in ", '0x00bfff', '0x004b63');
   initializePointers(this);
