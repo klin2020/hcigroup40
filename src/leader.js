@@ -50,11 +50,15 @@ leaderExitButtonSuper = activateButton(
   '0xffffff',
   '0x808080'
 );
-  }
+}
+
+function sortLeaderboard(){
+    colleges.sort(function(a, b){return b.score-a.score});
+}
 
 function create_leader(){
     text0 = this.add.text(width/2+250, 150, "Leaderboard",{ fontSize: 24 }).setOrigin(0.5,0.5);
-    // show the top 3 colleges in the leaderboard
+    // show the top 3 colleges in the leaderboard, currently placeholders
     text1 = this.add.text(width/2+250, 200, "1. " + colleges[0].name + " " + colleges[0].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
     text2 = this.add.text(width/2+250, 250, "2. " + colleges[1].name + " " + colleges[1].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
     text3 = this.add.text(width/2+250, 300, "3. " + colleges[2].name + " " + colleges[2].score,{ fontSize: 24 }).setOrigin(0.5,0.5);
