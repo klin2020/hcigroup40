@@ -62,18 +62,57 @@ function create_start () {
     }
   });
 
+  // this.make.text({
+  //   x: width/2 - 150,
+  //   y: height - 50,
+  //   text: 'Raise your hand to the rectangle to begin',
+  //   origin: { x: 0.5, y: 0.5},
+  //   style: {
+  //     font: 'bold 30px Arial',
+  //     fill: 'white',
+  //     wordWrap: {width: 600},
+  //     align: "left"
+  //   }
+  // });
   this.make.text({
-    x: width/2 - 150,
-    y: height - 50,
-    text: 'Raise your hand to the rectangle to begin',
-    origin: { x: 0.5, y: 0.5},
+    x: scale(50),
+    y: scale(height - 100),
+    text: [
+      "Raise your hand to the rectangle to begin",
+      "Your hand(s) will be represented as small, yellow circles",
+    ].join("\n\n"),
     style: {
-      font: 'bold 30px Arial',
+        font: '20px Arial',
+        fill: 'white',
+        wordWrap: {width: 600},
+        align: "left"
+    }
+});
+
+this.make.text({
+  x: scale(width/2+200),
+  y: scale(30),
+  text: [
+    "Leaderboard",
+    "1. " + colleges[0].name + " " + colleges[0].score,
+    "2. " + colleges[1].name + " " + colleges[1].score,
+    "3. " + colleges[2].name + " " + colleges[2].score,
+    "..."
+  ].join("\n"),
+  style: {
+      font: '24px Arial',
       fill: 'white',
       wordWrap: {width: 600},
       align: "left"
-    }
-  });
+  }
+});
+
+// text0 = this.add.text(width/2+250, 50, "Leaderboard",{ fontSize: 24 }).setOrigin(0.5,0.5);
+// // show the top 3 colleges in the leaderboard, currently placeholders
+// text1 = this.add.text(width/2+250,  80, "1. " + colleges[0].name + " " + colleges[0].score,{ fontSize: 24, align: "left" }).setOrigin(0.5,0.5);
+// text2 = this.add.text(width/2+250, 110, "2. " + colleges[1].name + " " + colleges[1].score,{ fontSize: 24, align: "left" }).setOrigin(0.5,0.5);
+// text3 = this.add.text(width/2+250, 140, "3. " + colleges[2].name + " " + colleges[2].score,{ fontSize: 24, align: "left" }).setOrigin(0.5,0.5);
+
 
   // reset inactive issues
   resetInactive();

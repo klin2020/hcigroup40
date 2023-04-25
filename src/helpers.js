@@ -16,8 +16,8 @@ function updatePointer(p, x, y) {
 }
 
 function initializePointers(game) {
-  pointer = game.add.circle(-50, 0, 10, '0xff0000');
-  leftPointer = game.add.circle(-50, 0, 10, '0x00ff00');
+  pointer = game.add.circle(-50, 0, 10, '0xffff00');
+  leftPointer = game.add.circle(-50, 0, 10, '0xffff00');
 }
 
 /**
