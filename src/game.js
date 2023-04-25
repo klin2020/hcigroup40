@@ -46,7 +46,7 @@ function create_game () {
   this.timeText = this.add.text(300, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
   this.scoreText = this.add.text(800, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
   this.helpText = this.add.text(width/2, height - scale(100), "Hit the circles! Avoid the squares!").setOrigin(0.5,0.5)
-  this.expText = this.add.text(width/2, height - scale(50), "Boom").setOrigin(0.5,0.5);
+  this.expText = this.add.text(width/2, height - scale(50), "").setOrigin(0.5,0.5);
   score = 0;
   this.shape = null;
   this.badShape = null;

@@ -98,72 +98,8 @@ function update_confirmcollege(){
   updatePointers();
   // 90 seconds to choose a college or reset
   let elapsedTime = timedEvent.getElapsedSeconds();
-  // let timeLeft = timeLimit - elapsedTimecc;
-  // if (timeLeft <= 0) {
-  //     score = 0;
-  //     // other reset stuff...
-  //     this.scene.start('start_scene');
-  // }
-
-  if (hand_x) {
-    // console.log('updating hand');
-    // console.log(hand_x);
-    // console.log(hand_y);
-    updatePointer(pointer, width - hand_x, hand_y);
-    updatePointer(leftPointer, width - leftHand_x, leftHand_y);
-  }
 
   this.exitButtonSuper.update(elapsedTime);
   this.acceptSuper.update(elapsedTime);
   this.goBackSuper.update(elapsedTime);
 }
-
-function parseLeaderboard() { // does not work
-    // show the top 3 colleges in the leaderboard
-    // var leaderboard = [];
-    // var colleges = require('../leaderboard.json');
-    // // var first = obj[0].name;
-    // // var second = obj[1].name;
-    // // var third = obj[2].name;
-    // // for(var i = 0; i < obj.length; i++) {
-    // //     console.log(obj[i].name + " " + obj[i].score);
-
-    // // }
-    // colleges.sort(function(a, b) {
-    //     return b.score - a.score;
-    // });
-    // // for(var i = 0; i < colleges.length; i++) {
-    // //     //obj[i].name + " " + obj[i].score
-    // //     leaderboard.push({name: colleges[i].name, score: colleges[i].score});
-    // // }
-    // // console.log(leaderboard);
-    // // return leaderboard;
-    // console.log(colleges);
-    // return colleges;
-      // Load the JSON data from the file using an HTTP request
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', '../leaderboard.json', true);
-    xhr.onload = function() {
-      // Parse the JSON data into a JavaScript object
-      const data = JSON.parse(xhr.responseText);
-      colleges = data;
-      console.log(data);
-      console.log(colleges);
-      //console.log(data[0].name);
-      console.log(collegeName);
-
-      // Convert the JavaScript object back to JSON format
-      const json = JSON.stringify(data);
-
-      // Write the updated JSON data back to the file using an HTTP request
-      const xhr2 = new XMLHttpRequest();
-      xhr2.open('PUT', '../leaderboard.json', true);
-      xhr2.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-      xhr2.onload = function() {
-        console.log('JSON data updated successfully');
-      };
-      xhr2.send(json);
-    };
-    xhr.send();
-
-  }
