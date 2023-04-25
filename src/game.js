@@ -45,8 +45,8 @@ function create_game () {
 
   this.timeText = this.add.text(300, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
   this.scoreText = this.add.text(800, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  this.helpText = this.add.text(width/2, height - scale(100), "Hit the circles! Avoid the squares!").setOrigin(0.5,0.5)
-  this.expText = this.add.text(width/2, height - scale(50), "Boom").setOrigin(0.5,0.5);
+  this.helpText = this.add.text(width/2, height - scale(60), "Hit the circles! Avoid the squares!").setOrigin(0.5,0.5)
+  this.expText = this.add.text(width/2, height - scale(30), "").setOrigin(0.5,0.5);
   score = 0;
   this.shape = null;
   this.badShape = null;
@@ -77,7 +77,7 @@ function update_game () {
       score -= 100;
       respawnShape(this);
       this.expText.setText("Oh No! -100")
-      this.expText.setColor('0xff0000')
+      this.expText.setColor("0xff0000")
     }
   }
 
@@ -108,7 +108,7 @@ function respawnShape(game) {
   {
     console.log('generating');
     x = Phaser.Math.Between(50, width-50);
-    y = Phaser.Math.Between(250, height-scale(150));
+    y = Phaser.Math.Between(250, height-scale(100));
   }
   lastShapeX = x;
   lastShapeY = y;
@@ -124,7 +124,7 @@ function respawnShape(game) {
     score += 100
     respawnShape(game)
     game.expText.setText("Nice! +100")
-    // game.expText.setColor("0x00ff00")
+    game.expText.setColor("#00ff00")
   });
 
   let x1 = Phaser.Math.Between(50, width-50);
@@ -146,7 +146,7 @@ function respawnShape(game) {
   game.badShape.on('pointerdown', function () {
     score -= 100;
     respawnShape(game);
-    game.expText.setText("Oh No! -100")
-    // game.expText.setColor('0xff0000')
+    game.expText.setText("Oh no! -100")
+    game.expText.setColor("#ff0000")
   });
 }
