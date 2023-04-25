@@ -95,28 +95,27 @@ function create_confirmcollege(){
 }
 
 function update_confirmcollege(){
-    // 90 seconds to choose a college or reset
-    let elapsedTime = timedEvent.getElapsedSeconds();
-    // let timeLeft = timeLimit - elapsedTimecc;
-    // if (timeLeft <= 0) {
-    //     score = 0;
-    //     // other reset stuff...
-    //     this.scene.start('start_scene');
-    // }
+  updatePointers();
+  // 90 seconds to choose a college or reset
+  let elapsedTime = timedEvent.getElapsedSeconds();
+  // let timeLeft = timeLimit - elapsedTimecc;
+  // if (timeLeft <= 0) {
+  //     score = 0;
+  //     // other reset stuff...
+  //     this.scene.start('start_scene');
+  // }
 
-    updatePointers();
+  if (hand_x) {
+    // console.log('updating hand');
+    // console.log(hand_x);
+    // console.log(hand_y);
+    updatePointer(pointer, width - hand_x, hand_y);
+    updatePointer(leftPointer, width - leftHand_x, leftHand_y);
+  }
 
-    if (hand_x) {
-      // console.log('updating hand');
-      // console.log(hand_x);
-      // console.log(hand_y);
-      updatePointer(pointer, width - hand_x, hand_y);
-      updatePointer(leftPointer, width - leftHand_x, leftHand_y);
-    }
-
-    this.exitButtonSuper.update(elapsedTime);
-    this.acceptSuper.update(elapsedTime);
-    this.goBackSuper.update(elapsedTime);
+  this.exitButtonSuper.update(elapsedTime);
+  this.acceptSuper.update(elapsedTime);
+  this.goBackSuper.update(elapsedTime);
 }
 
 function parseLeaderboard() { // does not work

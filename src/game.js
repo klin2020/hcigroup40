@@ -56,7 +56,7 @@ function create_game () {
 
 
 function update_game () {
-  console.log('update');
+  updatePointers();
   // update timer
   let elapsedTime = timedEvent.getElapsedSeconds();
   let timeLeft = timeLimit - elapsedTime;
@@ -64,9 +64,6 @@ function update_game () {
   this.scoreText.setText('Score: ' + score.toString());
 
   if (hand_x) {
-    updatePointer(pointer, width - hand_x, hand_y);
-    updatePointer(leftPointer, width - leftHand_x, leftHand_y);
-
     if (this.shape.radius && (Phaser.Geom.Intersects.CircleToCircle(pointer, this.shape) || Phaser.Geom.Intersects.CircleToCircle(leftPointer, this.shape))) {
       console.log('TOUCHDOWN');
       score += 100;
