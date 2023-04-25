@@ -92,7 +92,7 @@ function create_leader(){
       }
     });
 
-  initializePointers();
+  initializePointers(this);
 }
 
 function update_leader(){

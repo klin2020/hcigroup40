@@ -35,6 +35,18 @@ function getScore(ofName){
   }
 }
 
+function updateScore(ofName, scoretoAdd){
+  for (var i = 0; i < colleges.length; i++){
+    console.log(i);
+    console.log(colleges[i]);
+    if (colleges[i].name == ofName){
+      console.log("og score " + colleges[i].score);
+      colleges[i].score += scoretoAdd;
+      console.log("new score " + colleges[i].score);
+    }
+  }
+}
+
 function create_confirmcollege(){
   this.exitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
   this.exitButtonText = this.add.text(0, 0, "Hover to exit", {
@@ -75,9 +87,7 @@ function create_confirmcollege(){
 
   this.acceptSuper = activateButton(this.accept, this.acceptText, 3, () => {
     console.log(collegeName + " " + getScore(collegeName) + " score " + score);
-    var currentScore = getScore(collegeName);
-    currentScore += score; // LOCAL STORAGE, MIGHT NEED TO CHANGE LATER ON IF WE WANNA DO FLASK
-    colleges[collegeName].score = currentScore;
+    updateScore(collegeName, score);
     console.log(collegeName + " " + getScore(collegeName));
     //upload to leaderboard...
     this.scene.start('leader_scene', leader_scene);
