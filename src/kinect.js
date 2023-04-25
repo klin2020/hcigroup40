@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 var screen_width = 1920;
 var screen_height = 1080;
-var kinectScaleFactor = 1;
+var kinectScaleFactor = 2;
 
 var hand_x = null;
 var hand_y = null;

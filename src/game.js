@@ -23,9 +23,9 @@ function create_game () {
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
   this.gameExitButton = this.add.rectangle(75, 50, 100, 50, "0xffffff");
   this.gameExitButtonText = this.add.text(0, 0, "Hover to exit", mediumText);
-  Phaser.Display.Align.In.Center(this.gameExitButtonText, gameExitButton);
+  Phaser.Display.Align.In.Center(this.gameExitButtonText, this.gameExitButton);
   this.gameExitButtonSuper = activateButton(
-    gameExitButton,
+    this.gameExitButton,
     this.gameExitButtonText,
     3,
     () => {
