@@ -66,8 +66,10 @@ function update_game () {
   if (timeLeft <= 0) {
     this.scene.start('gameover_scene');
   }
+  this.exitButtonSuper.update(elapsedTime);
+
   checkInactive(elapsedTime, this);
-  this.exitButtonSuper.update();
+  
 }
 
 function updatePointer(p, x, y) {
