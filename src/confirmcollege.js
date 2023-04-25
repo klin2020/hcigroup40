@@ -67,24 +67,6 @@ function create_confirmcollege(){
   this.goBackText = this.add.text(width/2 + 200, 250, "No, choose another",{ fontSize: 18 }).setOrigin(0.5,0.5);
   this.goBack.setInteractive();
 
-  // game.load.image("berk", "../images/berk.png");
-  // game.add.sprite(100, 100, "berk");
-
-  // this.accept.on('pointerdown', () => {
-  //     // add score to college
-  //     console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
-  //     colleges[collegeName].score += score;
-  //     console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
-  //     //upload to leaderboard...
-  //     this.scene.start('leader_scene', leader_scene);
-  // });
-  // this.goBack.on('pointerdown', () => {
-  //   console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
-  //   collegeSelected = false;
-  //   collegeName = null;
-  //   this.scene.start('gameover_scene', gameover_scene);
-  // });
-
   if (timedEvent) {
     timedEvent.remove();
   }
