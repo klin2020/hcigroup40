@@ -5,7 +5,7 @@ var leader_scene = {
 };
 
 function sortLeaderboard(){
-    colleges.sort(function(a, b){return b.score-a.score});
+  colleges.sort(function(a, b){return b.score-a.score});
 }
 
 function create_leader(){
@@ -138,5 +138,5 @@ function update_leader(){
     }
     arrIndex = 0;
   }
-  checkInactive();
+  checkInactive(elapsedTime, this);
 }

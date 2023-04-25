@@ -4,8 +4,6 @@ var confirmcollege_scene = {
     update: update_confirmcollege,
 };
 
-//var colleges;
-//parseLeaderboard();
 var colleges = [
   { name: "Branford", score: 0 },
   { name: "Berkeley", score: 0 },
@@ -109,4 +107,5 @@ function update_confirmcollege(){
   this.exitButtonSuper.update(elapsedTime);
   this.acceptSuper.update(elapsedTime);
   this.goBackSuper.update(elapsedTime);
+  checkInactive(elapsedTime, this);
 }

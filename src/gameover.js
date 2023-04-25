@@ -25,7 +25,6 @@ function create_gameover () {
     this.overExitButtonText,
     3,
     () => {
-      score = 0;
       // other reset stuff...
       collegeName = null;
       // userLocked = false;
@@ -200,5 +199,5 @@ function update_gameover () {
   rect15Super.update(elapsedTime);
   rect16Super.update(elapsedTime);
   rect17Super.update(elapsedTime);
-
+  checkInactive(elapsedTime, this);
 }

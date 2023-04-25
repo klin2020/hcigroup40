@@ -2,7 +2,7 @@
 Test your reaction time in 30 seconds and gain points to add to your residential college's score!
 
 ## How to start
-Our project uses HTML/CSS/JS, Phaser, and JSON. 
+Our project uses HTML/CSS/JS, Phaser, and JSON.
 
 Download our ZIP file and run our game starting with index.html. There are no dependencies that need to be installed to play our game.
 
@@ -17,14 +17,14 @@ First, we aim to create an application that is conscious of the user's potential
 Second, we aim to create an application that allows user to feel a sense of competition in a non-communal space like 17 Hillhouse and contribute to the Residential College community on Yale's campus. Because students feel an existing sense of pride to their Residential College, we aim to use that as incentive to play our game, contribute to their College, and meet other people who play for their own Residential College.
 
 ## Environment constraints
-Because our game is a 1-player game, our program keeps track of the first user who selects the "Hover to start" button. If the user leaves or is moves out of range of the Kinect sensor, our program will reset, allowing others to play the game. There should only be one person interacting with the screen. While playing the game, please stand far enough away from the screen such that your hand can be detected to reach the top of the display screen.
+Because our game is a 1-player game, our program keeps track of the first user who selects the "Hover to start" button. If the user leaves or is moves out of range of the Kinect sensor, our program will reset, allowing others to play the game. There should only be one person interacting with the screen. While playing the game, please stand far enough away from the screen such that your hand can be detected to reach the top of the display screen. The user should be careful to not accidentally leave the screen's view.
 
 ## Collaboration record
 This project was developed by Kenan Erol, Yoony Kim, and Karen Lin.
 
-Kenan developed the final score page, select residential college page, confirmation page, and play again page. He leveraged JSON to store score values across residential colleges. 
+Kenan developed the final score page, select residential college page, confirmation page, and play again page. He leveraged JSON to store score values across residential colleges.
 
-Yoony developed the game scene and worked with aligning the kinect and display screen coordinates so that the tv can detect users and lock in one player into the game.
+Yoony developed the game scene/logic and worked with aligning the kinect and display screen coordinates so that the user could use hands as pointers on the screen. He also implemented logic involving the tv detecting the closest users and locking in one player into the game. He also modularized code for navigation buttons and general phaser logic such as necessary updates.
 
 Karen developed the start scene and instruction scene, created the randomly generated circles, and connected phaser scenes to each other.
 
