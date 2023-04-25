@@ -43,8 +43,8 @@ function create_game () {
     '0x808080'
   );
 
-  this.timeText = this.add.text(300, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
-  this.scoreText = this.add.text(800, 50, "",{ fontSize: 24 }).setOrigin(0.5,0.5);
+  this.timeText = this.add.text(scale(300), scale(50), "",{ fontSize: 24 }).setOrigin(0.5,0.5);
+  this.scoreText = this.add.text(scale(800), scale(50), "",{ fontSize: 24 }).setOrigin(0.5,0.5);
   this.helpText = this.add.text(width/2, height - scale(60), "Hit the circles! Avoid the squares!").setOrigin(0.5,0.5)
   this.expText = this.add.text(width/2, height - scale(30), "").setOrigin(0.5,0.5);
   score = 0;
@@ -63,8 +63,8 @@ function update_game () {
   this.timeText.setText('Time Remaining: ' + Math.ceil(timeLeft).toString());
   this.scoreText.setText('Score: ' + score.toString());
 
-  if (hand_x) {
-    if (this.shape.radius && (Phaser.Geom.Intersects.CircleToCircle(pointer, this.shape) || Phaser.Geom.Intersects.CircleToCircle(leftPointer, this.shape))) {
+  if (hand_x && this.shape.radius) {
+    if ((Phaser.Geom.Intersects.CircleToCircle(pointer, this.shape) || Phaser.Geom.Intersects.CircleToCircle(leftPointer, this.shape))) {
       console.log('TOUCHDOWN');
       score += 100;
       respawnShape(this);
@@ -72,7 +72,7 @@ function update_game () {
       this.expText.setColor("0x00ff00")
     }
 
-    if (this.shape.radius && (circleOnRect(pointer, this.badShape) || circleOnRect(leftPointer, this.shape))) {
+    if (circleOnRect(pointer, this.badShape) || circleOnRect(leftPointer, this.badShape)) {
       console.log('OOPS');
       score -= 100;
       respawnShape(this);

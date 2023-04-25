@@ -18,7 +18,7 @@ function preload(){
 }
 
 function create_start () {
-  this.startButton = this.add.rectangle(width/2 + 300, height - 75, 200, 100, "0xffffff");
+  this.startButton = this.add.rectangle(width/2 + scale(300), height - scale(75), scale(200), scale(100), "0xffffff");
   this.startButton.setInteractive();
   this.startButtonText = this.add.text(0, 0, "Hover to start", {
     font: 'bold 20px Arial',
@@ -49,10 +49,9 @@ function create_start () {
   // initialize score
   score = 0;
   this.make.text({
-    x: width/2 - 160 ,
-    y: 100,
+    x: scale(30),
+    y: scale(30),
     text: 'Test your reaction time in 30 seconds and take your residential college to the top!',
-    origin: { x: 0.5, y: 0.5},
     style: {
       font: 'bold 40px Arial',
       fill: 'white',
@@ -75,7 +74,7 @@ function create_start () {
   // });
   this.make.text({
     x: scale(50),
-    y: scale(height - 100),
+    y: height - scale(100),
     text: [
       "Raise your hand to the rectangle to begin",
       "Your hand(s) will be represented as small, yellow circles",
@@ -89,7 +88,7 @@ function create_start () {
 });
 
 this.make.text({
-  x: scale(width/2+200),
+  x: width / 2 + scale(200),
   y: scale(30),
   text: [
     "Leaderboard",
@@ -105,13 +104,6 @@ this.make.text({
       align: "left"
   }
 });
-
-// text0 = this.add.text(width/2+250, 50, "Leaderboard",{ fontSize: 24 }).setOrigin(0.5,0.5);
-// // show the top 3 colleges in the leaderboard, currently placeholders
-// text1 = this.add.text(width/2+250,  80, "1. " + colleges[0].name + " " + colleges[0].score,{ fontSize: 24, align: "left" }).setOrigin(0.5,0.5);
-// text2 = this.add.text(width/2+250, 110, "2. " + colleges[1].name + " " + colleges[1].score,{ fontSize: 24, align: "left" }).setOrigin(0.5,0.5);
-// text3 = this.add.text(width/2+250, 140, "3. " + colleges[2].name + " " + colleges[2].score,{ fontSize: 24, align: "left" }).setOrigin(0.5,0.5);
-
 
   // reset inactive issues
   resetInactive();
@@ -131,7 +123,7 @@ function update_start () {
 
     //randomize position and size of circle
     let x = Phaser.Math.Between(0, width);
-    let y = Phaser.Math.Between(height-350, height - 175);
+    let y = Phaser.Math.Between(height-scale(350), height - scale(175));
     let size = Phaser.Math.Between(10, 50);
 
     //randomize color
