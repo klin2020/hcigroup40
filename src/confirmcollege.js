@@ -58,10 +58,27 @@ var height;
 // var timedEventcc;
 var db;
 parseLeaderboard();
+var colleges = [
+  { name: "Branford", score: 0 },
+  { name: "Berkeley", score: 0 },
+  { name: "Davenport", score: 0 },
+  { name: "Franklin", score: 0 },
+  { name: "Grace Hopper", score: 0 },
+  { name: "Jonathan Edwards", score: 0 },
+  { name: "Morse", score: 0 },
+  { name: "Pauli Murray", score: 0 },
+  { name: "Pierson", score: 0 },
+  { name: "Saybrook", score: 0 },
+  { name: "Silliman", score: 0 },
+  { name: "Ezra Stiles", score: 0 },
+  { name: "Timothy Dwight", score: 0 },
+  { name: "Trumbull", score: 0 },
+  ];
 
 function create_confirmcollege(){
     text0 = this.add.text(width/2, 100, "Confirm that you are adding your",{ fontSize: 24 }).setOrigin(0.5,0.5);
-    text1 = this.add.text(width/2, 150, "score of " + score.toString() + " to " + db[collegeName].name,{ fontSize: 24 }).setOrigin(0.5,0.5);
+    //text1 = this.add.text(width/2, 150, "score of " + score.toString() + " to " + db[collegeName].name,{ fontSize: 24 }).setOrigin(0.5,0.5);
+    text1 = this.add.text(width/2, 150, "score of " + score.toString() + " to " + colleges[collegeName].name,{ fontSize: 24 }).setOrigin(0.5,0.5);
     accept = this.add.rectangle(width/2 - 200, 250, 250, 40, '0x004b63');
     accepttext = this.add.text(width/2 - 200, 250, "Yes, add score",{ fontSize: 18 }).setOrigin(0.5,0.5);
     accept.setInteractive();
@@ -74,14 +91,14 @@ function create_confirmcollege(){
 
     accept.on('pointerdown', () => {
         // add score to college
-        console.log(db[collegeName].name + " " + db[collegeName].score);
-        db[collegeName].score += score;
-        console.log(db[collegeName].name + " " + db[collegeName].score);
+        console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
+        colleges[collegeName].score += score;
+        console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
         //upload to leaderboard...
         this.scene.start('leader_scene', leader_scene);
     });
     goback.on('pointerdown', () => {
-      console.log(db[collegeName].name + " " + db[collegeName].score);
+      console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
       collegeSelected = false;
       collegeName = null;
       this.scene.start('gameover_scene', gameover_scene);
@@ -94,14 +111,14 @@ function create_confirmcollege(){
     timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
   
     acceptSuper = activateButton(accept, accepttext, 3, () => {
-      console.log(db[collegeName].name + " " + db[collegeName].score);
-      db[collegeName].score += score;
-      console.log(db[collegeName].name + " " + db[collegeName].score);
+      console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
+      colleges[collegeName].score += score;
+      console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
       //upload to leaderboard...
       this.scene.start('leader_scene', leader_scene);
     }, "Yes, add score", "Adding in ", '0x00bfff', '0x004b63');
     backSuper = activateButton(goback, backtext, 3, () => {
-      console.log(db[collegeName].name + " " + db[collegeName].score);
+      console.log(colleges[collegeName].name + " " + colleges[collegeName].score);
       collegeSelected = false;
       collegeName = null;
       this.scene.start('gameover_scene', gameover_scene);
@@ -163,6 +180,7 @@ function parseLeaderboard() { // does not work
       const data = JSON.parse(xhr.responseText);
       db = data;
       console.log(data);
+      console.log(colleges);
       //console.log(data[0].name);
       console.log(collegeName);
     
