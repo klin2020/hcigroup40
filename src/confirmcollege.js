@@ -8,7 +8,7 @@ var colleges = [
   { name: "Branford", score: 0 },
   { name: "Berkeley", score: 0 },
   { name: "Davenport", score: 0 },
-  { name: "Franklin", score: 0 },
+  { name: "Benjamin Franklin", score: 0 },
   { name: "Grace Hopper", score: 0 },
   { name: "Jonathan Edwards", score: 0 },
   { name: "Morse", score: 0 },
@@ -39,7 +39,9 @@ function updateScore(ofName, scoretoAdd){
     console.log(colleges[i]);
     if (colleges[i].name == ofName){
       console.log("og score " + colleges[i].score);
-      colleges[i].score += scoretoAdd;
+      if (scoretoAdd > 0) {
+        colleges[i].score += scoretoAdd;
+      }
       console.log("new score " + colleges[i].score);
     }
   }

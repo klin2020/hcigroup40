@@ -114,7 +114,7 @@ function create_gameover () {
   rect9Super = activateButton(rect9, text9, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 11;
-    collegeName = "Stiles";
+    collegeName = "Ezra Stiles";
     this.scene.start('confirmcollege_scene');
   }, "Stiles", "Stiles in ", '0x00bfff', '0x004b63');
   rect10Super = activateButton(rect10, text10, 3, () => {
@@ -150,7 +150,7 @@ function create_gameover () {
   rect15Super = activateButton(rect15, text15, 3, () => {
     collegeSelected = true; //user playing game is locked in
     //collegeName = 3;
-    collegeName = "Franklin";
+    collegeName = "Benjamin Franklin";
     this.scene.start('confirmcollege_scene');
   }, "Franklin", "Franklin in ", '0x00bfff', '0x004b63');
   rect16Super = activateButton(rect16, text16, 3, () => {
