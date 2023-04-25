@@ -74,8 +74,10 @@ function create_confirmcollege(){
   timedEvent = this.time.addEvent({ delay: 9999999, callback: this.onClockEvent, callbackScope: this, repeat: 1 });
 
   this.acceptSuper = activateButton(this.accept, this.acceptText, 3, () => {
-    console.log(collegeName + " " + getScore(collegeName));
-    getScore(collegeName) += score; // LOCAL STORAGE, MIGHT NEED TO CHANGE LATER ON IF WE WANNA DO FLASK
+    console.log(collegeName + " " + getScore(collegeName) + " score " + score);
+    var currentScore = getScore(collegeName);
+    currentScore += score; // LOCAL STORAGE, MIGHT NEED TO CHANGE LATER ON IF WE WANNA DO FLASK
+    colleges[collegeName].score = currentScore;
     console.log(collegeName + " " + getScore(collegeName));
     //upload to leaderboard...
     this.scene.start('leader_scene', leader_scene);
