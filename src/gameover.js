@@ -25,7 +25,6 @@ function create_gameover () {
     this.overExitButtonText,
     3,
     () => {
-      score = 0;
       // other reset stuff...
       collegeName = null;
       // userLocked = false;

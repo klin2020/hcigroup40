@@ -5,7 +5,7 @@ var game_scene = {
 };
 
 var score;
-var timeLimit = 3;
+var timeLimit = 30;
 
 var lastCircleX = -9999;
 var lastCircleY = -9999
