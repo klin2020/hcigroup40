@@ -26,6 +26,6 @@ Kenan developed the final score page, select residential college page, confirmat
 
 Yoony developed the game scene/logic and worked with aligning the kinect and display screen coordinates so that the user could use hands as pointers on the screen. He also implemented logic involving the tv detecting the closest users and locking in one player into the game. He also modularized code for navigation buttons and general phaser logic such as necessary updates.
 
-Karen developed the start scene and instruction scene, created the randomly generated circles, and connected phaser scenes to each other.
+Karen developed the start scene and instruction scene, created the randomly generated circles logic, and connected phaser scenes to each other. Karen also ensured that tasks were achieved throughout the implementation of the project.
 
 All members of the team worked together to ideate tasks, develop prototypes, and test using the display screen.
