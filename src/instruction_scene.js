@@ -50,7 +50,7 @@ function create_instruction () {
       userLocked = true;
       this.scene.start('game_scene');
     },
-    "Hover to start",
+    "Hover to start game",
     "Starting in ",
     '0xffffff',
     '0x808080',
